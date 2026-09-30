@@ -1,4 +1,5 @@
 "use client";
+import dynamic from "next/dynamic";
 import { Phonetic } from "./phonetic";
 import { AuthGate } from "./auth-gate";
 import { useCloudProgress } from "./use-cloud-progress";
@@ -23,6 +24,7 @@ import {
   Search,
   Settings2,
   Star,
+  Target,
   Volume2,
   X,
 } from "lucide-react";
@@ -38,11 +40,16 @@ import {
   type State,
 } from "@/lib/learning";
 import { Dashboard, Library, Progress, Study, Quiz } from "./views";
-export type View = "today" | "study" | "quiz" | "library" | "progress";
+const ExamCenter = dynamic(() => import("./exam-center"), {
+  loading: () => <p>正在載入練習中心…</p>,
+});
+export type View =
+  "today" | "study" | "quiz" | "library" | "progress" | "academy";
 const nav = [
   { id: "today", label: "今日衝刺", icon: LayoutDashboard },
   { id: "study", label: "單字卡", icon: BookOpen },
   { id: "quiz", label: "每日測驗", icon: ListChecks },
+  { id: "academy", label: "多益練習", icon: Target },
   { id: "library", label: "單字庫", icon: Search },
   { id: "progress", label: "學習進度", icon: ChartNoAxesColumnIncreasing },
 ] as const;
@@ -109,6 +116,7 @@ function LearningWorkspace({
   const actionLock = useRef(false);
   const afterSave = useRef<(() => void) | null>(null);
   const [signingOut, setSigningOut] = useState(false);
+  const [examBusy, setExamBusy] = useState(false);
   useEffect(() => {
     setNow(Date.now());
     const timer = setInterval(() => setNow(Date.now()), 30000);
@@ -141,7 +149,7 @@ function LearningWorkspace({
     } else await cloud.refresh();
   }
   async function logout() {
-    if (cloud.busy || signingOut) return;
+    if (cloud.busy || signingOut || examBusy) return;
     if (
       cloud.pending &&
       !window.confirm(
@@ -178,6 +186,10 @@ function LearningWorkspace({
     setView("quiz");
   }, []);
   const go = (next: View) => {
+    if (examBusy) {
+      setNotice("請先完成測驗同步或儲存筆記，再切換頁面。");
+      return;
+    }
     if (cloud.pending || signingOut) return;
     if (next === "study") startStudy();
     else if (next === "quiz") startQuiz();
@@ -449,7 +461,7 @@ function LearningWorkspace({
               className="icon-btn"
               aria-label="登出帳號"
               title="登出帳號"
-              disabled={cloud.busy || signingOut}
+              disabled={cloud.busy || signingOut || examBusy}
               onClick={() => void logout()}
             >
               <LogOut size={19} />
@@ -500,7 +512,30 @@ function LearningWorkspace({
           ) : (
             <div inert={cloud.busy || cloud.pending || signingOut}>
               {view === "today" && (
-                <Dashboard {...shared} openSettings={openSettings} />
+                <>
+                  <div className="training-entry">
+                    <div>
+                      <strong>全新多益練習中心</strong>
+                      <span>
+                        Part 1–7 · 516 題 · 聽寫、错題複習與 200 題模考
+                      </span>
+                    </div>
+                    <button
+                      className="primary-btn"
+                      onClick={() => go("academy")}
+                    >
+                      開始練習 <ArrowRight size={17} />
+                    </button>
+                  </div>
+                  <Dashboard {...shared} openSettings={openSettings} />
+                </>
+              )}
+              {view === "academy" && (
+                <ExamCenter
+                  userId={session.user.id}
+                  state={state}
+                  onBusy={setExamBusy}
+                />
               )}
               {view === "study" && (
                 <Study

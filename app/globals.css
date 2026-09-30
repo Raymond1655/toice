@@ -2338,3 +2338,4 @@ button:disabled {
     font-size: 12px;
   }
 }
+.training-entry{display:flex;align-items:center;justify-content:space-between;gap:18px;background:#eaf0ff;border:1px solid #d9e3ff;padding:18px 22px;border-radius:16px;margin:15px 0 25px}.training-entry strong{display:block;font-size:15px;color:#304e82}.training-entry span{display:block;font-size:12px;color:#7085a7;margin-top:7px}.sidebar{overflow-y:auto}.workspace-label{margin-top:30px}.sidebar nav{gap:3px}.sidebar-bottom{padding-top:20px}@media(max-width:760px){.training-entry{padding:16px;align-items:flex-start;flex-direction:column}.sidebar nav{grid-template-columns:repeat(6,1fr)}.sidebar .nav-item{font-size:10px;padding:10px 3px;gap:5px}.sidebar .nav-item svg{width:18px}.sidebar{overflow:visible}}

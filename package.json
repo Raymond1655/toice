@@ -5,6 +5,8 @@
   "scripts": {
     "vocabulary:build": "node scripts/build-vocabulary.mjs",
     "vocabulary:check": "node scripts/build-vocabulary.mjs --check",
+    "exams:build": "node scripts/build-exams.mjs",
+    "exams:check": "node scripts/build-exams.mjs --check",
     "dev": "next dev --hostname 127.0.0.1",
     "build": "next build",
     "start": "next start --hostname 127.0.0.1",

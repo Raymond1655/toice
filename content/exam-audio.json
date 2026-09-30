@@ -1,0 +1,466 @@
+[
+  {
+    "id": "p2-practice-001",
+    "text": "Where is the nearest bank?. A. Yes, I deposited it. B. Across from the station. C. At three o'clock."
+  },
+  {
+    "id": "p2-practice-002",
+    "text": "When does the workshop begin?. A. At nine tomorrow morning. B. In the training room. C. The instructor was helpful."
+  },
+  {
+    "id": "p2-practice-003",
+    "text": "Who ordered these office supplies?. A. They arrived yesterday. B. About twenty boxes. C. Our administrative assistant did."
+  },
+  {
+    "id": "p2-practice-004",
+    "text": "Would you like a window seat?. A. It takes two hours. B. Yes, if one is available. C. The window needs cleaning."
+  },
+  {
+    "id": "p2-practice-005",
+    "text": "How often is the newsletter published?. A. Once a month. B. On the second floor. C. It has twelve pages."
+  },
+  {
+    "id": "p2-practice-006",
+    "text": "Why was the meeting postponed?. A. In the main conference room. B. At ten thirty. C. The director is out of town."
+  },
+  {
+    "id": "p2-practice-007",
+    "text": "Could you send me the latest figures?. A. I sent the package by train. B. Certainly, I'll email them now. C. The figure is standing outside."
+  },
+  {
+    "id": "p2-practice-008",
+    "text": "Which printer should I use?. A. The one next to the window. B. I printed ten copies. C. The paper is blue."
+  },
+  {
+    "id": "p2-practice-009",
+    "text": "How long will the repairs take?. A. The mechanic is experienced. B. At the repair shop. C. Approximately two hours."
+  },
+  {
+    "id": "p2-practice-010",
+    "text": "Is the customer service desk still open?. A. I opened the package. B. It closes at six. C. The desk is wooden."
+  },
+  {
+    "id": "p2-practice-011",
+    "text": "Where should I put these files?. A. In the cabinet by the door. B. I filed the report yesterday. C. The meeting starts soon."
+  },
+  {
+    "id": "p2-practice-012",
+    "text": "Would you prefer tea or coffee?. A. Yes, it is hot. B. At the cafe yesterday. C. Coffee, please."
+  },
+  {
+    "id": "p2-practice-013",
+    "text": "Who will lead tomorrow's orientation?. A. It was very informative. B. I haven't seen the schedule yet. C. The new employees arrived."
+  },
+  {
+    "id": "p2-practice-014",
+    "text": "Why don't we order lunch for the team?. A. That's a good idea. B. Because the printer is broken. C. I ordered it last year."
+  },
+  {
+    "id": "p2-practice-015",
+    "text": "Have you finished the budget report?. A. The report is in English. B. It costs twenty dollars. C. I'm checking the final page."
+  },
+  {
+    "id": "p2-practice-016",
+    "text": "When will the new branch open?. A. Our regional manager. B. Early next month. C. Next to the park."
+  },
+  {
+    "id": "p2-practice-017",
+    "text": "Can I park my car here?. A. This space is reserved for deliveries. B. I bought a new car. C. The parking fee was reasonable."
+  },
+  {
+    "id": "p2-practice-018",
+    "text": "How many people registered for the seminar?. A. At the registration desk. B. Last Thursday. C. Nearly sixty."
+  },
+  {
+    "id": "p2-practice-019",
+    "text": "Did you take the express train?. A. It arrives at platform two. B. No, I drove instead. C. The ticket counter is closed."
+  },
+  {
+    "id": "p2-practice-020",
+    "text": "Could you lower the volume a little?. A. Of course, sorry about that. B. The book has three volumes. C. It is on the lower shelf."
+  },
+  {
+    "id": "p2-practice-021",
+    "text": "Where can I get a visitor badge?. A. For about an hour. B. I visited last week. C. Ask the receptionist."
+  },
+  {
+    "id": "p2-practice-022",
+    "text": "Should we meet before or after lunch?. A. The cafeteria is closed. B. After lunch would be better. C. Yes, we met before."
+  },
+  {
+    "id": "p2-practice-023",
+    "text": "Why is this invoice higher than expected?. A. It includes the delivery fee. B. The ceiling is quite high. C. I expect him tomorrow."
+  },
+  {
+    "id": "p2-practice-024",
+    "text": "Who is responsible for maintaining the website?. A. It is updated weekly. B. The address is easy to remember. C. The technology department."
+  },
+  {
+    "id": "p2-practice-025",
+    "text": "How do I connect to the guest network?. A. It is a new computer. B. The password is on your visitor pass. C. I met the guest yesterday."
+  },
+  {
+    "id": "p2-practice-026",
+    "text": "Has the delivery arrived yet?. A. The driver just called to say he's nearby. B. The box is quite large. C. We deliver nationwide."
+  },
+  {
+    "id": "p2-practice-027",
+    "text": "Would you mind reviewing this contract?. A. The view is beautiful. B. I renewed it last year. C. I'll look at it after my call."
+  },
+  {
+    "id": "p2-practice-028",
+    "text": "Where will the awards ceremony take place?. A. In about three weeks, I think. B. At the city convention center. C. The award is made of glass."
+  },
+  {
+    "id": "p2-practice-029",
+    "text": "When is your flight scheduled to leave?. A. It's been delayed until eight. B. At the international terminal. C. I prefer an aisle seat."
+  },
+  {
+    "id": "p2-practice-030",
+    "text": "Do we need to print all these documents?. A. The printer was expensive. B. I read it carefully. C. Digital copies should be enough."
+  },
+  {
+    "id": "p2-practice-031",
+    "text": "How was the training session?. A. In the room upstairs. B. More useful than I expected. C. On Wednesday morning."
+  },
+  {
+    "id": "p2-practice-032",
+    "text": "Who can approve my travel request?. A. Your department manager. B. The train is fully booked. C. I requested a window seat."
+  },
+  {
+    "id": "p2-practice-033",
+    "text": "Why don't you ask for an extension?. A. The phone extension is four digits. B. Yes, the building is tall. C. I'll contact the project leader."
+  },
+  {
+    "id": "p2-practice-034",
+    "text": "Isn't the restaurant closed on Mondays?. A. I closed the door. B. They changed their hours recently. C. The menu looks interesting."
+  },
+  {
+    "id": "p2-practice-035",
+    "text": "Which design did the client choose?. A. The simpler one. B. The client arrived early. C. I designed it myself."
+  },
+  {
+    "id": "p2-practice-036",
+    "text": "How soon can you send a technician?. A. The machine is quite old. B. I sent the receipt. C. Someone can be there this afternoon."
+  },
+  {
+    "id": "p2-practice-037",
+    "text": "Where did you buy that laptop?. A. About two kilograms. B. Through our company's supplier. C. It has a long battery life."
+  },
+  {
+    "id": "p2-practice-038",
+    "text": "Could we move the appointment to Thursday?. A. Let me check my calendar. B. The moving company is reliable. C. The appointment lasted an hour."
+  },
+  {
+    "id": "p2-practice-039",
+    "text": "Are there any seats left for the lecture?. A. The speaker is well known. B. I left my bag at home. C. A few in the back row."
+  },
+  {
+    "id": "p2-practice-040",
+    "text": "How much does the annual membership cost?. A. The members voted yesterday. B. It depends on the plan you choose. C. Once a year."
+  },
+  {
+    "id": "p2-practice-041",
+    "text": "Who should receive the original receipt?. A. Send it to accounting. B. The package was received. C. I kept the original design."
+  },
+  {
+    "id": "p2-practice-042",
+    "text": "When can we expect your decision?. A. The decision was difficult. B. Our office is nearby. C. I'll let you know by Friday."
+  },
+  {
+    "id": "p2-practice-043",
+    "text": "Would you like me to carry that box?. A. We carry several brands. B. Thanks, it's heavier than it looks. C. The box is empty."
+  },
+  {
+    "id": "p2-practice-044",
+    "text": "Why is the lobby so crowded?. A. A conference just ended. B. The lobby was renovated. C. On the ground floor."
+  },
+  {
+    "id": "p2-practice-045",
+    "text": "Have the invitations been sent?. A. The guests enjoyed the meal. B. It is an outdoor event. C. They're ready for the afternoon mail."
+  },
+  {
+    "id": "p2-practice-046",
+    "text": "How can I change my shipping address?. A. I moved last summer. B. Use the link in your confirmation email. C. The ship leaves tonight."
+  },
+  {
+    "id": "p2-practice-047",
+    "text": "Do you know where the spare keys are?. A. Try the top drawer. B. The door is locked. C. I know the manager."
+  },
+  {
+    "id": "p2-practice-048",
+    "text": "Should I book one room or two?. A. The room has a large window. B. Yes, please book it. C. Two, since we need separate work areas."
+  },
+  {
+    "id": "p2-practice-049",
+    "text": "Who is presenting the sales forecast?. A. Sales have been strong. B. The regional director, I believe. C. The weather should improve."
+  },
+  {
+    "id": "p2-practice-050",
+    "text": "Can you stay a few minutes after the meeting?. A. I have another appointment at noon. B. The meeting room is spacious. C. I stayed at a hotel."
+  },
+  {
+    "id": "p2-mock-001",
+    "text": "Where is the shipment from?. A. It should arrive tomorrow. B. There are fifteen cartons. C. Our factory in Canada."
+  },
+  {
+    "id": "p2-mock-002",
+    "text": "When was the equipment last inspected?. A. It works very well. B. About six months ago. C. By a certified technician."
+  },
+  {
+    "id": "p2-mock-003",
+    "text": "Who requested an extra monitor?. A. The new graphic designer. B. The monitor is on sale. C. The request form is on your desk."
+  },
+  {
+    "id": "p2-mock-004",
+    "text": "Would you like a copy of the agenda?. A. The copier is in the hallway. B. The event was successful. C. I've already downloaded it."
+  },
+  {
+    "id": "p2-mock-005",
+    "text": "How often should the filter be replaced?. A. It is made of metal. B. Every three months. C. The replacement arrived."
+  },
+  {
+    "id": "p2-mock-006",
+    "text": "Why are the lights still on?. A. The cleaning staff are working late. B. Turn left at the next street. C. The room is very bright."
+  },
+  {
+    "id": "p2-mock-007",
+    "text": "Could you confirm the number of guests?. A. The guests liked the music. B. The number is on the door. C. I'll check the reservation list."
+  },
+  {
+    "id": "p2-mock-008",
+    "text": "Which entrance is open during construction?. A. The entrance fee is low. B. Only the side entrance. C. The work begins next week."
+  },
+  {
+    "id": "p2-mock-009",
+    "text": "How long have you worked at this branch?. A. Since last September. B. Until five today. C. The branch is downtown."
+  },
+  {
+    "id": "p2-mock-010",
+    "text": "Is there a direct bus to the airport?. A. The director is traveling. B. The airport is very busy. C. You'll need to change at Central Station."
+  },
+  {
+    "id": "p2-mock-011",
+    "text": "Where should visitors leave their bags?. A. The bags are waterproof. B. In the lockers beside reception. C. They visited last month."
+  },
+  {
+    "id": "p2-mock-012",
+    "text": "Would you rather call or send an email?. A. An email would give us a written record. B. I called yesterday. C. The address is correct."
+  },
+  {
+    "id": "p2-mock-013",
+    "text": "Who will cover the evening shift?. A. The cover is damaged. B. The shift ends at ten. C. I'll ask if anyone is available."
+  },
+  {
+    "id": "p2-mock-014",
+    "text": "Why don't we use a larger room?. A. Yes, I used it. B. The larger rooms are all booked. C. The room is painted white."
+  },
+  {
+    "id": "p2-mock-015",
+    "text": "Have you spoken with the supplier?. A. I'm waiting for a return call. B. The supplies are in storage. C. It was a long speech."
+  },
+  {
+    "id": "p2-mock-016",
+    "text": "When will the revised schedule be posted?. A. On the noticeboard. B. The revision is minor. C. As soon as the manager approves it."
+  },
+  {
+    "id": "p2-mock-017",
+    "text": "Can I get a refund without a receipt?. A. The item comes in blue. B. A bank statement would also work. C. The fund is growing."
+  },
+  {
+    "id": "p2-mock-018",
+    "text": "How many copies do you need?. A. One for each of the twelve participants. B. The copier needs paper. C. The original is on my desk."
+  },
+  {
+    "id": "p2-mock-019",
+    "text": "Did the client accept the proposal?. A. The client is based abroad. B. I accepted the delivery. C. They asked us to revise the timeline."
+  },
+  {
+    "id": "p2-mock-020",
+    "text": "Could you speak a little more slowly?. A. The service is slow today. B. Certainly, I'll repeat the address. C. The speaker is wireless."
+  },
+  {
+    "id": "p2-mock-021",
+    "text": "Where can employees charge their bicycles?. A. There are outlets in the basement garage. B. The charge was refunded. C. I ride to work twice a week."
+  },
+  {
+    "id": "p2-mock-022",
+    "text": "Should we send the samples today or tomorrow?. A. The samples are free. B. Yes, they arrived. C. Today, to make sure they arrive on time."
+  },
+  {
+    "id": "p2-mock-023",
+    "text": "Why has the website been unavailable?. A. I visit it regularly. B. The server is being updated. C. The address ends with a number."
+  },
+  {
+    "id": "p2-mock-024",
+    "text": "Who can show me how to operate this machine?. A. The technician will be here shortly. B. It was purchased last year. C. The instructions are clear."
+  },
+  {
+    "id": "p2-mock-025",
+    "text": "How do I reserve a meeting room?. A. For two hours. B. There are six chairs. C. Fill out the request form online."
+  },
+  {
+    "id": "group-3-1",
+    "text": "Our brochure order was supposed to arrive this morning. The courier called. A road closure caused a delay, but the boxes should arrive by three. The sales team needs them for tomorrow. I will bring them to your office as soon as they arrive."
+  },
+  {
+    "id": "group-3-2",
+    "text": "Is the large conference room free on Thursday? Only until noon. The finance team booked it for the afternoon. Our training ends at eleven, so that works. Could you arrange a projector? Of course. I will test it before you arrive."
+  },
+  {
+    "id": "group-3-3",
+    "text": "I have a reservation for two nights, but my return flight has changed. Could I stay an extra night? We have a room available, although you would need to move to the third floor. That is fine. Can I leave my bags here while I attend my meeting? Certainly."
+  },
+  {
+    "id": "group-3-4",
+    "text": "The printer keeps stopping halfway through a job. Have you checked the paper tray? Yes, and I replaced the toner yesterday. I will call the service company. In the meantime, use the printer in the library."
+  },
+  {
+    "id": "group-3-5",
+    "text": "Thank you for coming in. Your application says you have managed a retail team. Yes, I supervised eight people for three years. This position also involves training new employees. That is something I enjoy. When do you expect to make a decision? By the end of next week."
+  },
+  {
+    "id": "group-3-6",
+    "text": "We are expecting twelve people for lunch tomorrow. Can you provide a vegetarian option? Certainly. How many guests need it? Four. The others would like the chicken dish. I will note that. Please confirm your arrival time by this evening."
+  },
+  {
+    "id": "group-3-7",
+    "text": "The moving company will arrive at eight on Saturday. Should we pack our computers ourselves? No, the technicians will handle those. Just label your personal boxes with your desk number. Will we be able to work in the new office on Monday? Yes, the network is already installed."
+  },
+  {
+    "id": "group-3-8",
+    "text": "I bought these headphones last week, but the left speaker does not work. Do you have your receipt? Yes, here it is. Could I exchange them? We have sold out of this model. I can offer you a refund or order another pair. A refund, please."
+  },
+  {
+    "id": "group-3-9",
+    "text": "I tried to register for the spreadsheet workshop, but the website says it is full. Someone canceled this morning. I can add your name. Great. Do I need to bring my laptop? No, computers are provided. Just bring your employee badge."
+  },
+  {
+    "id": "group-3-10",
+    "text": "The train to the regional office leaves at seven thirty. That is early. Could we take the later one? The client wants to meet at nine, and the journey takes an hour. All right. I will book the tickets and arrange a taxi from the station."
+  },
+  {
+    "id": "group-3-11",
+    "text": "The new website looks good, but the contact form is not sending messages. I will ask the developer to check it. Should we delay the launch? Yes, until the form works. Please keep the old site online for now. I will let the marketing team know."
+  },
+  {
+    "id": "group-3-12",
+    "text": "We still need volunteers for the park cleanup. I can help on Sunday, but I do not have any tools. Gloves and bags will be supplied. Meet at the north gate at nine. Should I invite my neighbors? Please do. The more people we have, the better."
+  },
+  {
+    "id": "group-3-13",
+    "text": "Our office lease ends in December. Has the owner sent the renewal terms? Yes. The rent will increase, but parking will be included. That may still be reasonable. Let us compare it with two nearby offices before deciding. I will arrange visits next week."
+  },
+  {
+    "id": "group-3-14",
+    "text": "Two tickets for the special exhibition, please. The next entry time is one thirty. Is that all right? Yes. Can we visit the permanent collection while we wait? Certainly. It is included in your ticket. The entrance is upstairs."
+  },
+  {
+    "id": "group-3-15",
+    "text": "The invoice lists fifteen chairs, but we only received twelve. Three were damaged in transit. We can replace them next Tuesday. Our event is on Monday, so please refund those three instead. I will send a corrected invoice this afternoon."
+  },
+  {
+    "id": "group-3-16",
+    "text": "We would like to have the trees outside our office trimmed. I can send someone to inspect them on Wednesday. Could the work be done over the weekend? The parking area is busy during the week. That should be possible. We will provide a quotation after the inspection."
+  },
+  {
+    "id": "group-4-1",
+    "text": "Attention shoppers. Our store will close at six today for our annual inventory count. The customer service desk will stop accepting returns at five thirty. Online orders can still be placed throughout the evening. We will reopen at our usual time tomorrow. Thank you for your understanding."
+  },
+  {
+    "id": "group-4-2",
+    "text": "Passengers traveling to Lakeside, please note that the ten fifteen service will depart from platform four instead of platform two. The departure time has not changed. Passengers with large luggage should use the elevator at the end of the hall. Staff are available near the ticket counter to assist you."
+  },
+  {
+    "id": "group-4-3",
+    "text": "Hello, this is Maria from the dental clinic. I am calling about your appointment on Thursday afternoon. The dentist needs to attend a professional seminar, so we need to reschedule. We have openings on Friday morning or Monday afternoon. Please call us before five today to let us know which you prefer."
+  },
+  {
+    "id": "group-4-4",
+    "text": "Before entering the production area, please put on the safety glasses provided in the blue cabinet. Photography is not permitted inside the factory. The tour will last forty minutes, and you must remain with your guide at all times. Afterward, refreshments will be served in the visitor center."
+  },
+  {
+    "id": "group-4-5",
+    "text": "Looking for a quiet place to work? River Workspace offers desks and private offices just five minutes from the central station. All memberships include high-speed internet and free coffee. Join before the end of this month and receive your first week at no charge. Visit our website to book a free tour."
+  },
+  {
+    "id": "group-4-6",
+    "text": "Welcome to our annual volunteer dinner. This year, more than two hundred volunteers helped deliver meals to older residents. Before dinner, our coordinator will share a short video of their work. After the meal, we will present certificates to those who have volunteered for five years or more. Thank you for making this program possible."
+  },
+  {
+    "id": "group-4-7",
+    "text": "Good morning. Heavy rain is expected across the region this afternoon, and some local roads may flood. Drivers should allow extra travel time and avoid the riverside route. The rain should stop overnight, with clear skies returning tomorrow morning. The weekend outdoor market is still scheduled to go ahead."
+  },
+  {
+    "id": "group-4-8",
+    "text": "The library will introduce a new reservation system next Monday. Members will be able to reserve study rooms up to two weeks in advance through our website. Each booking may last no more than three hours. If you need help using the system, staff will offer demonstrations at the information desk every morning next week."
+  },
+  {
+    "id": "group-4-9",
+    "text": "Thank you for attending this year’s design conference. Recordings of all presentations will be available to registered participants next week. Please complete the online feedback form before Friday; your suggestions will help us plan next year’s event. Shuttle buses to the train station will leave from the south entrance every fifteen minutes until six."
+  },
+  {
+    "id": "group-4-10",
+    "text": "Starting next month, employees may work from home up to two days per week with their supervisor’s approval. Wednesday will remain an office day so that all teams can meet in person. The technology department will provide instructions for secure remote access this Friday. Please submit your preferred schedule by next Tuesday."
+  },
+  {
+    "id": "group-4-11",
+    "text": "The community center is offering a beginner photography course on Saturday mornings. The course runs for four weeks, and participants should bring a camera or a smartphone. The first class will take place indoors, while the remaining sessions will include walks around the neighborhood. Registration closes on Wednesday."
+  },
+  {
+    "id": "group-4-12",
+    "text": "This is a message for the manager of Green Market. Your refrigerated display unit is ready for delivery. Because the unit is large, please make sure the loading entrance is clear. Our driver can arrive between nine and eleven on Friday. Please call to confirm that a member of staff will be available to sign for it."
+  },
+  {
+    "id": "group-4-13",
+    "text": "You are now standing in the oldest part of the building. Originally a railway waiting room, this hall became a museum in the nineteen eighties. The clock above the door is the only original fitting that remains. The photographs on your left show the station before it closed. Please continue through the double doors to see the transport exhibition."
+  },
+  {
+    "id": "p1-practice-001",
+    "text": "A. Books are standing on a shelf. B. A woman is reading a newspaper. C. Books are scattered on the floor. D. A worker is building a desk."
+  },
+  {
+    "id": "p1-mock-001",
+    "text": "A. People are moving a piano. B. A worker is painting the ceiling. C. The tables are covered with dishes. D. The tables are arranged in rows."
+  },
+  {
+    "id": "p1-practice-002",
+    "text": "A. The windows are being washed. B. Flowers are lying on a road. C. Potted plants are beside a window. D. A gardener is watering a lawn."
+  },
+  {
+    "id": "p1-mock-002",
+    "text": "A. A man is repairing an engine. B. A bicycle is leaning against a wall. C. A cyclist is crossing a bridge. D. Several cars are parked in a garage."
+  },
+  {
+    "id": "p1-practice-003",
+    "text": "A. A laptop is open on a desk. B. A technician is holding a tablet. C. The computer is inside a bag. D. A person is moving a chair."
+  },
+  {
+    "id": "p1-mock-003",
+    "text": "A. Workers are loading a truck. B. The shelves are being removed. C. A woman is opening a window. D. Boxes are stacked on shelves."
+  },
+  {
+    "id": "p1-practice-004",
+    "text": "A. Dishes are being washed. B. The table is covered with papers. C. Several cups are on a tray. D. A waiter is pouring tea."
+  },
+  {
+    "id": "p1-mock-004",
+    "text": "A. The dock is crowded with people. B. Several boats are tied beside a dock. C. Passengers are boarding a bus. D. A ship is sailing under a bridge."
+  },
+  {
+    "id": "p1-practice-005",
+    "text": "A. A bus is parked beside a sign. B. Passengers are crossing the street. C. A driver is changing a tire. D. Two trains are passing each other."
+  },
+  {
+    "id": "p1-mock-005",
+    "text": "A. A server is carrying a tray. B. The chairs are stacked on a table. C. A window is being closed. D. An umbrella is open above a table."
+  },
+  {
+    "id": "p1-practice-006",
+    "text": "A. A worker is opening a gate. B. An elevator is full of passengers. C. A staircase leads to a closed door. D. People are waiting in a line."
+  },
+  {
+    "id": "p1-mock-006",
+    "text": "A. A man is sitting on a bench. B. Suitcases are standing beside a bench. C. Travelers are entering an airplane. D. A suitcase is lying open on the floor."
+  }
+]
