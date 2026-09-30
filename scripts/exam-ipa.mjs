@@ -206,5 +206,5 @@ function pronounce(word, sentence = "") {
   return "";
 }
 
-Object.assign(overrides, {promptness:'ˈprɑmptnəs',departmentally:'dɪˌpɑrtˈmɛntəli',informatively:'ɪnˈfɔrmətɪvli',noticeboard:'ˈnoʊtɪsˌbɔrd',mandatorily:'ˈmændəˌtɔrəli',quotable:'ˈkwoʊtəbəl',"participant's":'pɑrˈtɪsəpənts',"instructor's":'ɪnˈstrʌktərz',"nina's":'ˈninəz'});
+Object.assign(overrides, {promptness:'ˈprɑmptnəs',departmentally:'dɪˌpɑrtˈmɛntəli',informatively:'ɪnˈfɔrmətɪvli',noticeboard:'ˈnoʊtɪsˌbɔrd',mandatorily:'ˈmændəˌtɔrəli',quotable:'ˈkwoʊtəbəl',"participant's":'pɑrˈtɪsəpənts',"instructor's":'ɪnˈstrʌktərz',"nina's":'ˈninəz',"assistant's":'əˈsɪstənts',availably:'əˈveɪləbli',unaccepted:'ˌʌnəkˈsɛptɪd',placeholder:'ˈpleɪsˌhoʊldər',"venue's":'ˈvɛnjuz',washrooms:'ˈwɑʃˌrumz',shortlisted:'ˈʃɔrtˌlɪstɪd',compostable:'kəmˈpoʊstəbəl',roadworks:'ˈroʊdˌwɜrks',sailings:'ˈseɪlɪŋz',deactivation:'diˌæktəˈveɪʃən',stallholders:'ˈstɔlˌhoʊldərz',uneaten:'ʌnˈitən',digitization:'ˌdɪdʒətəˈzeɪʃən',remeasure:'riˈmɛʒər',"item's":'ˈaɪtəmz',"organizer's":'ˈɔrɡəˌnaɪzərz'});
 export { pronounce, missing };

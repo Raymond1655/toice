@@ -1,10 +1,38 @@
 import bank from "./exam-bank.json" with { type: "json" };
+import summary from "./exam-summary.json" with { type: "json" };
 import { words } from "./vocabulary.ts";
 import type { Attempt, Part, Question, Answer } from "./exam-types.ts";
 export const questions = bank as Question[];
 export const questionMap = new Map(questions.map((q) => [q.id, q]));
 export const wordMap = new Map(words.map((w) => [w.id, w]));
 export const mockCounts = [6, 25, 39, 30, 30, 16, 54];
+export const examSummary = summary;
+export const mockSets = summary.mocks;
+export type PracticeFilter = {
+  topic?: string;
+  unseen?: boolean;
+  seenIds?: ReadonlySet<string>;
+};
+export function practiceGroups(
+  part: Part | 0 = 0,
+  skill = "",
+  filter: PracticeFilter = {},
+) {
+  const groups = new Map<string, Question[]>();
+  for (const q of questions) {
+    if (q.pool !== "practice" || (part && q.part !== part)) continue;
+    const key = q.group || q.id;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key)!.push(q);
+  }
+  // Match a skill at group level so other questions from the same passage stay together.
+  return [...groups.values()].filter(
+    (group) =>
+      (!skill || group.some((q) => q.skill === skill)) &&
+      (!filter.topic || group.some((q) => q.topic === filter.topic)) &&
+      (!filter.unseen || !group.some((q) => filter.seenIds?.has(q.id))),
+  );
+}
 export function normalizeSpelling(s: string) {
   return s
     .normalize("NFKC")
@@ -34,22 +62,20 @@ export function selectPractice(
   count = 20,
   skill = "",
   random = Math.random,
+  filter: PracticeFilter = {},
 ) {
-  const eligible = questions.filter(
-    (q) =>
-      q.pool === "practice" &&
-      (!part || q.part === part) &&
-      (!skill || q.skill === skill),
+  const groups = shuffled(practiceGroups(part, skill, filter), random);
+  const queues = shuffled([1, 2, 3, 4, 5, 6, 7] as Part[], random).map((p) =>
+    groups.filter((g) => g[0].part === p),
   );
-  const groups = new Map<string, Question[]>();
-  for (const q of eligible) {
-    const key = q.group || q.id;
-    groups.set(key, [...(groups.get(key) || []), q]);
-  }
   const result: string[] = [];
-  for (const group of shuffled([...groups.values()], random)) {
-    if (result.length >= count) break;
-    result.push(...group.map((q) => q.id));
+  // Round-robin parts prevents single-question grammar groups from dominating mixed practice.
+  while (result.length < count && queues.some((q) => q.length)) {
+    for (const queue of queues) {
+      if (result.length >= count) break;
+      const group = queue.shift();
+      if (group) result.push(...group.map((q) => q.id));
+    }
   }
   return result;
 }
@@ -77,9 +103,9 @@ export function newAttempt(
     played: [],
   };
 }
-export function mockIds() {
+export function mockIds(setId = "01") {
   return questions
-    .filter((q) => q.pool === "mock")
+    .filter((q) => q.pool === "mock" && (q.mockSet || "01") === setId)
     .sort((a, b) => a.part - b.part)
     .map((q) => q.id);
 }
@@ -221,7 +247,9 @@ export function parseAttempt(value: unknown): Attempt {
     throw Error("測驗題目不存在");
   if (
     a.mode === "mock" &&
-    (a.duration !== 7200000 || a.ids.join(",") !== mockIds().join(","))
+    (a.duration !== 7200000 ||
+      a.ids.join(",") !==
+        mockIds(questionMap.get(a.ids[0])?.mockSet || "01").join(","))
   )
     throw Error("模考題目或時間設定不正確");
   for (const [id, x] of Object.entries(a.answers))

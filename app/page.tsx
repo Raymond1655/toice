@@ -29,6 +29,7 @@ import {
   X,
 } from "lucide-react";
 import { words, type Word } from "@/lib/vocabulary";
+import examSummary from "@/lib/exam-summary.json";
 import {
   dateKey,
   isDate,
@@ -517,7 +518,8 @@ function LearningWorkspace({
                     <div>
                       <strong>全新多益練習中心</strong>
                       <span>
-                        Part 1–7 · 516 題 · 聽寫、错題複習與 200 題模考
+                        Part 1–7 · {examSummary.total.toLocaleString()} 題 ·
+                        聽寫、錯題複習與 {examSummary.mocks.length} 份模考
                       </span>
                     </div>
                     <button

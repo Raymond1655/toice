@@ -4,6 +4,11 @@ export type Question = {
   part: Part;
   pool: "practice" | "mock";
   skill: string;
+  mockSet?: string;
+  topic?: string;
+  format?: string;
+  graphic?: string;
+  graphicIpa?: string;
   prompt: string;
   options: string[];
   correct: number;

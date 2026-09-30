@@ -462,5 +462,1253 @@
   {
     "id": "p1-mock-006",
     "text": "A. A man is sitting on a bench. B. Suitcases are standing beside a bench. C. Travelers are entering an airplane. D. A suitcase is lying open on the floor."
+  },
+  {
+    "id": "v2-response-1",
+    "text": "Where should I leave the empty crates?. A. About six kilograms. B. Behind the receiving desk. C. They were delivered yesterday."
+  },
+  {
+    "id": "v2-response-2",
+    "text": "Where can I collect my visitor badge?. A. I collected stamps as a child. B. My visit lasted an hour. C. The security officer has it."
+  },
+  {
+    "id": "v2-response-3",
+    "text": "Where is the nearest cash machine?. A. Cash payments are welcome. B. Across from the pharmacy. C. The machine prints labels."
+  },
+  {
+    "id": "v2-response-4",
+    "text": "Where do we store signed contracts?. A. In the locked cabinet upstairs. B. A temporary position. C. We signed them together."
+  },
+  {
+    "id": "v2-response-5",
+    "text": "Where will the safety demonstration take place?. A. Please take a spare helmet. B. It demonstrates our commitment. C. They haven't chosen a room yet."
+  },
+  {
+    "id": "v2-response-6",
+    "text": "Where did you park the delivery van?. A. Beside the service entrance. B. The delivery was free. C. I usually drive to work."
+  },
+  {
+    "id": "v2-response-7",
+    "text": "Where can guests refill their water bottles?. A. The guests arrived early. B. There's a dispenser near the stairs. C. We ordered bottled water."
+  },
+  {
+    "id": "v2-response-8",
+    "text": "Where is the missing tool kit?. A. Missing the bus was frustrating. B. The kit has several tools. C. Try asking the maintenance team."
+  },
+  {
+    "id": "v2-response-9",
+    "text": "Where should we display the revised timetable?. A. The train leaves at eight. B. On the noticeboard by the lift. C. We revised it twice."
+  },
+  {
+    "id": "v2-response-10",
+    "text": "Where can I get a copy of the presentation?. A. The presentation was excellent. B. Please get some fresh coffee. C. I'll send you the download link."
+  },
+  {
+    "id": "v2-response-11",
+    "text": "When does the evening reception begin?. A. Right after the final workshop. B. At the reception desk. C. The receptionist is new."
+  },
+  {
+    "id": "v2-response-12",
+    "text": "When will the new shipment arrive?. A. The ship is quite large. B. The carrier hasn't confirmed a date. C. We ship worldwide."
+  },
+  {
+    "id": "v2-response-13",
+    "text": "When should I turn off the display lights?. A. They're energy efficient. B. The display is on the left. C. Once the last visitor leaves."
+  },
+  {
+    "id": "v2-response-14",
+    "text": "When is the application deadline?. A. Please apply more pressure. B. It's been extended by a week. C. The line was very long."
+  },
+  {
+    "id": "v2-response-15",
+    "text": "When can we inspect the renovated office?. A. Any afternoon next week. B. A property inspection report. C. The office has three windows."
+  },
+  {
+    "id": "v2-response-16",
+    "text": "When did the equipment stop working?. A. It works very quietly. B. Please stop at the entrance. C. Shortly before the power cut."
+  },
+  {
+    "id": "v2-response-17",
+    "text": "When will the revised menu be printed?. A. As soon as the chef approves it. B. I'd like the soup, please. C. The printer is beside me."
+  },
+  {
+    "id": "v2-response-18",
+    "text": "When are you meeting the architect?. A. We met through a friend. B. I'm still waiting for her reply. C. The building has six floors."
+  },
+  {
+    "id": "v2-response-19",
+    "text": "When should we replace the filters?. A. A replacement was expensive. B. The filter removed the dust. C. The maintenance schedule lists the dates."
+  },
+  {
+    "id": "v2-response-20",
+    "text": "When did the morning train leave?. A. You just missed it. B. From platform four. C. Please leave the door open."
+  },
+  {
+    "id": "v2-response-21",
+    "text": "Who is leading the orientation session?. A. The session lasts an hour. B. The training coordinator. C. At the main entrance."
+  },
+  {
+    "id": "v2-response-22",
+    "text": "Who can authorize this refund?. A. I paid by bank transfer. B. The amount is on the receipt. C. You'll need to speak to the manager."
+  },
+  {
+    "id": "v2-response-23",
+    "text": "Who borrowed the folding ladder?. A. The ladder folds flat. B. I saw the electrician using it. C. Borrowing is free for members."
+  },
+  {
+    "id": "v2-response-24",
+    "text": "Who designed the new brochure?. A. An agency we worked with last year. B. The design uses blue ink. C. It will be printed tomorrow."
+  },
+  {
+    "id": "v2-response-25",
+    "text": "Who should receive the damaged parcel?. A. It arrived damaged. B. A parcel of land. C. Give it to the returns clerk."
+  },
+  {
+    "id": "v2-response-26",
+    "text": "Who is available to interpret at the meeting?. A. I'll check the volunteer list. B. The meeting is upstairs. C. An interesting interpretation."
+  },
+  {
+    "id": "v2-response-27",
+    "text": "Who ordered the extra display stands?. A. Please order before noon. B. The exhibition organizer did. C. They're standing near the wall."
+  },
+  {
+    "id": "v2-response-28",
+    "text": "Who will take over your shift tomorrow?. A. I took the bus instead. B. The shift ends at six. C. My supervisor is arranging cover."
+  },
+  {
+    "id": "v2-response-29",
+    "text": "Who keeps the key to the supply room?. A. We supply local restaurants. B. Ask the office administrator. C. The keyboard is wireless."
+  },
+  {
+    "id": "v2-response-30",
+    "text": "Who approved the change in layout?. A. Please change at the next stop. B. It was a joint decision. C. The layout is much clearer."
+  },
+  {
+    "id": "v2-response-31",
+    "text": "Why was the loading dock closed?. A. The load was too heavy. B. It closes at five. C. A vehicle was blocking the entrance."
+  },
+  {
+    "id": "v2-response-32",
+    "text": "Why are the tickets being reissued?. A. I booked mine online. B. The venue has changed. C. The issue was discussed."
+  },
+  {
+    "id": "v2-response-33",
+    "text": "Why did you choose the earlier flight?. A. It leaves time for the afternoon meeting. B. The airline has a new logo. C. At the departure gate."
+  },
+  {
+    "id": "v2-response-34",
+    "text": "Why hasn't the invoice been paid?. A. I paid for lunch. B. The voice was very clear. C. We're waiting for a corrected total."
+  },
+  {
+    "id": "v2-response-35",
+    "text": "Why is the gallery so quiet today?. A. It's closed to the public on Mondays. B. Please speak quietly. C. The paintings are valuable."
+  },
+  {
+    "id": "v2-response-36",
+    "text": "Why were additional tables ordered?. A. Please put the order on the table. B. Registration exceeded our estimate. C. They are made of wood."
+  },
+  {
+    "id": "v2-response-37",
+    "text": "Why did the supplier reject the sample?. A. A rejection letter. B. The sample arrived by courier. C. The color didn't match the specification."
+  },
+  {
+    "id": "v2-response-38",
+    "text": "Why is the hallway being repainted?. A. The painter arrives tomorrow. B. The old coating was peeling. C. It's beside the main hall."
+  },
+  {
+    "id": "v2-response-39",
+    "text": "Why do we need two copies of the form?. A. One stays with the customer. B. Please form a line. C. The copier is out of paper."
+  },
+  {
+    "id": "v2-response-40",
+    "text": "Why was the workshop postponed?. A. The posters are ready. B. It covers basic photography. C. The instructor lost her voice."
+  },
+  {
+    "id": "v2-response-41",
+    "text": "How can I reset my access code?. A. The code has six digits. B. Use the link in the welcome email. C. Access is restricted."
+  },
+  {
+    "id": "v2-response-42",
+    "text": "How do we request a vegetarian meal?. A. Add a note to the booking form. B. The meal was delicious. C. The vegetables are fresh."
+  },
+  {
+    "id": "v2-response-43",
+    "text": "How will the chairs be transported?. A. There are thirty chairs. B. Please take a seat. C. The rental company has a truck."
+  },
+  {
+    "id": "v2-response-44",
+    "text": "How should I report a faulty light?. A. Send a photo to facilities. B. The report is very detailed. C. Turn left at the lights."
+  },
+  {
+    "id": "v2-response-45",
+    "text": "How did you hear about the opening?. A. I can hear you clearly. B. A former colleague recommended it. C. The door was left open."
+  },
+  {
+    "id": "v2-response-46",
+    "text": "How do members renew their passes?. A. Our newest member. B. The pass is blue. C. They can do it through the website."
+  },
+  {
+    "id": "v2-response-47",
+    "text": "How can we reduce printing costs?. A. The printer costs a lot. B. Try using both sides of the paper. C. The paper arrived yesterday."
+  },
+  {
+    "id": "v2-response-48",
+    "text": "How are fragile items packed?. A. With padding between each piece. B. It was a fragile agreement. C. The package is on the desk."
+  },
+  {
+    "id": "v2-response-49",
+    "text": "How do I join the waiting list?. A. I've been waiting all morning. B. The list is alphabetical. C. Reception can add your name."
+  },
+  {
+    "id": "v2-response-50",
+    "text": "How did the demonstration go?. A. Please go through this door. B. Better than we expected. C. It's going to rain."
+  },
+  {
+    "id": "v2-response-51",
+    "text": "How much is the delivery charge?. A. It's included in the quoted price. B. Please charge the battery. C. The driver delivered it."
+  },
+  {
+    "id": "v2-response-52",
+    "text": "How many headsets do we need?. A. The set begins at seven. B. I need to head home. C. One for each participant."
+  },
+  {
+    "id": "v2-response-53",
+    "text": "How long will the inspection take?. A. Allow about forty minutes. B. The inspector is quite tall. C. We inspected the long corridor."
+  },
+  {
+    "id": "v2-response-54",
+    "text": "How often are the alarms tested?. A. Testing was successful. B. On the first Monday of every month. C. The alarm was loud."
+  },
+  {
+    "id": "v2-response-55",
+    "text": "How far is the conference center?. A. The center of the page. B. The conference lasts two days. C. It's a short walk from the station."
+  },
+  {
+    "id": "v2-response-56",
+    "text": "How much storage space is available?. A. Please store it upright. B. Let me check the floor plan. C. The spacing looks uneven."
+  },
+  {
+    "id": "v2-response-57",
+    "text": "How many applicants have confirmed?. A. Only half of them so far. B. Confirmation is required. C. The application is online."
+  },
+  {
+    "id": "v2-response-58",
+    "text": "How long have you worked at this branch?. A. The branch closes at six. B. It's a long road. C. Since it opened three years ago."
+  },
+  {
+    "id": "v2-response-59",
+    "text": "How often should the plants be watered?. A. Check the label on each pot. B. The water is cold. C. The plant manufactures parts."
+  },
+  {
+    "id": "v2-response-60",
+    "text": "How far in advance should we reserve a room?. A. At least two weeks. B. Our reserves are limited. C. The room is at the far end."
+  },
+  {
+    "id": "v2-response-61",
+    "text": "Could you proofread this announcement?. A. The announcement was yesterday. B. A waterproof cover. C. Sure, after I finish this email."
+  },
+  {
+    "id": "v2-response-62",
+    "text": "Would you mind moving these boxes?. A. Not at all. Where should they go? B. The boxes are made of cardboard. C. I've changed my mind."
+  },
+  {
+    "id": "v2-response-63",
+    "text": "Can you cover the information desk at noon?. A. Noon is midday. B. I have an appointment then. C. The desk is covered with leaflets."
+  },
+  {
+    "id": "v2-response-64",
+    "text": "Could you send the invoice again?. A. I sent a postcard. B. The invoice is overdue. C. Which email address should I use?"
+  },
+  {
+    "id": "v2-response-65",
+    "text": "Would you help me test the microphone?. A. The test results were good. B. Let me finish this call first. C. A microphone stand."
+  },
+  {
+    "id": "v2-response-66",
+    "text": "Can you print the name badges?. A. We're almost out of ink. B. I prefer the blue badge. C. My name is on the list."
+  },
+  {
+    "id": "v2-response-67",
+    "text": "Could you hold the door for a moment?. A. The door opens inward. B. A moment of silence. C. Of course, take your time."
+  },
+  {
+    "id": "v2-response-68",
+    "text": "Would you check the route before we leave?. A. I've already downloaded the map. B. The bus leaves from here. C. The check was signed."
+  },
+  {
+    "id": "v2-response-69",
+    "text": "Can you stay until the last delivery arrives?. A. The last item on the menu. B. I'll need to rearrange my transport. C. Delivery is usually free."
+  },
+  {
+    "id": "v2-response-70",
+    "text": "Could you lend me a stapler?. A. The loan was approved. B. A staple food. C. There's one in the top drawer."
+  },
+  {
+    "id": "v2-response-71",
+    "text": "Shall we move the meeting outside?. A. The forecast says it may rain. B. The meeting was productive. C. Please move the cursor."
+  },
+  {
+    "id": "v2-response-72",
+    "text": "Why don't we ask for a second quotation?. A. The second floor. B. That's worth trying. C. Because the quote was famous."
+  },
+  {
+    "id": "v2-response-73",
+    "text": "How about using the smaller room?. A. I use it every day. B. The room is painted white. C. Will it fit all twelve of us?"
+  },
+  {
+    "id": "v2-response-74",
+    "text": "Let's order the replacement parts today.. A. The order is alphabetical. B. I'll check the part numbers first. C. Today is Wednesday."
+  },
+  {
+    "id": "v2-response-75",
+    "text": "Would you like to join the walking tour?. A. Is there still a place available? B. The tourists took photos. C. I walk to work."
+  },
+  {
+    "id": "v2-response-76",
+    "text": "Shall I book a table near the window?. A. The windows were cleaned. B. A booking reference. C. Somewhere quieter would be better."
+  },
+  {
+    "id": "v2-response-77",
+    "text": "Why don't we postpone the photo shoot?. A. The photographer is only free today. B. The photos are colorful. C. I prefer digital cameras."
+  },
+  {
+    "id": "v2-response-78",
+    "text": "How about sharing a taxi to the venue?. A. Sharing is encouraged. B. I'm leaving from a different office. C. The taxi is yellow."
+  },
+  {
+    "id": "v2-response-79",
+    "text": "Let's check the figures one more time.. A. It's time for lunch. B. The figure is made of wood. C. Good idea; the totals don't match."
+  },
+  {
+    "id": "v2-response-80",
+    "text": "Would you like a printed program?. A. The digital version is enough, thanks. B. The program begins at two. C. We printed a hundred."
+  },
+  {
+    "id": "v2-response-81",
+    "text": "Do you prefer a morning or afternoon appointment?. A. Yes, I prefer. B. Whichever is available sooner. C. The appointment was cancelled."
+  },
+  {
+    "id": "v2-response-82",
+    "text": "Should the notice go on the door or the website?. A. Yes, it should. B. The door is open. C. Both, if possible."
+  },
+  {
+    "id": "v2-response-83",
+    "text": "Will you collect the parcel or have it delivered?. A. It was a pleasant trip. B. I'll pick it up on my way home. C. A collection of essays."
+  },
+  {
+    "id": "v2-response-84",
+    "text": "Is the training online or in the classroom?. A. The invitation has the details. B. Yes, it is. C. Class begins soon."
+  },
+  {
+    "id": "v2-response-85",
+    "text": "Would you rather review the budget now or after lunch?. A. Lunch is in the cafeteria. B. The budget is balanced. C. Let's get it done now."
+  },
+  {
+    "id": "v2-response-86",
+    "text": "Are we taking the train or the company van?. A. The rail service is suspended today. B. The company is expanding. C. Yes, we are taking."
+  },
+  {
+    "id": "v2-response-87",
+    "text": "Do you want the receipt by email or on paper?. A. I've received it already. B. Email would be easier to keep. C. The paper is recycled."
+  },
+  {
+    "id": "v2-response-88",
+    "text": "Should I speak to sales or technical support?. A. The speaker is upstairs. B. Sales increased last year. C. It sounds like a technical issue."
+  },
+  {
+    "id": "v2-response-89",
+    "text": "Is the broken sensor being repaired or replaced?. A. The repair shop is closed. B. A new one arrived this morning. C. Yes, the sensor is."
+  },
+  {
+    "id": "v2-response-90",
+    "text": "Would you prefer a refund or store credit?. A. My credit is good. B. I'd like the money returned to my card. C. The store is near the station."
+  },
+  {
+    "id": "v2-response-91",
+    "text": "Didn't you receive the updated schedule?. A. An excellent reception. B. The schedule is very full. C. It may have gone to my old address."
+  },
+  {
+    "id": "v2-response-92",
+    "text": "Isn't the east entrance closed today?. A. Please close the file. B. It's open again now. C. The entrance fee is low."
+  },
+  {
+    "id": "v2-response-93",
+    "text": "Haven't we met at a trade fair?. A. Yes, at the lighting exhibition. B. I bought a ticket. C. The weather was fair."
+  },
+  {
+    "id": "v2-response-94",
+    "text": "Didn't the supplier promise free delivery?. A. The delivery driver is friendly. B. I promise to be careful. C. Only for orders above the minimum amount."
+  },
+  {
+    "id": "v2-response-95",
+    "text": "Isn't your office moving next month?. A. The move has been delayed. B. The office is spacious. C. Please don't move."
+  },
+  {
+    "id": "v2-response-96",
+    "text": "The figures have been checked, haven't they?. A. A bank check. B. The accountant is reviewing them now. C. They're in the third column."
+  },
+  {
+    "id": "v2-response-97",
+    "text": "You're presenting after the break, aren't you?. A. The chair isn't broken. B. The presentation has slides. C. My session was moved to tomorrow."
+  },
+  {
+    "id": "v2-response-98",
+    "text": "This pass covers the return trip, doesn't it?. A. The cover is waterproof. B. No, it's a single ticket. C. Return the form, please."
+  },
+  {
+    "id": "v2-response-99",
+    "text": "We don't need to reserve seats, do we?. A. The organizer strongly recommends it. B. The reserve is beautiful. C. These seats are comfortable."
+  },
+  {
+    "id": "v2-response-100",
+    "text": "The report is confidential, isn't it?. A. It's on recycled paper. B. Please keep it within the team. C. The conference was useful."
+  },
+  {
+    "id": "v2-response-101",
+    "text": "The projector won't connect to my laptop.. A. I connected with an old friend. B. The project is almost finished. C. Try the spare cable in the case."
+  },
+  {
+    "id": "v2-response-102",
+    "text": "I can't read the text on this sign.. A. The sign was approved. B. I'll ask for a larger print version. C. I read it last week."
+  },
+  {
+    "id": "v2-response-103",
+    "text": "The courier came while we were at lunch.. A. There's a collection notice on the desk. B. A course in accounting. C. Lunch was excellent."
+  },
+  {
+    "id": "v2-response-104",
+    "text": "Our usual supplier is out of stock.. A. The stock market rose. B. I usually arrive early. C. Let's contact the alternative vendor."
+  },
+  {
+    "id": "v2-response-105",
+    "text": "The meeting room is already occupied.. A. The training room should be free. B. The meeting was yesterday. C. I'm occupied with a report."
+  },
+  {
+    "id": "v2-response-106",
+    "text": "I left my access card at home.. A. I prefer to work at home. B. Security can issue a temporary pass. C. The card has a photograph."
+  },
+  {
+    "id": "v2-response-107",
+    "text": "These boxes are too heavy for one person.. A. The person is waiting. B. A box of paper clips. C. I'll bring the trolley."
+  },
+  {
+    "id": "v2-response-108",
+    "text": "The customer requested a different fabric.. A. The customer paid in full. B. Has the order gone into production yet? C. A different point of view."
+  },
+  {
+    "id": "v2-response-109",
+    "text": "I haven't finished checking the references.. A. We can delay publication until Friday. B. The finish is very smooth. C. A reference book."
+  },
+  {
+    "id": "v2-response-110",
+    "text": "The delivery address on this label is wrong.. A. I delivered a speech. B. The label is printed clearly. C. Don't send the parcel yet."
+  },
+  {
+    "id": "v2-response-111",
+    "text": "Are there any seats left for the lecture?. A. The seats are wooden. B. I'll check the booking system. C. The lecturer left early."
+  },
+  {
+    "id": "v2-response-112",
+    "text": "Has the inspection report been submitted?. A. The supervisor still needs to sign it. B. I inspect the area daily. C. The report has twelve pages."
+  },
+  {
+    "id": "v2-response-113",
+    "text": "Can we use the loading bay this afternoon?. A. The bay is very scenic. B. This afternoon was sunny. C. A truck will be there until three."
+  },
+  {
+    "id": "v2-response-114",
+    "text": "Do you know the new assistant's extension?. A. Her number is in the staff directory. B. The extension was built recently. C. I know the building well."
+  },
+  {
+    "id": "v2-response-115",
+    "text": "Has anyone contacted the venue manager?. A. The manager is experienced. B. I left a message this morning. C. The venue holds two hundred."
+  },
+  {
+    "id": "v2-response-116",
+    "text": "Is the replacement covered by the warranty?. A. The replacement looks good. B. The cover is removable. C. We need to check the purchase date."
+  },
+  {
+    "id": "v2-response-117",
+    "text": "Are you ready to approve the design?. A. The designer is ready. B. I'd like to see a physical sample first. C. Approval is important."
+  },
+  {
+    "id": "v2-response-118",
+    "text": "Did the new payment terminal arrive?. A. It's still in transit. B. The terminal is crowded. C. I paid in cash."
+  },
+  {
+    "id": "v2-response-119",
+    "text": "Can visitors take photographs inside?. A. The photographs are framed. B. Visitors came from abroad. C. Only in the public gallery."
+  },
+  {
+    "id": "v2-response-120",
+    "text": "Is parking included with the room?. A. The room is on the fifth floor. B. Ask reception to validate your ticket. C. I parked carefully."
+  },
+  {
+    "id": "v2-response-121",
+    "text": "Which file contains the final artwork?. A. Use the one marked approved. B. A filing cabinet. C. The artist is talented."
+  },
+  {
+    "id": "v2-response-122",
+    "text": "Which entrance is accessible without steps?. A. The steps were painted. B. Access begins at nine. C. The path by the garden is level."
+  },
+  {
+    "id": "v2-response-123",
+    "text": "Which supplier offers the shortest lead time?. A. Compare the delivery column on the sheet. B. The lead singer. C. The supplier is local."
+  },
+  {
+    "id": "v2-response-124",
+    "text": "Which version should be translated?. A. I speak two languages. B. Wait for the editor's final changes. C. The translation is accurate."
+  },
+  {
+    "id": "v2-response-125",
+    "text": "Which bus goes to the science park?. A. The bus is clean. B. The park has tall trees. C. The express route stops there."
+  },
+  {
+    "id": "v2-response-126",
+    "text": "Which candidate has accepted the offer?. A. The offer is generous. B. Human resources hasn't told us yet. C. I accept your apology."
+  },
+  {
+    "id": "v2-response-127",
+    "text": "Which room should we use for the interview?. A. Choose one away from the construction noise. B. A room with blue chairs. C. The interview went well."
+  },
+  {
+    "id": "v2-response-128",
+    "text": "Which device needs a software update?. A. I updated the report. B. The software is easy to use. C. The tablet at the front desk."
+  },
+  {
+    "id": "v2-response-129",
+    "text": "Which documents should I bring to the appointment?. A. The confirmation email lists everything. B. The documents are signed. C. Bring a friend next time."
+  },
+  {
+    "id": "v2-response-130",
+    "text": "Which of these samples matches the order?. A. Let me compare them with the specification. B. A matching jacket. C. The samples are free."
+  },
+  {
+    "id": "v2-response-131",
+    "text": "Would it be possible to extend the rental?. A. The rental office is modern. B. It's a possible solution. C. The equipment is reserved for another client tomorrow."
+  },
+  {
+    "id": "v2-response-132",
+    "text": "Could we receive the files before the weekend?. A. I'll mark the request as urgent. B. The weekend was relaxing. C. I received your card."
+  },
+  {
+    "id": "v2-response-133",
+    "text": "May I leave a suitcase here after checking out?. A. The checkout total was correct. B. We have a secure storage room. C. The suitcase is blue."
+  },
+  {
+    "id": "v2-response-134",
+    "text": "Can the label be printed in two languages?. A. I studied languages at school. B. The label has a barcode. C. Send us the approved translation."
+  },
+  {
+    "id": "v2-response-135",
+    "text": "Would you mind speaking a little more slowly?. A. The speaker arrived late. B. Of course. I'll repeat the instructions. C. The slow train."
+  },
+  {
+    "id": "v2-response-136",
+    "text": "Could I exchange this for a larger size?. A. Do you still have the receipt? B. It's a large company. C. The exchange rate changed."
+  },
+  {
+    "id": "v2-response-137",
+    "text": "May we bring our own recording equipment?. A. The recording is clear. B. Our equipment is new. C. Please obtain written permission first."
+  },
+  {
+    "id": "v2-response-138",
+    "text": "Can you recommend a place for a quick lunch?. A. There's a sandwich shop around the corner. B. I had lunch at noon. C. The recommendation was accepted."
+  },
+  {
+    "id": "v2-response-139",
+    "text": "Could the certificate include my full name?. A. A full schedule. B. Please check the spelling on this form. C. The course was very useful."
+  },
+  {
+    "id": "v2-response-140",
+    "text": "Would you be able to start a week earlier?. A. The early train is crowded. B. The start was impressive. C. I need to finish my current assignment first."
+  },
+  {
+    "id": "v2-response-141",
+    "text": "Would you like me to reserve a locker?. A. That would save me some time. B. The lock is made of steel. C. I reserved my opinion."
+  },
+  {
+    "id": "v2-response-142",
+    "text": "Do we have enough material for another sample?. A. Enough time has passed. B. There's an unopened roll in storage. C. The sample is attractive."
+  },
+  {
+    "id": "v2-response-143",
+    "text": "The road to the main entrance is blocked.. A. I live on this road. B. The entrance fee is reasonable. C. We can use the gate behind the building."
+  },
+  {
+    "id": "v2-response-144",
+    "text": "Have the certificates been mailed yet?. A. The course begins next week. B. We're checking the address list first. C. I bought some stamps."
+  },
+  {
+    "id": "v2-response-145",
+    "text": "Should we invite the new branch manager?. A. She's already on the guest list. B. An invitation card. C. The branch is very busy."
+  },
+  {
+    "id": "v2-response-146",
+    "text": "Can the tour be adapted for wheelchair users?. A. The chairs are comfortable. B. The tour takes an hour. C. The guide knows a route without stairs."
+  },
+  {
+    "id": "v2-response-147",
+    "text": "Why wasn't the damaged item returned?. A. The seller asked us to keep it for inspection. B. It was damaged in transit. C. A return ticket."
+  },
+  {
+    "id": "v2-response-148",
+    "text": "Who will announce the award recipients?. A. Dinner was delicious. B. The host will do that after dinner. C. The award is made of glass."
+  },
+  {
+    "id": "v2-response-149",
+    "text": "When should I contact the maintenance team?. A. I maintain the records. B. The team has four members. C. As soon as you notice a problem."
+  },
+  {
+    "id": "v2-response-150",
+    "text": "Where did you find the revised instructions?. A. They were attached to the confirmation email. B. The instructions are clear. C. We revised the plan yesterday."
+  },
+  {
+    "id": "v2-practice-p4-1",
+    "text": "Good morning, everyone. This is an update for warehouse staff. Reusable crates will replace cardboard cartons for local deliveries. The trial showed that the crates protect fragile products more effectively. Please keep the following instructions in mind. Record the number of empty crates returned by each driver. Crates containing chemical products must be stored separately from food containers. Finally, the logistics team will review the return records before ordering more crates. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-2",
+    "text": "I need to brief the team about quiet work area. What has been decided?\nA former storage room is becoming a quiet workspace for individual tasks. Staff said they could not concentrate near the shared telephone desks.\nIs there anything people need to do?\nReserve a desk through the internal booking page.\nWe should also mention the restrictions.\nThat's right. Calls and group discussions must take place outside the room. The facilities team will evaluate demand after the first month."
+  },
+  {
+    "id": "v2-practice-p4-3",
+    "text": "Good morning, everyone. This is an update for museum visitors. The museum is introducing tours that use a route without stairs. Several visitors requested a tour suitable for people using wheelchairs. Please keep the following instructions in mind. Tell the booking office about any access requirements. Advance booking is required even for visitors who already hold annual passes. Finally, a guide will contact each group to confirm its arrival point. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-4",
+    "text": "Have you seen the update for computer users?\nYes. Employees can now request a repair assessment before replacing a laptop.\nWhy is that happening?\nMany discarded machines needed only inexpensive battery replacements.\nWhat do we need to tell people?\nDescribe the fault in a support request. Employees must keep company data on the approved network during the repair.\nAnd what happens after that?\nThe support team will issue a temporary machine when necessary."
+  },
+  {
+    "id": "v2-practice-p4-5",
+    "text": "Good morning, everyone. This is an update for farm customers. Vegetable orders can be collected from a refrigerated locker near the market. Customers working late often miss the staffed collection hours. Please keep the following instructions in mind. Enter the code from the order confirmation at the locker. Orders must be collected within one day because locker space is limited. Finally, uncollected produce will be donated to the community kitchen. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-6",
+    "text": "I'm preparing the message for community volunteers. Can you check the details?\nCertainly. The welcome center is seeking volunteers to translate its visitor guide.\nWe should explain the reason.\nMore residents now speak languages that the existing guide does not cover.\nI'll include these instructions: Send a short sample translation to the coordinator.\nGood. Please also add this: Volunteers must agree to a review by another speaker of the language. The center will publish the revised guides after all reviews are complete."
+  },
+  {
+    "id": "v2-practice-p4-7",
+    "text": "Good morning, everyone. This is an update for laboratory technicians. A shared calendar will be used for the precision measuring instruments. Two departments recently reserved the same device for overlapping inspections. Please keep the following instructions in mind. Enter the expected start and finish times for each inspection. Urgent safety inspections may take priority over routine reservations. Finally, the quality manager will resolve any scheduling conflicts. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-8",
+    "text": "I need to brief the team about rainwater garden. What has been decided?\nThe courtyard will be converted into a garden that absorbs rainwater. Heavy storms have repeatedly flooded the basement entrance.\nIs there anything people need to do?\nUse the covered passage while the courtyard is closed.\nWe should also mention the restrictions.\nThat's right. Emergency access to the building will remain open throughout construction. The landscape contractor will post weekly progress photographs."
+  },
+  {
+    "id": "v2-practice-p4-9",
+    "text": "Good morning, everyone. This is an update for seasonal employees. Seasonal uniforms will now be issued on a returnable basis. The company wants to reuse clothing that is still in good condition. Please keep the following instructions in mind. Return all issued garments at the end of the contract. Normal wear is acceptable, but employees should report torn garments immediately. Finally, the laundry service will inspect and clean returned uniforms. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-10",
+    "text": "Have you seen the update for theater guests?\nYes. Selected performances will offer spoken descriptions through wireless headsets.\nWhy is that happening?\nGuests with limited vision requested more information about visual stage action.\nWhat do we need to tell people?\nReserve a headset when purchasing a ticket. Headsets are available only for performances marked on the program.\nAnd what happens after that?\nA staff member will demonstrate the controls before the performance."
+  },
+  {
+    "id": "v2-practice-p4-11",
+    "text": "Good morning, everyone. This is an update for local suppliers. The distribution center will accept deliveries only during assigned time windows. Unscheduled trucks have caused congestion at the loading area. Please keep the following instructions in mind. Confirm the assigned arrival window with the transport coordinator. Drivers who arrive early must wait in the designated holding area. Finally, the coordinator will revise the schedule if a delivery is canceled. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-12",
+    "text": "I'm preparing the message for new employees. Can you check the details?\nCertainly. New employees may join a mentoring program outside their own departments.\nWe should explain the reason.\nThe company wants staff to understand work beyond their immediate roles.\nI'll include these instructions: List two skills to develop on the application form.\nGood. Please also add this: Participation is voluntary and does not affect performance evaluations. The program office will suggest a suitable mentor after reviewing each form."
+  },
+  {
+    "id": "v2-practice-p4-13",
+    "text": "Good morning, everyone. This is an update for shop customers. Customers can request an electronic receipt instead of a printed one. Many customers said they lose paper receipts before claiming expenses. Please keep the following instructions in mind. Check the email address displayed before confirming the purchase. A paper copy remains available on request. Finally, the system will send the receipt immediately after payment is accepted. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-14",
+    "text": "I need to brief the team about bike maintenance clinic. What has been decided?\nA mechanic will provide basic bicycle checks in the office courtyard. A staff survey identified brake problems as a common commuting concern.\nIs there anything people need to do?\nBook a short inspection slot on the staff calendar.\nWe should also mention the restrictions.\nThat's right. Replacement parts are charged separately even though the inspection is free. The mechanic will provide a written estimate before fitting any part."
+  },
+  {
+    "id": "v2-practice-p4-15",
+    "text": "Good morning, everyone. This is an update for canteen staff. The canteen will display ingredient lists beside all prepared meals. Customers need clearer information to avoid ingredients they cannot eat. Please keep the following instructions in mind. Verify the ingredient list whenever a recipe changes. A meal must not be labeled safe for every allergy. Finally, the catering supervisor will compare the displayed lists with kitchen recipes. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-16",
+    "text": "Have you seen the update for remote employees?\nYes. Portable monitors are available for employees working away from the office.\nWhy is that happening?\nStaff reported difficulty comparing documents on a single small screen.\nWhat do we need to tell people?\nSubmit a loan request with the expected return date. Equipment may not be transferred to another employee without approval.\nAnd what happens after that?\nThe technology team will send collection instructions once a request is approved."
+  },
+  {
+    "id": "v2-practice-p4-17",
+    "text": "Good morning, everyone. This is an update for walking tour guides. New signs will be installed along the historic riverside trail. Several intersections have confused visitors who follow the printed map. Please keep the following instructions in mind. Report any location where a sign would improve navigation. Signs cannot be fixed directly to protected stone walls. Finally, the heritage committee will approve locations before installation. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-18",
+    "text": "I'm preparing the message for contractors. Can you check the details?\nCertainly. Every invoice must show the purchase order reference supplied by the company.\nWe should explain the reason.\nPayments have been delayed when accounting staff could not identify the related order.\nI'll include these instructions: Add the reference to the invoice before sending it.\nGood. Please also add this: An invoice without a reference will be returned for correction. The accounting team will process corrected invoices in the next payment cycle."
+  },
+  {
+    "id": "v2-practice-p4-19",
+    "text": "Good morning, everyone. This is an update for local musicians. Rehearsal rooms will be available for community groups on weekday evenings. The center has unused rooms after its daytime classes finish. Please keep the following instructions in mind. Submit a description of the group and its usual instruments. Amplified music must remain below the posted sound limit. Finally, the center will review trial bookings before adding more evening hours. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-20",
+    "text": "I need to brief the team about cold storage training. What has been decided?\nAll workers entering cold storage must complete a brief safety session. Recent inspections found inconsistent use of protective clothing.\nIs there anything people need to do?\nChoose a training session before requesting a new access card.\nWe should also mention the restrictions.\nThat's right. Current access cards will continue to work until the training deadline. Supervisors will verify attendance before authorizing replacement cards."
+  },
+  {
+    "id": "v2-practice-p4-21",
+    "text": "Good morning, everyone. This is an update for office drivers. Employees can release unused parking reservations to a shared daily pool. Reserved spaces were often empty while visiting colleagues could not park. Please keep the following instructions in mind. Cancel a space reservation on days when working elsewhere. Released spaces are assigned in the order requests are received. Finally, the reception team will notify drivers when a space becomes available. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-22",
+    "text": "Have you seen the update for conference organizers?\nYes. Badge holders will be collected at the exit for reuse at future events.\nWhy is that happening?\nMost holders remained undamaged after the last conference.\nWhat do we need to tell people?\nPlace collection boxes beside each exit door. Printed name inserts must be removed before holders are reused.\nAnd what happens after that?\nVolunteers will count the returned holders after the venue closes."
+  },
+  {
+    "id": "v2-practice-p4-23",
+    "text": "Good morning, everyone. This is an update for store supervisors. A staff member from another branch will verify each monthly stock count. Independent checks can reveal errors that a familiar team overlooks. Please keep the following instructions in mind. Arrange a visit with the assigned partner branch. The visiting employee must not change figures without discussing discrepancies. Finally, the inventory manager will investigate unresolved differences. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-24",
+    "text": "I'm preparing the message for regular customers. Can you check the details?\nCertainly. The design team is inviting customers to discuss their experience with the ordering page.\nWe should explain the reason.\nSales records show where orders stop but do not explain the reasons.\nI'll include these instructions: Choose an interview time using the invitation link.\nGood. Please also add this: Participants may decline to answer any question. The team will combine findings without naming individual customers."
+  },
+  {
+    "id": "v2-practice-p4-25",
+    "text": "Good morning, everyone. This is an update for library members. Members may borrow sewing machines after attending a demonstration. The library is expanding its collection beyond books and digital media. Please keep the following instructions in mind. Bring a membership card to the demonstration. Borrowers must supply their own fabric and thread. Finally, staff will inspect each machine when it is returned. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-26",
+    "text": "I need to brief the team about battery collection bins. What has been decided?\nUsed household batteries can be left in marked collection bins near reception. Batteries should not be mixed with ordinary office waste.\nIs there anything people need to do?\nCover exposed terminals before placing batteries in a bin.\nWe should also mention the restrictions.\nThat's right. Damaged or leaking batteries must be handed directly to facilities staff. A specialist contractor will collect the bins when they are full."
+  },
+  {
+    "id": "v2-practice-p4-27",
+    "text": "Good morning, everyone. This is an update for course participants. Workshop tickets can be transferred to another participant before the session begins. People who become unavailable may still know someone who can use the place. Please keep the following instructions in mind. Email the replacement participant's name to the course office. The original ticket cannot be used after the transfer is confirmed. Finally, the office will issue a new confirmation to the replacement participant. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-28",
+    "text": "Have you seen the update for apartment residents?\nYes. A contractor will inspect water meters in each apartment over the coming week.\nWhy is that happening?\nUnexpected usage figures suggest that several meters may need adjustment.\nWhat do we need to tell people?\nChoose an access appointment from the posted schedule. The contractor will show identification before entering an apartment.\nAnd what happens after that?\nResidents will receive a report if their meter requires replacement."
+  },
+  {
+    "id": "v2-practice-p4-29",
+    "text": "Good morning, everyone. This is an update for bakery customers. Prepaid bread orders will be placed on a labeled collection shelf. The bakery wants to shorten queues during the morning rush. Please keep the following instructions in mind. Check the order number before taking a bag. Orders containing chilled items must still be collected from a staff member. Finally, the bakery will review the arrangement after customers have tried it. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-30",
+    "text": "I'm preparing the message for project applicants. Can you check the details?\nCertainly. Short feedback meetings will be offered to teams whose proposals were not selected.\nWe should explain the reason.\nThe review panel wants useful ideas to be improved for the next funding round.\nI'll include these instructions: Send specific questions before the meeting.\nGood. Please also add this: A feedback meeting will not reopen the original funding decision. Panel members will explain the main evaluation criteria."
+  },
+  {
+    "id": "v2-practice-p4-31",
+    "text": "Good morning, everyone. This is an update for all staff. Employees are being asked to review the emergency contact details in their profiles. Several contact numbers failed during a recent drill. Please keep the following instructions in mind. Confirm the current number with the person listed as your contact. Do not enter a colleague's number without that person's agreement. Finally, the personnel team will send reminders to staff with incomplete profiles. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-32",
+    "text": "I need to brief the team about recycled paper trial. What has been decided?\nThe print room will test recycled paper for internal documents. The purchasing team is comparing environmental benefits with printing performance.\nIs there anything people need to do?\nReport any paper jams or unclear printouts during the trial.\nWe should also mention the restrictions.\nThat's right. Legal originals must continue to use the approved archival paper. The purchasing team will decide whether to extend the trial to other offices."
+  },
+  {
+    "id": "v2-practice-p4-33",
+    "text": "Good morning, everyone. This is an update for market vendors. Vendors will receive printed instructions for accepting payments when the mobile network is unavailable. A recent outage prevented customers from completing several purchases. Please keep the following instructions in mind. Keep the backup instructions at the sales counter. Do not write down full payment card details. Finally, the market office will conduct a demonstration before the next market day. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-34",
+    "text": "Have you seen the update for nature reserve visitors?\nYes. Early morning observation walks will be limited to small groups.\nWhy is that happening?\nLarge groups can disturb nesting birds near the main trail.\nWhat do we need to tell people?\nRegister with the visitor center before joining a walk. Participants must remain on the marked path even when birds move away.\nAnd what happens after that?\nGuides will adjust the route if nesting activity changes."
+  },
+  {
+    "id": "v2-practice-p4-35",
+    "text": "Good morning, everyone. This is an update for international sales staff. A shared glossary will standardize the terms used in overseas product descriptions. Different translations of the same feature have confused customers. Please keep the following instructions in mind. Suggest missing terms through the glossary feedback form. New entries must be reviewed before they appear in published materials. Finally, a language specialist will review suggestions each week. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-36",
+    "text": "I'm preparing the message for shipping assistants. Can you check the details?\nCertainly. A demonstration will show staff how to secure products in reusable packaging.\nWe should explain the reason.\nThe new packaging requires a different arrangement of protective inserts.\nI'll include these instructions: Bring one example of a product that is difficult to pack.\nGood. Please also add this: Do not send trial packages to customers until they have passed a handling test. The packing team will update its illustrated instructions after the demonstration."
+  },
+  {
+    "id": "v2-practice-p4-37",
+    "text": "Good morning, everyone. This is an update for fitness center members. Members may join a waiting list for long-term locker rental. All large lockers are currently occupied. Please keep the following instructions in mind. Provide a telephone number that staff can use during opening hours. An offered locker must be accepted within two days. Finally, unaccepted offers will be passed to the next person on the list. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-38",
+    "text": "I need to brief the team about exhibition loan forms. What has been decided?\nArtwork loan forms must now include a condition photograph. Photographs help staff identify any change while an item is on display.\nIs there anything people need to do?\nAttach a clear image taken immediately before delivery.\nWe should also mention the restrictions.\nThat's right. The image must show the entire work rather than only a signature. The curator will compare the image with the artwork on arrival."
+  },
+  {
+    "id": "v2-practice-p4-39",
+    "text": "Good morning, everyone. This is an update for website editors. Online application forms will be checked for compatibility with screen readers. Some applicants have been unable to identify unlabeled form controls. Please keep the following instructions in mind. Add a clear text label to every required field. Placeholder text alone is not an acceptable field label. Finally, the accessibility team will test revised forms before publication. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-40",
+    "text": "Have you seen the update for restaurant employees?\nYes. Staff will taste the seasonal menu before it is introduced to customers.\nWhy is that happening?\nServers need to describe unfamiliar dishes accurately.\nWhat do we need to tell people?\nNote the main ingredients and preparation methods during the tasting. Employees with food allergies should review the ingredient list before sampling.\nAnd what happens after that?\nThe chef will answer questions after each dish is presented."
+  },
+  {
+    "id": "v2-practice-p4-41",
+    "text": "Good morning, everyone. This is an update for project leaders. Completed project files will be stored in a central archive. Teams have spent too much time searching separate personal folders. Please keep the following instructions in mind. Upload the final approved documents with a short project summary. Draft files must be clearly separated from approved versions. Finally, the records officer will check the archive for missing documents. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-42",
+    "text": "I'm preparing the message for commuters. Can you check the details?\nCertainly. The bus stop outside the health center will move temporarily to the next block.\nWe should explain the reason.\nConstruction equipment needs access to the pavement beside the original stop.\nI'll include these instructions: Follow the temporary direction signs from the old stop.\nGood. Please also add this: Buses will keep their current departure schedule. The transport office will announce when the original stop can reopen."
+  },
+  {
+    "id": "v2-practice-p4-43",
+    "text": "Good morning, everyone. This is an update for equipment renters. First-time users of powered cutting tools must complete an orientation. The rental company has introduced an additional safety check. Please keep the following instructions in mind. Arrive early enough to attend the demonstration before collection. A previous rental of hand tools does not satisfy this requirement. Finally, staff will record completion so that repeat users need not attend again. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-44",
+    "text": "I need to brief the team about conference dietary requests. What has been decided?\nDietary requirements must be submitted through the registration page. The catering team needs confirmed quantities before ordering ingredients.\nIs there anything people need to do?\nUpdate the dietary field even if a request was mentioned in an earlier email.\nWe should also mention the restrictions.\nThat's right. Changes submitted after the deadline cannot be guaranteed. The event office will send a summary of each delegate's meal request."
+  },
+  {
+    "id": "v2-practice-p4-45",
+    "text": "Good morning, everyone. This is an update for adult writing students. Students may join a peer editing circle between regular classes. Several learners asked for more opportunities to receive feedback. Please keep the following instructions in mind. Bring a short draft and identify the type of feedback you need. Members should discuss the writing rather than judge the writer. Finally, the instructor will provide a checklist for constructive comments. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-46",
+    "text": "Have you seen the update for purchasing managers?\nYes. The company will compare the packaging waste produced by its suppliers.\nWhy is that happening?\nA lower purchase price may be offset by higher disposal costs.\nWhat do we need to tell people?\nRecord the weight and type of packaging in each sample delivery. Do not include the weight of the products themselves.\nAnd what happens after that?\nThe sustainability team will combine the measurements into a supplier report."
+  },
+  {
+    "id": "v2-practice-p4-47",
+    "text": "Good morning, everyone. This is an update for community performers. Rehearsal groups can exchange time slots if both leaders agree. Changes in work schedules have made some original bookings difficult to use. Please keep the following instructions in mind. Send a joint confirmation of the proposed exchange. The total hours assigned to each group cannot increase through an exchange. Finally, the center will update its calendar only after receiving both confirmations. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-48",
+    "text": "I'm preparing the message for office employees. Can you check the details?\nCertainly. Staff will be offered training in the approved password manager.\nWe should explain the reason.\nReusing passwords across services creates avoidable security risks.\nI'll include these instructions: Bring the company device you use for daily work.\nGood. Please also add this: Employees must not share their master password with the trainer. The support team will provide a written setup guide after the session."
+  },
+  {
+    "id": "v2-practice-p4-49",
+    "text": "Good morning, everyone. This is an update for neighborhood residents. Garden waste will be collected separately from household rubbish. The council plans to turn suitable plant material into compost. Please keep the following instructions in mind. Place leaves and small branches in the marked reusable container. Soil, stones, and plastic bags must not be placed in the container. Finally, collection crews will leave a notice if unsuitable material is found. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-50",
+    "text": "I need to brief the team about visitor parking validation. What has been decided?\nVisitors can have parking validated at the reception desk. The building has replaced its paper parking vouchers with a digital record.\nIs there anything people need to do?\nGive the receptionist the vehicle registration number before leaving.\nWe should also mention the restrictions.\nThat's right. Validation applies only to the time spent on company business. The parking system will apply the approved period when the driver exits."
+  },
+  {
+    "id": "v2-practice-p4-51",
+    "text": "Good morning, everyone. This is an update for production supervisors. Measuring devices will display a label showing the next calibration date. Staff need a quick way to check whether a device is suitable for inspection work. Please keep the following instructions in mind. Check the label before using a measuring instrument. A device past its calibration date must be removed from service. Finally, the quality team will arrange a replacement while calibration is completed. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-52",
+    "text": "Have you seen the update for book club members?\nYes. Members may choose between an original edition and an approved translation for the next discussion.\nWhy is that happening?\nThe group wants readers with different language backgrounds to participate.\nWhat do we need to tell people?\nTell the coordinator which edition you plan to read. Discussion questions will refer to chapter titles rather than page numbers.\nAnd what happens after that?\nThe coordinator will circulate matching chapter lists."
+  },
+  {
+    "id": "v2-practice-p4-53",
+    "text": "Good morning, everyone. This is an update for apartment occupants. An engineer will measure sound levels in selected apartments. Residents have reported noise from the new ventilation equipment. Please keep the following instructions in mind. Allow access during the appointment period if your apartment is selected. Keep windows closed during the measurement so results can be compared. Finally, the engineer will recommend adjustments after reviewing the readings. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-54",
+    "text": "I'm preparing the message for online sellers. Can you check the details?\nCertainly. Product listings must include a photograph against a plain background.\nWe should explain the reason.\nBusy backgrounds can make product details difficult to see on small screens.\nI'll include these instructions: Upload at least one clear image of the actual item.\nGood. Please also add this: Images of a similar model cannot replace images of the item being sold. The review team will return listings that do not meet the image requirements."
+  },
+  {
+    "id": "v2-practice-p4-55",
+    "text": "Good morning, everyone. This is an update for donation volunteers. Donated furniture will be checked before being placed in the community shop. The organization wants to avoid offering items that are unsafe or unusable. Please keep the following instructions in mind. Record visible damage when accepting a donation. Items with exposed wiring must be assessed by a qualified technician. Finally, approved furniture will receive a dated inspection label. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-56",
+    "text": "I need to brief the team about flexible collection authorization. What has been decided?\nCustomers can authorize another person to collect a parcel. Some recipients cannot visit the depot during its opening hours.\nIs there anything people need to do?\nComplete the authorization section in the collection notice.\nWe should also mention the restrictions.\nThat's right. The collector must bring identification matching the authorized name. Depot staff will record the collection before releasing the parcel."
+  },
+  {
+    "id": "v2-practice-p4-57",
+    "text": "Good morning, everyone. This is an update for long-term residents. The library is recording local residents' memories for an oral history collection. Written records do not capture every aspect of everyday life in the town. Please keep the following instructions in mind. Contact the project librarian to arrange an interview. Participants may restrict public access to parts of their recording. Finally, the librarian will provide a consent form before recording begins. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-practice-p3-58",
+    "text": "Have you seen the update for meeting hosts?\nYes. Hosts must request a separate wireless access code for visiting groups.\nWhy is that happening?\nGuest devices should not connect to the internal company network.\nWhat do we need to tell people?\nInclude the visit date and expected number of devices in the request. Access codes expire at the end of the approved visit.\nAnd what happens after that?\nThe technology team will send the code to the host before the meeting."
+  },
+  {
+    "id": "v2-practice-p4-59",
+    "text": "Good morning, everyone. This is an update for event coordinators. Catering trays will be collected after events rather than discarded. The supplier has introduced durable containers that can be cleaned and reused. Please keep the following instructions in mind. Place empty trays together in the agreed collection area. Do not put reusable trays in the venue's recycling bins. Finally, the supplier will count the trays when collecting them. Thank you for your attention."
+  },
+  {
+    "id": "v2-practice-p3-60",
+    "text": "I'm preparing the message for workshop visitors. Can you check the details?\nCertainly. A waiting area will be provided for adults accompanying younger participants.\nWe should explain the reason.\nThe teaching room does not have enough space for extra observers.\nI'll include these instructions: Wait in the lounge until the instructor announces the end of the session.\nGood. Please also add this: Only registered participants may use the workshop tools. Staff will escort the group to the lounge when the session finishes."
+  },
+  {
+    "id": "v2-m02-p3-2",
+    "text": "I need to brief the team about sample fabric approval. What has been decided?\nThe supplier will send fabric samples before producing the curtains. Screen colors may differ from the actual material.\nIs there anything people need to do?\nReturn the signed color approval with the chosen sample number.\nWe should also mention the restrictions.\nThat's right. Production will not begin on the basis of a telephone conversation alone. The supplier will confirm the production date after receiving approval."
+  },
+  {
+    "id": "v2-m02-p3-3",
+    "text": "I'm preparing the message for building managers. Can you check the details?\nCertainly. The equipment installation has been moved to the evening.\nWe should explain the reason.\nThe delivery truck cannot enter the narrow street during market hours.\nI'll include these instructions: Arrange for a staff member to open the service entrance.\nGood. Please also add this: Installers will not have keys to the building. The supervisor will call when the truck leaves the warehouse."
+  },
+  {
+    "id": "v2-m02-p3-4",
+    "text": "Have you seen the update for gallery assistants?\nYes. A neighboring gallery has offered display stands for the weekend exhibition.\nWhy is that happening?\nThe existing stands cannot safely support the larger sculptures.\nWhat do we need to tell people?\nCheck each borrowed stand when it arrives. All stands must be returned before the lender's next exhibition begins.\nAnd what happens after that?\nThe curator will arrange a vehicle for the return journey."
+  },
+  {
+    "id": "v2-m02-p3-5",
+    "text": "I need to brief the team about unexpected conference demand. What has been decided?\nThe conference will use an additional room for a live video link. Registrations have exceeded the main hall's safe capacity.\nIs there anything people need to do?\nOffer the additional-room option to people on the waiting list.\nWe should also mention the restrictions.\nThat's right. Attendees in that room will hear the talk but cannot ask questions directly. The event team will test the video connection before opening the doors.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m02-p3-6",
+    "text": "I'm preparing the message for clinic reception staff. Can you check the details?\nCertainly. The courier will collect laboratory samples earlier than usual.\nWe should explain the reason.\nThe laboratory is carrying out maintenance later in the day.\nI'll include these instructions: Have the sealed sample boxes ready before the new collection time.\nGood. Please also add this: Samples received after collection must be stored using the approved procedure. The laboratory will resume normal collection times on the following working day."
+  },
+  {
+    "id": "v2-m02-p3-7",
+    "text": "Have you seen the update for store assistants?\nYes. A staff member will supervise the new detergent refill station.\nWhy is that happening?\nCustomers need help choosing containers that can safely hold the liquid.\nWhat do we need to tell people?\nCheck that each container is clearly labeled before filling it. Containers previously used for food must not be filled with detergent.\nAnd what happens after that?\nThe supplier will provide additional measuring equipment next week."
+  },
+  {
+    "id": "v2-m02-p3-8",
+    "text": "I need to brief the team about practice interview appointments. What has been decided?\nThe career center is offering short practice interviews. Several applicants requested feedback before meeting potential employers.\nIs there anything people need to do?\nSend the job description when booking a session.\nWe should also mention the restrictions.\nThat's right. The center cannot promise an interview with the actual employer. A counselor will provide comments on the participant's responses."
+  },
+  {
+    "id": "v2-m02-p3-9",
+    "text": "I'm preparing the message for procurement officers. Can you check the details?\nCertainly. The supplier can send the available parts before the remaining items are ready.\nWe should explain the reason.\nOne component requires additional quality testing.\nI'll include these instructions: Confirm whether the urgent items should be shipped separately.\nGood. Please also add this: A second shipment will incur an additional transport charge. The supplier will issue revised delivery documents after receiving instructions.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m02-p3-10",
+    "text": "Have you seen the update for seminar hosts?\nYes. Rented microphones must be collected from the side reception desk.\nWhy is that happening?\nThe main desk is reserved for registering arriving delegates.\nWhat do we need to tell people?\nBring the equipment reservation number. A microphone cannot be released without a signed collection record.\nAnd what happens after that?\nA technician will demonstrate the controls before handing over the equipment."
+  },
+  {
+    "id": "v2-m02-p3-11",
+    "text": "I need to brief the team about team demonstration rehearsal. What has been decided?\nThe product demonstration will be rehearsed using an older test unit. The final display model has not yet arrived from the factory.\nIs there anything people need to do?\nFollow the revised sequence in the demonstration notes.\nWe should also mention the restrictions.\nThat's right. Do not promise features that have not been confirmed for the final model. The product manager will verify the feature list before the public event."
+  },
+  {
+    "id": "v2-m02-p3-12",
+    "text": "I'm preparing the message for contract administrators. Can you check the details?\nCertainly. The legal team has paused its review of the agreement.\nWe should explain the reason.\nThe submitted copy is missing the page containing the renewal conditions.\nI'll include these instructions: Request a complete copy from the other party.\nGood. Please also add this: Do not insert text from an earlier version of the contract. The review will restart when the complete current document arrives."
+  },
+  {
+    "id": "v2-m02-p3-13",
+    "text": "Have you seen the update for maintenance workers?\nYes. The gardener will enter through the rear service gate.\nWhy is that happening?\nThe main courtyard will be occupied by a school visit.\nWhat do we need to tell people?\nLeave the rear path clear of stored equipment. Children must not enter the area while powered tools are in use.\nAnd what happens after that?\nThe facilities manager will check the area before allowing normal access.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m02-p4-15",
+    "text": "Good morning, everyone. This is an update for boat passengers. Passenger boarding will move to the sheltered pier. Strong winds have made the exposed platform difficult to use. Please keep the following instructions in mind. Follow staff directions to the temporary boarding point. The departure time remains subject to the captain's safety assessment. Finally, crew members will announce boarding only when conditions permit. Thank you for your attention."
+  },
+  {
+    "id": "v2-m02-p4-16",
+    "text": "Good morning, everyone. This is an update for office occupants. The next evacuation drill will include a blocked-route exercise. The safety team wants staff to identify an alternative exit. Please keep the following instructions in mind. Check the evacuation map before the drill begins. Do not use an elevator during the exercise. Finally, floor wardens will record the time needed to clear each area. Thank you for your attention."
+  },
+  {
+    "id": "v2-m02-p4-17",
+    "text": "Good morning, everyone. This is an update for research visitors. Access to fragile documents will require an appointment with the archivist. Some papers have become too delicate for unsupervised handling. Please keep the following instructions in mind. List the documents needed when requesting an appointment. Pens and food are not permitted in the document room. Finally, the archivist will prepare protective supports before the visit. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m02-p4-18",
+    "text": "Good morning, everyone. This is an update for store shoppers. The cooking demonstration has been canceled this afternoon. The visiting chef is unable to reach the store because of a transport disruption. Please keep the following instructions in mind. Leave an email address if you would like the revised date. The discount on cookware will still be available today. Finally, the store will contact interested customers after confirming a replacement session. Thank you for your attention."
+  },
+  {
+    "id": "v2-m02-p4-19",
+    "text": "Good morning, everyone. This is an update for hotel guests. Water service on the upper floors will pause briefly after breakfast. A valve must be replaced in the main supply line. Please keep the following instructions in mind. Fill any drinking-water containers before the interruption begins. The ground-floor washrooms will remain available. Finally, reception will notify guests as soon as normal service returns. Thank you for your attention."
+  },
+  {
+    "id": "v2-m02-p4-20",
+    "text": "Good morning, everyone. This is an update for student speakers. Finalists will speak without projected slides. The judges want to assess spoken explanations without visual support. Please keep the following instructions in mind. Submit the title of the speech before the final round. Small note cards are allowed but full scripts cannot be read aloud. Finally, the organizer will publish the speaking order after receiving all titles. Thank you for your attention."
+  },
+  {
+    "id": "v2-m02-p4-21",
+    "text": "Good morning, everyone. This is an update for food stall operators. Waste stations will have separate containers for food scraps and packaging. Mixed waste from the previous market could not be processed efficiently. Please keep the following instructions in mind. Show temporary staff which container to use for each material. Compostable-looking packaging must not enter the food-scrap container unless approved. Finally, the market supervisor will check sorting during the day. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m02-p4-22",
+    "text": "Good morning, everyone. This is an update for factory visitors. The tour will avoid the coating area this morning. A new protective finish requires controlled conditions while it dries. Please keep the following instructions in mind. Keep the visitor badge visible throughout the tour. No visitor may leave the marked route without an escort. Finally, the guide will show a recorded explanation of the coating process instead. Thank you for your attention."
+  },
+  {
+    "id": "v2-m02-p4-23",
+    "text": "Good morning, everyone. This is an update for sports center members. The renovated exercise studio will reopen with reduced class sizes. The center is testing the new ventilation system under normal use. Please keep the following instructions in mind. Reserve a class place in advance. An unused reservation must be canceled so another member can attend. Finally, the center will increase capacity if the trial meets its operating targets. Thank you for your attention."
+  },
+  {
+    "id": "v2-m03-p3-2",
+    "text": "I need to brief the team about interview room privacy. What has been decided?\nInterviews will move to rooms with enclosed walls. Conversations in the open meeting area could be overheard.\nIs there anything people need to do?\nUpdate the room location in candidate invitations.\nWe should also mention the restrictions.\nThat's right. Candidate documents must not be left in shared waiting areas. The recruitment coordinator will check room availability each morning."
+  },
+  {
+    "id": "v2-m03-p3-3",
+    "text": "I'm preparing the message for stage crew. Can you check the details?\nCertainly. The portable stage must be inspected after assembly.\nWe should explain the reason.\nUneven ground can affect the stability of connected sections.\nI'll include these instructions: Report any gap between adjacent sections.\nGood. Please also add this: Performers may not use the stage before the inspection is signed off. The venue technician will approve the completed structure."
+  },
+  {
+    "id": "v2-m03-p3-4",
+    "text": "Have you seen the update for company employees?\nYes. The company will match qualifying employee donations submitted this quarter.\nWhy is that happening?\nThe community fund has allocated a limited matching budget.\nWhat do we need to tell people?\nUpload the charity receipt through the staff portal. Only charities listed in the published eligibility guide qualify.\nAnd what happens after that?\nThe fund administrator will confirm the matched amount after review."
+  },
+  {
+    "id": "v2-m03-p3-5",
+    "text": "I need to brief the team about digital map correction. What has been decided?\nThe route application will allow drivers to report incorrect access points. Some map pins direct vehicles to entrances unsuitable for deliveries.\nIs there anything people need to do?\nInclude a description of the usable entrance in each report.\nWe should also mention the restrictions.\nThat's right. Drivers must stop safely before entering a correction. The mapping team will verify reports before updating shared directions.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m03-p3-6",
+    "text": "I'm preparing the message for cafe customers. Can you check the details?\nCertainly. Customers can borrow a reusable cup by paying a refundable deposit.\nWe should explain the reason.\nThe cafe wants an option for customers who forget their own cup.\nI'll include these instructions: Return the cup to any participating branch.\nGood. Please also add this: The deposit is refunded only when the cup is returned intact. Staff will inspect the cup and return the deposit at the counter."
+  },
+  {
+    "id": "v2-m03-p3-7",
+    "text": "Have you seen the update for moving contractors?\nYes. Large deliveries must use a reserved service lift.\nWhy is that happening?\nUnscheduled moves have interrupted access for other building users.\nWhat do we need to tell people?\nBook the lift through the facilities office. Protective coverings must be fitted before loading furniture.\nAnd what happens after that?\nThe building team will inspect the lift after each reserved period."
+  },
+  {
+    "id": "v2-m03-p3-8",
+    "text": "I need to brief the team about conference captioning. What has been decided?\nLive captions will be displayed during the main conference sessions. Attendees requested better access to spoken presentations.\nIs there anything people need to do?\nSend unusual technical terms to the captioning team in advance.\nWe should also mention the restrictions.\nThat's right. Speakers should avoid talking over one another during questions. The captioning team will prepare a terminology list before the event."
+  },
+  {
+    "id": "v2-m03-p3-9",
+    "text": "I'm preparing the message for archive managers. Can you check the details?\nCertainly. The conservator will assess selected damaged books before quoting for repairs.\nWe should explain the reason.\nDifferent bindings require different restoration methods.\nI'll include these instructions: Send photographs of the spine and affected pages.\nGood. Please also add this: Do not attempt adhesive repairs before the assessment. The conservator will identify which items need an in-person inspection.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m03-p3-10",
+    "text": "Have you seen the update for office staff?\nYes. Lost access badges will be deactivated before replacements are issued.\nWhy is that happening?\nAn active lost badge could be used by an unauthorized person.\nWhat do we need to tell people?\nReport a missing badge as soon as it is noticed. A badge found after deactivation must not be used again.\nAnd what happens after that?\nSecurity will issue a replacement after verifying the employee's identity."
+  },
+  {
+    "id": "v2-m03-p3-11",
+    "text": "I need to brief the team about trial delivery service. What has been decided?\nThe shop is testing evening delivery within a limited service area. Customers near the shop have requested later delivery times.\nIs there anything people need to do?\nCheck the address eligibility page before ordering.\nWe should also mention the restrictions.\nThat's right. Addresses outside the trial area must use the existing delivery options. The shop will review trial results before expanding coverage."
+  },
+  {
+    "id": "v2-m03-p3-12",
+    "text": "I'm preparing the message for museum educators. Can you check the details?\nCertainly. School groups will receive an activity sheet before their visit.\nWe should explain the reason.\nPreparation helps students make better use of their time in the galleries.\nI'll include these instructions: Send the class age range when confirming the booking.\nGood. Please also add this: Activities must be adapted for groups with mixed reading abilities. The education team will select suitable materials for each group."
+  },
+  {
+    "id": "v2-m03-p3-13",
+    "text": "Have you seen the update for local gardeners?\nYes. A seed exchange will take place at the garden center.\nWhy is that happening?\nGardeners often have more seeds than they can use in a season.\nWhat do we need to tell people?\nLabel packets with the plant name and collection year. Seeds from plants treated with restricted chemicals are not accepted.\nAnd what happens after that?\nVolunteers will organize packets by plant type before the exchange opens.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m03-p4-15",
+    "text": "Good morning, everyone. This is an update for community organizers. The town hall will accept provisional bookings before final event approval. Organizers need a date to prepare funding applications. Please keep the following instructions in mind. State whether the booking is provisional on the request form. A provisional booking does not permit public ticket sales. Finally, the venue office will confirm the date once required approvals are complete. Thank you for your attention."
+  },
+  {
+    "id": "v2-m03-p4-16",
+    "text": "Good morning, everyone. This is an update for office workers. The lunchtime workshop will focus on practical ways to adjust desk equipment. Staff have asked for guidance on uncomfortable working positions. Please keep the following instructions in mind. Bring a photograph of the usual desk setup. The session provides general education rather than individual medical diagnosis. Finally, the trainer will provide an equipment-adjustment checklist. Thank you for your attention."
+  },
+  {
+    "id": "v2-m03-p4-17",
+    "text": "Good morning, everyone. This is an update for park visitors. The upper trail is closed while fallen branches are removed. High winds damaged several trees beside the route. Please keep the following instructions in mind. Use the lower marked path to reach the observation area. Visitors must not pass the closure barrier even if no work is visible. Finally, park staff will reopen the trail after a safety inspection. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m03-p4-18",
+    "text": "Good morning, everyone. This is an update for new office tenants. A short demonstration will explain the building's recycling system. Collection rules differ from those in nearby buildings. Please keep the following instructions in mind. Bring questions about materials you regularly discard. Confidential documents must use the secure collection bins. Finally, the facilities team will distribute a sorting guide after the session. Thank you for your attention."
+  },
+  {
+    "id": "v2-m03-p4-19",
+    "text": "Good morning, everyone. This is an update for audience members. Late arrivals will enter during designated breaks in the performance. Moving through the seating area can disturb performers and other guests. Please keep the following instructions in mind. Wait with the usher until entry is permitted. A valid ticket does not guarantee immediate entry after the performance begins. Finally, ushers will escort waiting guests to their seats at the next suitable pause. Thank you for your attention."
+  },
+  {
+    "id": "v2-m03-p4-20",
+    "text": "Good morning, everyone. This is an update for library visitors. Charging lockers will be available near the information desk. Visitors have requested a secure place to charge devices while reading. Please keep the following instructions in mind. Keep the locker claim ticket until collecting the device. The library does not supply every type of charging cable. Finally, staff will help open a locker after checking ownership if a ticket is lost. Thank you for your attention."
+  },
+  {
+    "id": "v2-m03-p4-21",
+    "text": "Good morning, everyone. This is an update for neighborhood residents. The council will collect comments on proposed public art locations. The locations affect foot traffic as well as the appearance of the square. Please keep the following instructions in mind. Mark concerns on the displayed site plan. Comments must concern the proposal rather than individual artists. Finally, the planning team will summarize the feedback before making a recommendation. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m03-p4-22",
+    "text": "Good morning, everyone. This is an update for new vendors. Vendors must learn the company's order-confirmation procedure. Unconfirmed orders have caused uncertainty about delivery dates. Please keep the following instructions in mind. Acknowledge each order through the supplier portal. An automatic email receipt is not treated as acceptance of the order. Finally, the purchasing team will follow up on orders awaiting confirmation. Thank you for your attention."
+  },
+  {
+    "id": "v2-m03-p4-23",
+    "text": "Good morning, everyone. This is an update for island visitors. An additional ferry will operate on selected festival days. Visitor numbers are expected to exceed the capacity of the regular sailings. Please keep the following instructions in mind. Book a place on the additional sailing separately. Regular tickets do not automatically reserve a seat on the extra ferry. Finally, the operator will release further places if a larger vessel becomes available. Thank you for your attention."
+  },
+  {
+    "id": "v2-m04-p3-2",
+    "text": "I need to brief the team about product repair tracking. What has been decided?\nCustomers will receive a tracking number when a device is accepted for repair. The service desk wants customers to check progress without repeatedly calling.\nIs there anything people need to do?\nKeep the tracking number with the collection receipt.\nWe should also mention the restrictions.\nThat's right. A status marked under assessment does not mean the repair has been approved. The technician will send an estimate before chargeable work begins."
+  },
+  {
+    "id": "v2-m04-p3-3",
+    "text": "I'm preparing the message for exhibition staff. Can you check the details?\nCertainly. Live plants will be rented for the exhibition entrance.\nWe should explain the reason.\nThe organizer wants an attractive display without purchasing plants for one event.\nI'll include these instructions: Keep the plant labels attached throughout the rental.\nGood. Please also add this: Plants must not be moved into direct sunlight without the supplier's advice. The supplier will collect and inspect the plants after the event."
+  },
+  {
+    "id": "v2-m04-p3-4",
+    "text": "Have you seen the update for shift supervisors?\nYes. A written handover record will accompany each shift change.\nWhy is that happening?\nImportant equipment observations have been lost during rushed verbal exchanges.\nWhat do we need to tell people?\nRecord unresolved faults before leaving the work area. A written note does not replace an urgent safety warning.\nAnd what happens after that?\nThe incoming supervisor will confirm which issues require immediate attention."
+  },
+  {
+    "id": "v2-m04-p3-5",
+    "text": "I need to brief the team about accessible voting meeting. What has been decided?\nThe annual meeting will offer both seated and remote participation. Some members cannot reach the upstairs meeting room.\nIs there anything people need to do?\nState the required attendance format on the registration form.\nWe should also mention the restrictions.\nThat's right. Only registered members may vote through either format. The secretary will send remote access instructions before the meeting.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m04-p3-6",
+    "text": "I'm preparing the message for packing staff. Can you check the details?\nCertainly. Returnable delivery boxes will use removable labels.\nWe should explain the reason.\nPermanent labels have made it difficult to identify the current destination.\nI'll include these instructions: Remove outdated labels before applying the new shipping details.\nGood. Please also add this: Do not cover a damaged barcode with a second barcode. The dispatch supervisor will scan each box before loading."
+  },
+  {
+    "id": "v2-m04-p3-7",
+    "text": "Have you seen the update for training attendees?\nYes. Interpretation can be arranged for selected training sessions.\nWhy is that happening?\nParticipants have asked for support with technical explanations.\nWhat do we need to tell people?\nSubmit the language request when registering. Late requests depend on interpreter availability.\nAnd what happens after that?\nThe training office will confirm supported sessions individually."
+  },
+  {
+    "id": "v2-m04-p3-8",
+    "text": "I need to brief the team about public mural maintenance. What has been decided?\nThe mural surface will be cleaned using a method approved by the artist. Ordinary cleaning chemicals could damage the paint.\nIs there anything people need to do?\nReport marks before attempting to remove them.\nWe should also mention the restrictions.\nThat's right. Do not apply a protective coating without written approval. A specialist will inspect the surface after cleaning."
+  },
+  {
+    "id": "v2-m04-p3-9",
+    "text": "I'm preparing the message for retail branch managers. Can you check the details?\nCertainly. Slow-moving stock will be transferred to a temporary storage site.\nWe should explain the reason.\nThe main warehouse needs space for seasonal deliveries.\nI'll include these instructions: Identify items that are unlikely to be needed urgently.\nGood. Please also add this: Emergency supplies must remain at the main warehouse. The stock controller will issue a location list after the move.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m04-p3-10",
+    "text": "Have you seen the update for event coordinators?\nYes. A guest speaker's permission is required before the talk is recorded.\nWhy is that happening?\nSome presentation material is licensed only for the live session.\nWhat do we need to tell people?\nConfirm the permitted uses in writing. Permission to record does not automatically include permission to publish.\nAnd what happens after that?\nThe coordinator will tell the recording team which sections are excluded."
+  },
+  {
+    "id": "v2-m04-p3-11",
+    "text": "I need to brief the team about flexible lunch collection. What has been decided?\nPreordered lunches will be grouped by office department. Individual collections have created long queues at the service counter.\nIs there anything people need to do?\nNominate one collector for each department.\nWe should also mention the restrictions.\nThat's right. Special dietary meals must remain clearly identified within the group order. The kitchen will send a message when each group order is ready."
+  },
+  {
+    "id": "v2-m04-p3-12",
+    "text": "I'm preparing the message for gallery technicians. Can you check the details?\nCertainly. Lighting levels will be reduced near the textile display.\nWe should explain the reason.\nStrong light can fade sensitive fabrics over time.\nI'll include these instructions: Use the approved settings listed in the installation notes.\nGood. Please also add this: Do not raise the light level simply to improve visitor photographs. The conservator will measure exposure after the adjustment."
+  },
+  {
+    "id": "v2-m04-p3-13",
+    "text": "Have you seen the update for electric vehicle drivers?\nYes. Charging spaces will be reserved for vehicles that are actively charging.\nWhy is that happening?\nSome drivers have left fully charged cars in the limited spaces.\nWhat do we need to tell people?\nMove the vehicle after receiving the completion alert. A charging reservation does not provide all-day parking.\nAnd what happens after that?\nThe site operator will review usage to decide whether more chargers are needed.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m04-p4-15",
+    "text": "Good morning, everyone. This is an update for swimmers. One lane will be reserved for coached sessions during certain morning periods. The coaching program has expanded without increasing the size of the pool. Please keep the following instructions in mind. Check the lane schedule before choosing a swimming time. General swimming remains available in the other lanes. Finally, staff will adjust the schedule if the coaching program changes. Thank you for your attention."
+  },
+  {
+    "id": "v2-m04-p4-16",
+    "text": "Good morning, everyone. This is an update for historic house visitors. Photography is permitted only in rooms marked with a camera symbol. Some objects are on loan under conditions that restrict photography. Please keep the following instructions in mind. Check the sign before taking a photograph. Flash photography is prohibited even in permitted rooms. Finally, guides will explain which rooms contain restricted loan items. Thank you for your attention."
+  },
+  {
+    "id": "v2-m04-p4-17",
+    "text": "Good morning, everyone. This is an update for bicycle-share users. Users should complete a quick visual check before beginning a ride. Damage can occur between scheduled maintenance visits. Please keep the following instructions in mind. Report a damaged bicycle through the service application. Do not ride a bicycle with a visibly loose wheel. Finally, the operator will remove reported unsafe bicycles for inspection. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m04-p4-18",
+    "text": "Good morning, everyone. This is an update for meal service volunteers. Meal containers will carry a code identifying dietary restrictions. The kitchen serves several groups with different requirements. Please keep the following instructions in mind. Match the container code with the recipient list. Do not exchange containers solely because portions appear similar. Finally, the coordinator will verify uncertain matches before delivery. Thank you for your attention."
+  },
+  {
+    "id": "v2-m04-p4-19",
+    "text": "Good morning, everyone. This is an update for local researchers. Digitized records will be released in stages. Fragile originals need preparation before they can be scanned. Please keep the following instructions in mind. Check the online catalog for the status of each collection. A collection listed for digitization may not yet be available online. Finally, the archive will announce completed batches through its newsletter. Thank you for your attention."
+  },
+  {
+    "id": "v2-m04-p4-20",
+    "text": "Good morning, everyone. This is an update for postal customers. A temporary counter will handle basic services during branch repairs. The main counter area cannot remain open during the work. Please keep the following instructions in mind. Consult the posted list of services before queuing. Large parcel dispatch is unavailable at the temporary counter. Finally, staff will direct customers to another branch for unsupported services. Thank you for your attention."
+  },
+  {
+    "id": "v2-m04-p4-21",
+    "text": "Good morning, everyone. This is an update for new starters. The office tour will include a demonstration of emergency equipment. New staff need to know where essential safety items are located. Please keep the following instructions in mind. Wear the temporary identification badge during the tour. The tour does not replace role-specific safety training. Finally, the supervisor will arrange additional training for specialized duties. Thank you for your attention.\nFor questions about this update, please contact Visitor services. The information desk chart shows where to go."
+  },
+  {
+    "id": "v2-m04-p4-22",
+    "text": "Good morning, everyone. This is an update for community hosts. The touring theater group will bring a reduced set to smaller venues. Some community halls cannot accommodate the standard stage arrangement. Please keep the following instructions in mind. Provide accurate room measurements before confirming the visit. The company will not block required emergency exits with scenery. Finally, the stage manager will approve a layout suitable for the room. Thank you for your attention."
+  },
+  {
+    "id": "v2-m04-p4-23",
+    "text": "Good morning, everyone. This is an update for canteen customers. The canteen is testing smaller default portions with free additional servings. Uneaten food has increased despite stable attendance. Please keep the following instructions in mind. Ask for an additional serving if the first portion is insufficient. Special dietary meals must still be ordered through the usual process. Finally, the catering team will compare waste levels during the trial. Thank you for your attention."
+  },
+  {
+    "id": "v2-scene-1",
+    "text": "A. A worker is changing a light bulb. B. A doorway is being painted. C. Two lamps are attached to a wall. D. Lamps are lying on the floor."
+  },
+  {
+    "id": "v2-scene-2",
+    "text": "A. Traffic cones are arranged along the road. B. A driver is holding a traffic sign. C. Vehicles are waiting at a crossing. D. The cones are stacked inside a truck."
+  },
+  {
+    "id": "v2-scene-3",
+    "text": "A. A basket is resting on a chair. B. A table is covered with flowers. C. People are setting a table. D. A basket is under a table."
+  },
+  {
+    "id": "v2-scene-4",
+    "text": "A. Tools are packed in a closed case. B. A bench is being carried outside. C. Tools are hanging above a workbench. D. A worker is holding a hammer."
+  },
+  {
+    "id": "v2-scene-5",
+    "text": "A. Several workers are planting trees. B. A ladder is leaning against a tree. C. A man is cutting down a tree. D. A ladder is lying across a path."
+  },
+  {
+    "id": "v2-scene-6",
+    "text": "A. Solar panels are installed on a roof. B. Workers are replacing roof tiles. C. Panels are stacked beside a building. D. A roof is covered with snow."
+  },
+  {
+    "id": "v2-scene-7",
+    "text": "A. Books are sealed inside boxes. B. A reader is turning a page. C. A table has been folded against the wall. D. Books are lying open on a table."
+  },
+  {
+    "id": "v2-scene-8",
+    "text": "A. Luggage is on a conveyor belt. B. Bags are inside an overhead compartment. C. A belt is being repaired. D. Passengers are opening their suitcases."
+  },
+  {
+    "id": "v2-scene-9",
+    "text": "A. People are sitting around a table. B. Benches face a garden path. C. Workers are digging a hole. D. A path is blocked by a vehicle."
+  },
+  {
+    "id": "v2-scene-10",
+    "text": "A. Clothes are being folded on a counter. B. The rack is empty. C. A customer is trying on a jacket. D. Coats are hanging on a rack."
+  },
+  {
+    "id": "v2-scene-11",
+    "text": "A. Plates are stacked inside a cabinet. B. The cabinet is being moved. C. Plates are arranged around a table. D. A server is washing dishes."
+  },
+  {
+    "id": "v2-scene-12",
+    "text": "A. A boat is passing under a bridge. B. A road is covered with parked cars. C. A bridge crosses a narrow pond. D. A worker is fishing from a dock."
+  },
+  {
+    "id": "v2-scene-13",
+    "text": "A. A person is pushing a cart with boxes. B. Boxes are being loaded onto an airplane. C. A worker is lifting a box above the head. D. A cart is standing empty."
+  },
+  {
+    "id": "v2-scene-14",
+    "text": "A. A person is reaching for a ceiling light. B. Documents are being thrown away. C. Several people are carrying a desk. D. A person is reading a document at a desk."
+  },
+  {
+    "id": "v2-scene-15",
+    "text": "A. A person is cleaning a window. B. Workers are replacing a door. C. A window is covered by a curtain. D. A person is opening a suitcase."
+  },
+  {
+    "id": "v2-scene-16",
+    "text": "A. A gardener is cutting the grass. B. Water is being poured into a glass. C. A person is watering a potted plant. D. A person is moving a tree."
+  },
+  {
+    "id": "v2-scene-17",
+    "text": "A. A handrail runs beside a staircase. B. A staircase is covered with boxes. C. People are climbing a ladder. D. A worker is opening a railing."
+  },
+  {
+    "id": "v2-scene-18",
+    "text": "A. A cyclist is riding uphill. B. A mechanic is changing a wheel. C. Bicycles are hanging from a ceiling. D. A bicycle is secured to a metal rack."
+  },
+  {
+    "id": "v2-scene-19",
+    "text": "A. Workers are painting a fence. B. A fence has fallen onto a car. C. A fence surrounds a construction area. D. Pedestrians are walking through a gate."
+  },
+  {
+    "id": "v2-scene-20",
+    "text": "A. Plants are arranged on the steps. B. A person is carrying flowers upstairs. C. Plants are suspended from the ceiling. D. Steps are being swept."
+  },
+  {
+    "id": "v2-scene-21",
+    "text": "A. People are seated around a desk. B. A counter is being installed. C. Customers are lying on benches. D. Two people are standing at a counter."
+  },
+  {
+    "id": "v2-scene-22",
+    "text": "A. The doors of an empty cabinet are open. B. A person is closing a drawer. C. The cabinet doors are locked. D. A cabinet is filled with plates."
+  },
+  {
+    "id": "v2-scene-23",
+    "text": "A. Workers are unloading a ship. B. Crates are stacked on the back of a truck. C. The truck bed is empty. D. A truck is carrying passengers."
+  },
+  {
+    "id": "v2-scene-24",
+    "text": "A. A person is typing on a keyboard. B. A computer is inside a suitcase. C. Cables run from a computer across the desk. D. A desk is covered with plates."
+  },
+  {
+    "id": "v2-scene-25",
+    "text": "A. Paddles are floating in a pool. B. A worker is building a shelf. C. People are rowing a boat. D. Paddles are hanging vertically on a wall."
+  },
+  {
+    "id": "v2-scene-26",
+    "text": "A. Glasses are lined up on a counter. B. Bottles are scattered on the floor. C. Glasses are hanging under a shelf. D. A server is filling a cup."
+  },
+  {
+    "id": "v2-scene-27",
+    "text": "A. A person is sweeping a floor. B. A person is placing a parcel on a scale. C. Parcels are being delivered by bicycle. D. A scale is inside a closed box."
+  },
+  {
+    "id": "v2-scene-28",
+    "text": "A. A doorway is blocked by furniture. B. A man is painting a sign. C. A sign hangs above a doorway. D. A sign is lying on the steps."
+  },
+  {
+    "id": "v2-scene-29",
+    "text": "A. Chairs are stacked behind a curtain. B. A screen is rolled up completely. C. An audience is leaving a room. D. A screen is lowered in front of chairs."
+  },
+  {
+    "id": "v2-scene-30",
+    "text": "A. An umbrella is open over a table. B. A container is lying on its side. C. A folded umbrella stands in a container. D. A person is walking in the rain."
+  },
+  {
+    "id": "v2-advanced-1",
+    "text": "The caterer needs our final guest count today. We have eighty registrations, but the hall only has seventy chairs.\nThe neighboring office offered to lend us some. They said we could collect them after four.\nThat solves the seating problem, but our van is being serviced.\nMy car can carry four at a time. If you come with me, we can make several trips.\nThanks. I'll ask the caterer for eighty meals and remind the office that we need ten chairs."
+  },
+  {
+    "id": "v2-advanced-2",
+    "text": "The customer approved the blue fabric sample, so I was about to release the order.\nWait. Did they sign the approval form?\nThey told me on the phone that the color was perfect.\nWe learned our lesson with the restaurant order last month. A verbal agreement isn't enough when we cut custom fabric.\nI understand. I'll email the form and keep the order on hold.\nPlease do. Once it comes back signed, we can confirm the production date."
+  },
+  {
+    "id": "v2-advanced-3",
+    "text": "The demonstration tablet keeps losing its connection. Can we borrow the tablet from reception?\nReception needs it for guest check-in until noon. But I have a recording of the demonstration on my laptop.\nThe clients arrive at eleven, and the demonstration room has a screen.\nThen we could show the recording first and answer questions afterward.\nThat's a relief. I'll bring the cable. We should still report the connection problem to technical support."
+  },
+  {
+    "id": "v2-advanced-4",
+    "text": "Attention, passengers. The lift between the ticket hall and platform two is temporarily out of service. If you require a route without stairs, use the passage beside the ticket office. It leads to the lift serving platform three. A level bridge then connects platforms three and two. Please allow an additional five minutes for this route. A staff member in a green jacket will remain near the ticket office to assist you. Repairs are expected to finish this afternoon, but we will announce when the lift is safe to use."
+  },
+  {
+    "id": "v2-advanced-5",
+    "text": "Thank you for volunteering at our book donation day. Please do not place every donated book directly on the display tables. Books with missing pages should go in the red box for recycling. Books in good condition that are suitable for children belong on the low shelves. Other usable books go on the long tables. We want visitors to find appropriate books without sorting through damaged copies. If you are unsure about an item's condition, leave it on the desk beside me. I will check those items during the break."
+  },
+  {
+    "id": "v2-advanced-6",
+    "text": "Before today's equipment training begins, please look at the symbols on your name badges. Participants with a circle will start with the safety demonstration in the workshop. Those with a square will begin with the maintenance discussion in the classroom. After forty minutes, the groups will switch rooms, so everyone will attend both sessions. There is no need to change groups just because you prefer one topic. Keep your badge visible because instructors will record attendance at each session. Certificates will be issued only after attendance at both sessions is confirmed."
+  },
+  {
+    "id": "v2-advanced-7",
+    "text": "I booked a room with a desk, but the room I received only has a small bedside table. I need to work this evening.\nI'm sorry. We have a suitable room on the sixth floor, but it won't be ready until three.\nMy online meeting starts at two.\nYou can use our quiet meeting room until the new room is ready. There's no charge, and I'll bring the access card.\nThat would work. I'll leave my suitcase here for now."
+  },
+  {
+    "id": "v2-advanced-8",
+    "text": "The brochure looks good on screen, but the address is very hard to read on this printed copy.\nWe used the smallest font allowed by the template. I could remove the decorative border to make more room.\nPlease do. Customers need to find us, not admire the border.\nI'll enlarge the address and print another sample before sending the file to the printer.\nThanks. The order hasn't been released yet, so we still have time."
+  },
+  {
+    "id": "v2-advanced-9",
+    "text": "This message is for customers returning rented cameras. Please leave the memory card in the camera until our staff have checked that your images were transferred successfully. After that check, you may remove the card and take it with you. The camera battery and charging cable must be returned with the equipment. If the shop is closed, do not use the ordinary parcel drop box. Instead, call the number on the entrance door to arrange a secure return. Rental charges stop at the agreed return appointment, even if a staff member arrives a few minutes late."
   }
 ]

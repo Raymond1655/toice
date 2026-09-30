@@ -22,6 +22,9 @@ import {
   selectPractice,
   newAttempt,
   mockIds,
+  mockSets,
+  examSummary,
+  practiceGroups,
   isCorrect,
   results,
   weakQuestions,
@@ -104,6 +107,10 @@ export default function ExamCenter({
     [now, setNow] = useState(Date.now()),
     [part, setPart] = useState<Part | 0>(0),
     [skill, setSkill] = useState(""),
+    [topic, setTopic] = useState(""),
+    [unseenOnly, setUnseenOnly] = useState(false),
+    [mockSet, setMockSet] = useState("01"),
+    [preview, setPreview] = useState<Question | null>(null),
     [query, setQuery] = useState(""),
     [favoriteOnly, setFavoriteOnly] = useState(false);
   const [rate, setRate] = useState(1),
@@ -124,6 +131,29 @@ export default function ExamCenter({
     audio = useRef<HTMLAudioElement>(null);
   activeRef.current = active;
   const attempts = useMemo(() => cloud.rows.map((r) => r.data), [cloud.rows]);
+  const seenIds = useMemo(
+    () => new Set(attempts.flatMap((a) => a.ids)),
+    [attempts],
+  );
+  const eligibleGroups = useMemo(
+    () => practiceGroups(part, skill, { topic, unseen: unseenOnly, seenIds }),
+    [part, skill, topic, unseenOnly, seenIds],
+  );
+  const topics = useMemo(
+    () =>
+      [
+        ...new Set(
+          questions
+            .filter((q) => q.pool === "practice" && (!part || q.part === part))
+            .map((q) => q.topic)
+            .filter((x): x is string => !!x),
+        ),
+      ].sort(),
+    [part],
+  );
+  const explored = questions.filter(
+    (q) => q.pool === "practice" && seenIds.has(q.id),
+  ).length;
   const weak = useMemo(
       () => weakQuestions(attempts, now),
       [attempts, Math.floor(now / 60000)],
@@ -132,6 +162,11 @@ export default function ExamCenter({
     completed = attempts.filter((a) => a.finishedAt),
     pending = attempts.filter((a) => !a.finishedAt);
   const busy = cloud.loading || cloud.saving || cloud.needsRetry;
+  useEffect(() => {
+    setSkill("");
+    setTopic("");
+    setPreview(null);
+  }, [part]);
   useEffect(() => {
     const timer = setInterval(() => setNow(Date.now()), 1000);
     return () => {
@@ -590,6 +625,19 @@ export default function ExamCenter({
                         重複播放本題音檔
                       </label>
                     )}
+                    {q.graphic && (
+                      <figure className="exam-graphic">
+                        <figcaption>參考圖表 · Graphic</figcaption>
+                        <div lang="en">{q.graphic}</div>
+                      </figure>
+                    )}
+                    {(q.topic || q.format) && (
+                      <p className="question-tags">
+                        {[q.topic, q.format, q.skill]
+                          .filter(Boolean)
+                          .join(" · ")}
+                      </p>
+                    )}
                     {q.passage && (
                       <div className="exam-passage" lang="en">
                         {q.passage}
@@ -765,6 +813,12 @@ export default function ExamCenter({
                         ))}
                       </ol>
                       {q.passageIpa && <Phonetic text={q.passageIpa} />}
+                      {q.graphicIpa && (
+                        <>
+                          <p>圖表音標</p>
+                          <Phonetic text={q.graphicIpa} />
+                        </>
+                      )}
                       <small>
                         美式逐字讀音參考，不代表實際連音與句子重音。
                       </small>
@@ -1030,9 +1084,12 @@ export default function ExamCenter({
                   </button>
                 </div>
                 <div className="hero-number">
-                  <strong>516</strong>
+                  <strong>{examSummary.total.toLocaleString()}</strong>
                   <span>原創題型練習題</span>
-                  <small>316 練習＋200 模考</small>
+                  <small>
+                    {examSummary.practice.toLocaleString()} 練習＋
+                    {mockSets.length} × 200 模考
+                  </small>
                 </div>
               </div>
               <div className="part-grid">
@@ -1066,7 +1123,11 @@ export default function ExamCenter({
                 ))}
               </div>
               <div className="academy-panel">
-                <h2>依弱點挑選</h2>
+                <h2>依弱點與情境挑選</h2>
+                <p>
+                  已接觸 {explored}／{examSummary.practice.toLocaleString()}{" "}
+                  道練習題。篩選保留完整題組，約 20 題一回。
+                </p>
                 <div className="exam-filters">
                   <label>
                     題型
@@ -1075,6 +1136,8 @@ export default function ExamCenter({
                       onChange={(e) => {
                         setPart(Number(e.target.value) as Part | 0);
                         setSkill("");
+                        setTopic("");
+                        setPreview(null);
                       }}
                     >
                       <option value={0}>全部題型</option>
@@ -1089,7 +1152,10 @@ export default function ExamCenter({
                     知識點
                     <select
                       value={skill}
-                      onChange={(e) => setSkill(e.target.value)}
+                      onChange={(e) => {
+                        setSkill(e.target.value);
+                        setPreview(null);
+                      }}
                     >
                       <option value="">全部知識點</option>
                       {skills.map((s) => (
@@ -1097,13 +1163,43 @@ export default function ExamCenter({
                       ))}
                     </select>
                   </label>
+                  <label>
+                    情境
+                    <select
+                      value={topic}
+                      onChange={(e) => {
+                        setTopic(e.target.value);
+                        setPreview(null);
+                      }}
+                    >
+                      <option value="">全部情境（含原有題目）</option>
+                      {topics.map((t) => (
+                        <option key={t}>{t}</option>
+                      ))}
+                    </select>
+                  </label>
+                  <label className="unseen-filter">
+                    <input
+                      type="checkbox"
+                      checked={unseenOnly}
+                      onChange={(e) => {
+                        setUnseenOnly(e.target.checked);
+                        setPreview(null);
+                      }}
+                    />
+                    只選未接觸題組
+                  </label>
                   <button
                     className="primary-btn"
-                    disabled={busy}
+                    disabled={busy || !eligibleGroups.length}
                     onClick={() =>
                       void start(
                         "practice",
-                        selectPractice(part, 20, skill),
+                        selectPractice(part, 20, skill, Math.random, {
+                          topic,
+                          unseen: unseenOnly,
+                          seenIds,
+                        }),
                         skill || "自選題型練習",
                       )
                     }
@@ -1111,6 +1207,129 @@ export default function ExamCenter({
                     建立練習
                   </button>
                 </div>
+                <p className="filter-count">
+                  符合 {eligibleGroups.reduce((n, g) => n + g.length, 0)} 題／
+                  {eligibleGroups.length}{" "}
+                  個題組。未接觸會排除已開始測驗中的整組題目。
+                </p>
+                <button
+                  className="text-btn"
+                  disabled={!eligibleGroups.length}
+                  onClick={() => {
+                    const items = eligibleGroups
+                      .flat()
+                      .filter((q) => !skill || q.skill === skill);
+                    setPreview(items[Math.floor(Math.random() * items.length)]);
+                  }}
+                >
+                  看一題範例
+                </button>
+                {preview && (
+                  <article className="question-preview" aria-label="題型範例">
+                    <div className="academy-section-head">
+                      <h3>
+                        Part {preview.part} · {preview.skill}
+                      </h3>
+                      <button
+                        className="text-btn"
+                        onClick={() => setPreview(null)}
+                      >
+                        關閉範例
+                      </button>
+                    </div>
+                    <small>範例預覽，不計入作答進度。</small>
+                    {preview.image && (
+                      <img
+                        className="preview-scene"
+                        src={preview.image}
+                        alt="圖像描述練習示意圖"
+                      />
+                    )}
+                    {preview.audio && (
+                      <audio controls preload="none" src={preview.audio} />
+                    )}
+                    {preview.graphic && (
+                      <figure className="exam-graphic">
+                        <figcaption>參考圖表 · Graphic</figcaption>
+                        <div lang="en">{preview.graphic}</div>
+                      </figure>
+                    )}
+                    {preview.passage && (
+                      <div className="exam-passage" lang="en">
+                        {preview.passage}
+                      </div>
+                    )}
+                    <p lang="en">
+                      {preview.part === 2
+                        ? "Listen and choose the best response."
+                        : preview.prompt}
+                    </p>
+                    <ol type="A">
+                      {preview.options.map((o, i) => (
+                        <li key={i}>
+                          {preview.part <= 2
+                            ? `選項 ${String.fromCharCode(65 + i)}（請聽音檔）`
+                            : o}
+                        </li>
+                      ))}
+                    </ol>
+                    <details>
+                      <summary>查看範例答案、逐字稿與音標</summary>
+                      <p>
+                        答案：{String.fromCharCode(65 + preview.correct)} ·{" "}
+                        {preview.explanation}
+                      </p>
+                      <p lang="en">{preview.prompt}</p>
+                      <Phonetic text={preview.ipa || ""} />
+                      <ol type="A">
+                        {preview.options.map((o, i) => (
+                          <li key={i}>
+                            {o}
+                            <Phonetic text={preview.optionIpa?.[i] || ""} />
+                          </li>
+                        ))}
+                      </ol>
+                      {preview.transcript && (
+                        <div className="exam-passage" lang="en">
+                          {preview.transcript}
+                        </div>
+                      )}
+                      <Phonetic text={preview.passageIpa || ""} />
+                      {preview.graphicIpa && (
+                        <Phonetic text={preview.graphicIpa} />
+                      )}
+                    </details>
+                  </article>
+                )}
+              </div>
+              <div className="academy-panel bank-note">
+                <h3>這次可以練什麼？</h3>
+                <p>
+                  間接應答、說話者意圖、數量與時間推論、圖表整合、句子銜接、句子插入、聊天訊息，以及雙篇／三篇交叉閱讀。
+                </p>
+                <p>
+                  題數包含 60
+                  個商務情境的聽力、段落填空與閱讀延伸練習；文法也有相同規則的不同例句。它們適合反覆建立能力，並不代表每題都有一篇全新文章。四份模考各自固定且題目分開。
+                </p>
+                <p>
+                  題目為本站自編；官方範例僅用來核對題型，沒有搬入官方題庫。可搭配{" "}
+                  <a
+                    href="https://www.ets.org/toeic/test-takers/prepare.html"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    ETS 官方準備資源
+                  </a>{" "}
+                  與{" "}
+                  <a
+                    href="https://www.iibc-global.org/english/toeic/test/lr/about/format.html"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    IIBC 題型與範例
+                  </a>{" "}
+                  練習。
+                </p>
               </div>
               <div className="tip-grid">
                 {grammarTips.map(([title, text, example]) => (
@@ -1165,13 +1384,37 @@ export default function ExamCenter({
                   </button>
                 </article>
                 <article className="academy-panel test-card full-mock">
-                  <span className="test-label">FULL LENGTH · SET 01</span>
+                  <span className="test-label">
+                    FULL LENGTH · SET {mockSet}
+                  </span>
                   <Target size={30} />
                   <h2>200 題完整模考</h2>
                   <p>
                     聽力 100 題／45 分鐘，閱讀 100 題／75
                     分鐘。每份固定題組，重做會遇到相同題目。
                   </p>
+                  <label>
+                    選擇模考卷
+                    <select
+                      value={mockSet}
+                      onChange={(e) => setMockSet(e.target.value)}
+                    >
+                      {mockSets.map((s) => {
+                        const done = completed.filter(
+                          (a) =>
+                            a.mode === "mock" &&
+                            (questionMap.get(a.ids[0])?.mockSet || "01") ===
+                              s.id,
+                        ).length;
+                        return (
+                          <option key={s.id} value={s.id}>
+                            完整模考 {s.id} · {s.count} 題
+                            {done ? ` · 已完成 ${done} 次` : " · 尚未完成"}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </label>
                   <div className="mock-parts">
                     {[6, 25, 39, 30, 30, 16, 54].map((n, i) => (
                       <span key={i}>
@@ -1189,7 +1432,11 @@ export default function ExamCenter({
                           "開始後計時不暫停。聽力音檔由你逐題啟動，每题組一次；45 分鐘後切到閱讀。現在開始 120 分鐘模考？",
                         )
                       )
-                        void start("mock", mockIds(), "完整模考 01");
+                        void start(
+                          "mock",
+                          mockIds(mockSet),
+                          `完整模考 ${mockSet}`,
+                        );
                     }}
                   >
                     開始完整模考

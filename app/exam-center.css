@@ -2,6 +2,77 @@
   max-width: 1250px;
   margin: auto;
 }
+.exam-graphic {
+  margin: 18px 0;
+  border: 1px solid #bdced7;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f6fafc;
+}
+.exam-graphic figcaption {
+  padding: 10px 16px;
+  background: #e3edf2;
+  font-weight: 650;
+  font-size: 13px;
+  color: #315669;
+}
+.exam-graphic > div {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: 16px;
+  line-height: 1.9;
+  font-size: 15px;
+}
+.question-tags,
+.filter-count {
+  color: #61738a;
+  font-size: 12px;
+}
+.exam-filters .unseen-filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  align-self: center;
+}
+.unseen-filter input {
+  width: 17px;
+  height: 17px;
+  accent-color: #365f77;
+}
+.question-preview {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #d9e3eb;
+  border-radius: 12px;
+  background: #f9fbfd;
+  overflow-wrap: anywhere;
+}
+.question-preview li {
+  padding: 5px 0;
+  line-height: 1.8;
+}
+.question-preview audio {
+  display: block;
+  max-width: 100%;
+  margin: 16px 0;
+}
+.preview-scene {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  margin: 18px auto;
+  border-radius: 10px;
+}
+.bank-note p {
+  color: #61738a;
+  font-size: 13px;
+}
+.bank-note a {
+  color: #315f94;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .academy-heading {
   display: flex;
   align-items: center;

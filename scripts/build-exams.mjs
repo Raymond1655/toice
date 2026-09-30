@@ -2,6 +2,7 @@ import fs from "node:fs";
 import { families, mockGrammar } from "../content/exam-grammar.mjs";
 import { responses, conversations, talks } from "../content/exam-listening.mjs";
 import { completions, readings } from "../content/exam-reading.mjs";
+import { expansion } from "./exam-expansion.mjs";
 
 // Reuse the same checked CMU dictionary conversion as the existing vocabulary.
 const source = fs.readFileSync(
@@ -11,7 +12,7 @@ const source = fs.readFileSync(
 const ipaSource =
   source.slice(0, source.indexOf("const parts =")) +
   `
-Object.assign(overrides, {promptness:'ˈprɑmptnəs',departmentally:'dɪˌpɑrtˈmɛntəli',informatively:'ɪnˈfɔrmətɪvli',noticeboard:'ˈnoʊtɪsˌbɔrd',mandatorily:'ˈmændəˌtɔrəli',quotable:'ˈkwoʊtəbəl',"participant's":'pɑrˈtɪsəpənts',"instructor's":'ɪnˈstrʌktərz',"nina's":'ˈninəz'});
+Object.assign(overrides, {promptness:'ˈprɑmptnəs',departmentally:'dɪˌpɑrtˈmɛntəli',informatively:'ɪnˈfɔrmətɪvli',noticeboard:'ˈnoʊtɪsˌbɔrd',mandatorily:'ˈmændəˌtɔrəli',quotable:'ˈkwoʊtəbəl',"participant's":'pɑrˈtɪsəpənts',"instructor's":'ɪnˈstrʌktərz',"nina's":'ˈninəz',"assistant's":'əˈsɪstənts',availably:'əˈveɪləbli',unaccepted:'ˌʌnəkˈsɛptɪd',placeholder:'ˈpleɪsˌhoʊldər',"venue's":'ˈvɛnjuz',washrooms:'ˈwɑʃˌrumz',shortlisted:'ˈʃɔrtˌlɪstɪd',compostable:'kəmˈpoʊstəbəl',roadworks:'ˈroʊdˌwɜrks',sailings:'ˈseɪlɪŋz',deactivation:'diˌæktəˈveɪʃən',stallholders:'ˈstɔlˌhoʊldərz',uneaten:'ʌnˈitən',digitization:'ˌdɪdʒətəˈzeɪʃən',remeasure:'riˈmɛʒər',"item's":'ˈaɪtəmz',"organizer's":'ˈɔrɡəˌnaɪzərz'});
 export { pronounce, missing };\n`;
 fs.writeFileSync(new URL("./exam-ipa.mjs", import.meta.url), ipaSource);
 const { pronounce, missing } = await import("./exam-ipa.mjs");
@@ -258,8 +259,9 @@ for (const [i, [correct, translation, svg, ...wrong]] of scenes.entries()) {
     );
   }
 }
+qs.push(...expansion().questions);
 const ipa = (s) =>
-  (s.replaceAll('’', "'").match(/[A-Za-z]+(?:'[A-Za-z]+)?/g) || [])
+  (s.replaceAll("’", "'").match(/[A-Za-z]+(?:'[A-Za-z]+)?/g) || [])
     .map((w) => pronounce(w, s) || `[${w}]`)
     .join(" ");
 const audio = [];
@@ -268,9 +270,10 @@ for (const q of qs) {
   q.ipa = ipa(q.prompt);
   q.optionIpa = q.options.map(ipa);
   if (q.passage || q.transcript) q.passageIpa = ipa(q.passage || q.transcript);
+  if (q.graphic) q.graphicIpa = ipa(q.graphic);
   if (q.part < 5) {
     const id = q.group || q.id;
-    q.audio = `/audio/exams/${id}.wav`;
+    q.audio = `/audio/exams/${id}.${id.startsWith("v2-") ? "mp3" : "wav"}`;
     if (!seen.has(id)) {
       seen.add(id);
       const text =
@@ -292,6 +295,20 @@ if (process.argv.includes("--check")) {
     throw Error("Exam bank is stale");
 } else fs.writeFileSync(dest, output);
 fs.writeFileSync("content/exam-audio.json", JSON.stringify(audio, null, 2));
+const summary = {
+  total: qs.length,
+  practice: qs.filter((q) => q.pool === "practice").length,
+  mocks: ["01", "02", "03", "04"].map((id) => ({
+    id,
+    count: qs.filter((q) => q.pool === "mock" && (q.mockSet || "01") === id)
+      .length,
+  })),
+};
+const summaryOutput = JSON.stringify(summary, null, 2) + "\n";
+if (process.argv.includes("--check")) {
+  if (fs.readFileSync("lib/exam-summary.json", "utf8") !== summaryOutput)
+    throw Error("Exam summary is stale");
+} else fs.writeFileSync("lib/exam-summary.json", summaryOutput);
 console.log(
   JSON.stringify({
     questions: qs.length,

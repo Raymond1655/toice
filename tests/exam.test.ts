@@ -2,10 +2,15 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile, stat } from "node:fs/promises";
 import { PGlite } from "@electric-sql/pglite";
+import { createHash } from "node:crypto";
 import {
   questions,
   mockIds,
   mockCounts,
+  mockSets,
+  examSummary,
+  questionMap,
+  practiceGroups,
   newAttempt,
   selectPractice,
   normalizeSpelling,
@@ -19,16 +24,46 @@ import {
   analytics,
 } from "../lib/exam.ts";
 
-test("exam bank has a full 200-question mock and complete separate practice groups", async () => {
-  assert.equal(questions.length, 516);
-  assert.equal(new Set(questions.map((q) => q.id)).size, 516);
+test("expanded bank keeps four independent 200-question mocks and complete practice groups", async () => {
+  assert.equal(questions.length, 2082);
+  assert.equal(examSummary.total, questions.length);
+  assert.equal(
+    examSummary.practice,
+    questions.filter((q) => q.pool === "practice").length,
+  );
+  assert.equal(new Set(questions.map((q) => q.id)).size, questions.length);
   const mock = mockIds();
   assert.equal(mock.length, 200);
-  for (let p = 1; p <= 7; p++)
-    assert.equal(
-      questions.filter((q) => q.part === p && q.pool === "mock").length,
-      mockCounts[p - 1],
+  assert.equal(mockSets.length, 4);
+  for (const set of mockSets) {
+    const ids = mockIds(set.id);
+    assert.equal(ids.length, 200);
+    const attempt = newAttempt("mock", ids, "Test " + set.id, 1000);
+    assert.equal(parseAttempt(attempt).ids.length, 200);
+    const foreignId = mockIds(set.id === "01" ? "02" : "01")[0];
+    assert.throws(() =>
+      parseAttempt({ ...attempt, ids: [foreignId, ...ids.slice(1)] }),
     );
+    for (let p = 1; p <= 7; p++)
+      assert.equal(
+        ids.filter((id) => questionMap.get(id)!.part === p).length,
+        mockCounts[p - 1],
+      );
+  }
+  const allMockIds = mockSets.flatMap((s) => mockIds(s.id));
+  assert.equal(new Set(allMockIds).size, 800);
+  assert.equal(
+    createHash("sha256")
+      .update(JSON.stringify(questions.slice(0, 516)))
+      .digest("hex"),
+    (
+      await readFile(
+        new URL("./fixtures/legacy-exam.sha256", import.meta.url),
+        "utf8",
+      )
+    ).trim(),
+    "original questions, options and grading must remain byte-for-byte compatible",
+  );
   for (const q of questions) {
     assert.equal(q.options.length, q.part === 2 ? 3 : 4);
     assert.equal(new Set(q.options).size, q.options.length);
@@ -37,11 +72,16 @@ test("exam bank has a full 200-question mock and complete separate practice grou
     assert.ok(q.ipa);
     assert.equal(q.optionIpa?.length, q.options.length);
     assert.ok(!q.ipa?.includes("["));
+    if (q.passage || q.transcript)
+      assert.ok(q.passageIpa && !q.passageIpa.includes("["));
+    if (q.graphic) assert.ok(q.graphicIpa && !q.graphicIpa.includes("["));
     if (q.part < 5) {
       assert.ok(q.audio);
       const f = await readFile(new URL("../public" + q.audio, import.meta.url));
-      assert.equal(f.subarray(0, 4).toString(), "RIFF");
-      assert.ok(f.length > 10000);
+      if (q.audio.endsWith(".mp3"))
+        assert.equal(f.subarray(0, 3).toString(), "ID3");
+      else assert.equal(f.subarray(0, 4).toString(), "RIFF");
+      assert.ok(f.length > 1000);
     }
     if (q.image)
       assert.ok(
@@ -61,7 +101,7 @@ test("exam bank has a full 200-question mock and complete separate practice grou
   for (const part of [0, 1, 2, 3, 4, 5, 6, 7] as const) {
     const ids = selectPractice(part, 20);
     assert.ok(ids.length);
-    assert.ok(ids.every((id) => !mock.includes(id)));
+    assert.ok(ids.every((id) => !allMockIds.includes(id)));
     for (const id of ids) {
       const q = questions.find((q) => q.id === id)!;
       if (q.group)
@@ -72,6 +112,44 @@ test("exam bank has a full 200-question mock and complete separate practice grou
         );
     }
   }
+});
+test("skill and topic filters retain complete groups, and unseen mode excludes whole attempted groups", () => {
+  const skill = "圖表整合";
+  const groups = practiceGroups(0, skill);
+  assert.ok(groups.length > 5);
+  const seenIds = new Set([groups[0][0].id]);
+  const ids = selectPractice(0, 200, skill, () => 0.37, {
+    unseen: true,
+    seenIds,
+  });
+  assert.ok(ids.length > 0);
+  assert.ok(!ids.some((id) => groups[0].some((q) => q.id === id)));
+  for (const id of ids) {
+    const q = questionMap.get(id)!;
+    const whole = questions.filter((x) => x.group === q.group);
+    assert.ok(whole.every((x) => ids.includes(x.id)));
+    assert.ok(whole.some((x) => x.skill === skill));
+  }
+  assert.equal(
+    selectPractice(0, 20, "", Math.random, {
+      unseen: true,
+      seenIds: new Set(questions.map((q) => q.id)),
+    }).length,
+    0,
+  );
+  const topicIds = selectPractice(7, 20, "", () => 0.2, { topic: "採購物流" });
+  assert.ok(topicIds.length > 0);
+  assert.ok(topicIds.every((id) => questionMap.get(id)!.topic === "採購物流"));
+  const mixed = selectPractice(0, 20, "", () => 0.42);
+  assert.equal(new Set(mixed.map((id) => questionMap.get(id)!.part)).size, 7);
+  for (const name of [
+    "句子插入",
+    "說話者意圖",
+    "圖表整合",
+    "跨文件推論",
+    "字義辨識",
+  ])
+    assert.ok(questions.some((q) => q.skill === name));
 });
 test("absolute timers enforce sections after reopening and reject late answers", () => {
   const a = newAttempt("mock", mockIds(), "mock", 1000);
@@ -214,6 +292,10 @@ test("exam database isolates accounts and protects revision, retry and final sub
     await save(finished, 1, finalOp);
     assert.equal((await save(finished, 1, finalOp)).revision, 2);
     await assert.rejects(save(next, 2), /immutable/);
+    const expandedMock = newAttempt("mock", mockIds("04"), "完整模考 04", 1000);
+    assert.equal((await save(expandedMock, -1)).revision, 0);
+    const restoredMock = parseAttempt((await save(expandedMock, 0)).data);
+    assert.deepEqual(restoredMock.ids, expandedMock.ids);
     await db.exec("reset role");
     assert.equal(
       (
@@ -221,7 +303,7 @@ test("exam database isolates accounts and protects revision, retry and final sub
           "select count(*)::int as n from public.toice_attempts",
         )
       ).rows[0].n,
-      1,
+      2,
     );
   } finally {
     await db.close();
