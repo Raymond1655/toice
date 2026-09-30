@@ -286,7 +286,7 @@ export function Dashboard({
           ))}
         </div>
         <p className="roadmap-note">
-          本版提供單字、填空與詞義練習；聽力、閱讀題組和完整模擬考需搭配其他教材。
+          多益練習中心已提供聽力、閱讀題組與完整題數模考；建議搭配官方範例熟悉正式考試的語速、篇幅與難度。
         </p>
       </section>
     </>
