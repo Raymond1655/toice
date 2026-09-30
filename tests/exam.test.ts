@@ -114,6 +114,11 @@ test("expanded bank keeps four independent 200-question mocks and complete pract
   }
 });
 test("skill and topic filters retain complete groups, and unseen mode excludes whole attempted groups", () => {
+  const chart = questions.find((q) => q.id === "v2-advanced-12-1")!;
+  assert.ok(
+    chart.optionIpa![chart.options.indexOf("Workshop A")].endsWith("eɪ"),
+  );
+  assert.ok(chart.passageIpa!.includes("laɪv klæs"));
   const skill = "圖表整合";
   const groups = practiceGroups(0, skill);
   assert.ok(groups.length > 5);

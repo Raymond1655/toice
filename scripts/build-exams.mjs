@@ -260,17 +260,43 @@ for (const [i, [correct, translation, svg, ...wrong]] of scenes.entries()) {
   }
 }
 qs.push(...expansion().questions);
-const ipa = (s) =>
-  (s.replaceAll("’", "'").match(/[A-Za-z]+(?:'[A-Za-z]+)?/g) || [])
-    .map((w) => pronounce(w, s) || `[${w}]`)
+const ipa = (s, expanded = false) => {
+  const text = s.replaceAll("’", "'");
+  return [...text.matchAll(/[A-Za-z]+(?:'[A-Za-z]+)?/g)]
+    .map((match) => {
+      const w = match[0],
+        before = text.slice(0, match.index),
+        after = text.slice(match.index + w.length);
+      if (
+        expanded &&
+        w === "A" &&
+        (/\b(?:Workshop|Desk|Route|Gate|Room|Section|Option|Group)\s*$/i.test(
+          before,
+        ) ||
+          /^\s*[:—–-]/.test(after))
+      )
+        return "eɪ";
+      if (
+        expanded &&
+        w.toLowerCase() === "live" &&
+        /^\s+(?:class|session|training|online|rather|instead|video|broadcast|demonstration)\b/i.test(
+          after,
+        )
+      )
+        return "laɪv";
+      return pronounce(w, s) || `[${w}]`;
+    })
     .join(" ");
+};
 const audio = [];
 const seen = new Set();
 for (const q of qs) {
-  q.ipa = ipa(q.prompt);
-  q.optionIpa = q.options.map(ipa);
-  if (q.passage || q.transcript) q.passageIpa = ipa(q.passage || q.transcript);
-  if (q.graphic) q.graphicIpa = ipa(q.graphic);
+  const expanded = q.id.startsWith("v2-");
+  q.ipa = ipa(q.prompt, expanded);
+  q.optionIpa = q.options.map((s) => ipa(s, expanded));
+  if (q.passage || q.transcript)
+    q.passageIpa = ipa(q.passage || q.transcript, expanded);
+  if (q.graphic) q.graphicIpa = ipa(q.graphic, expanded);
   if (q.part < 5) {
     const id = q.group || q.id;
     q.audio = `/audio/exams/${id}.${id.startsWith("v2-") ? "mp3" : "wav"}`;
