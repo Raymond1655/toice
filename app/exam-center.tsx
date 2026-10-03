@@ -14,6 +14,10 @@ import {
   NotebookPen,
   Keyboard,
   Flag,
+  Zap,
+  Heart,
+  Trophy,
+  Shield,
 } from "lucide-react";
 import {
   questions,
@@ -34,7 +38,9 @@ import {
   recordAnswer,
   shuffled,
 } from "@/lib/exam";
+import { gameRunStats, personalGameRecords } from "@/lib/exam-games";
 import {
+  gameRules,
   partNames,
   type Part,
   type Attempt,
@@ -161,6 +167,32 @@ export default function ExamCenter({
     stats = useMemo(() => analytics(attempts), [attempts]),
     completed = attempts.filter((a) => a.finishedAt),
     pending = attempts.filter((a) => !a.finishedAt);
+  const gameRecords = useMemo(() => personalGameRecords(attempts), [attempts]);
+  const gameRuns = attempts.filter((a) => a.challenge && a.finishedAt).length;
+  const finishedGames = attempts.filter((a) => a.challenge && a.finishedAt);
+  const longestGameCombo = Math.max(
+    0,
+    ...finishedGames.map((attempt) => gameRunStats(attempt).bestCombo),
+  );
+  const arcadeBadges = [
+    { title: "第一場挑戰", icon: "🚩", unlocked: gameRuns >= 1 },
+    { title: "五場磨練", icon: "🎖️", unlocked: gameRuns >= 5 },
+    { title: "五連擊", icon: "⚡", unlocked: longestGameCombo >= 5 },
+    {
+      title: "生存無傷",
+      icon: "💎",
+      unlocked: finishedGames.some(
+        (attempt) =>
+          attempt.challenge === "survival" &&
+          gameRunStats(attempt).misses === 0,
+      ),
+    },
+    {
+      title: "三模式制霸",
+      icon: "🏆",
+      unlocked: Object.values(gameRecords).every((record) => record.clears > 0),
+    },
+  ];
   const busy = cloud.loading || cloud.saving || cloud.needsRetry;
   useEffect(() => {
     setSkill("");
@@ -236,7 +268,12 @@ export default function ExamCenter({
       lock.current = false;
     }
   }
-  async function start(mode: Attempt["mode"], ids: string[], title: string) {
+  async function start(
+    mode: Attempt["mode"],
+    ids: string[],
+    title: string,
+    challenge?: Attempt["challenge"],
+  ) {
     if (!ids.length) {
       setMessage("目前沒有符合條件的題目。");
       return;
@@ -247,11 +284,33 @@ export default function ExamCenter({
     }
     audio.current?.pause();
     window.speechSynthesis?.cancel();
-    const a = newAttempt(mode, ids, title);
+    const base = newAttempt(mode, ids, title);
+    const a = challenge
+      ? { ...base, challenge, duration: gameRules[challenge].duration }
+      : base;
     if (await persist(a)) {
       setReviewIndex(0);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+  }
+  function startChallenge(challenge: NonNullable<Attempt["challenge"]>) {
+    const rules = gameRules[challenge];
+    let ids: string[];
+    if (challenge === "boss") {
+      const weakestPart = recommendations[0]?.part ?? 0;
+      const weakFirst = shuffled([...new Set(weak.map((item) => item.id))]);
+      ids = shuffled(
+        [
+          ...new Set([
+            ...weakFirst.slice(0, rules.questions),
+            ...selectPractice(weakestPart, rules.questions),
+          ]),
+        ].slice(0, rules.questions),
+      );
+    } else {
+      ids = selectPractice(0, rules.questions);
+    }
+    void start("mini", ids, rules.title, challenge);
   }
   function speak(text: string) {
     if (!("speechSynthesis" in window)) {
@@ -278,6 +337,7 @@ export default function ExamCenter({
     const id = a.ids[a.index];
     if (
       (a.mode === "practice" ||
+        a.challenge ||
         a.mode === "spelling" ||
         a.mode === "dictation") &&
       a.answers[id]
@@ -300,7 +360,16 @@ export default function ExamCenter({
       setMessage("這一部分的作答時間已結束。");
       return;
     }
-    if (await persist(next)) tick.current = Date.now();
+    const outOfLives =
+      a.challenge === "survival" &&
+      gameRunStats(next).misses >= gameRules.survival.hearts;
+    const allAnswered = Object.keys(next.answers).length === next.ids.length;
+    const submitRun = !!a.challenge && (outOfLives || allAnswered);
+    if (await persist(submitRun ? { ...next, finishedAt: Date.now() } : next)) {
+      tick.current = Date.now();
+      if (outOfLives)
+        setMessage("三顆愛心都用完了！本回挑戰已結束，回大廳再試一次吧。");
+    }
   }
   async function jump(index: number) {
     if (!active || busy) return;
@@ -310,6 +379,14 @@ export default function ExamCenter({
     }
     if (!canAnswer(active, index, Date.now())) {
       setMessage("目前只能作答正在計時的部分。");
+      return;
+    }
+    if (
+      active.challenge &&
+      index > active.index &&
+      (index !== active.index + 1 || !active.answers[active.ids[active.index]])
+    ) {
+      setMessage("挑戰中請先完成目前題目，再前進到下一題。");
       return;
     }
     await persist({ ...active, index });
@@ -405,10 +482,21 @@ export default function ExamCenter({
   const reveal =
     !!active &&
     (!!active.finishedAt ||
+      (!!active.challenge && !!currentAnswer) ||
       (["practice", "spelling", "dictation"].includes(active.mode) &&
         !!currentAnswer));
   const strict = !!active && !active.finishedAt && active.mode === "mock";
   const summary = active ? results(active) : null;
+  const activeGameStats = active?.challenge ? gameRunStats(active) : null;
+  const previousGameBest = active?.challenge
+    ? personalGameRecords(
+        attempts.filter((attempt) => attempt.id !== active.id),
+      )[active.challenge].best
+    : 0;
+  const activeGameBest = Math.max(
+    previousGameBest,
+    activeGameStats?.score ?? 0,
+  );
   const filteredWeak = weak.filter((x) => {
     const question = questionMap.get(x.id);
     return (
@@ -502,6 +590,49 @@ export default function ExamCenter({
               </strong>
             )}
           </div>
+          {active.challenge && !active.finishedAt && activeGameStats && (
+            <div className="arcade-live" aria-live="polite">
+              <div className="arcade-live-mode">
+                <span>
+                  {active.challenge === "blitz"
+                    ? "⚡"
+                    : active.challenge === "survival"
+                      ? "❤️"
+                      : "🛡️"}
+                </span>
+                <strong>{gameRules[active.challenge].title}</strong>
+              </div>
+              {active.challenge === "survival" && (
+                <div
+                  className="arcade-hearts"
+                  aria-label={`剩餘 ${Math.max(0, gameRules.survival.hearts - activeGameStats.misses)} 顆愛心`}
+                >
+                  {Array.from({ length: gameRules.survival.hearts }, (_, i) => (
+                    <Heart
+                      key={i}
+                      size={20}
+                      fill={
+                        i < gameRules.survival.hearts - activeGameStats.misses
+                          ? "currentColor"
+                          : "none"
+                      }
+                    />
+                  ))}
+                </div>
+              )}
+              <div className="arcade-live-stat">
+                <strong>{activeGameStats.currentCombo}</strong>
+                <small>連擊</small>
+              </div>
+              <div className="arcade-live-stat">
+                <strong>{activeGameStats.score.toLocaleString()}</strong>
+                <small>目前分數</small>
+              </div>
+              <div className="arcade-live-progress">
+                {Object.keys(active.answers).length} / {active.ids.length}
+              </div>
+            </div>
+          )}
           {active.finishedAt && summary && (
             <div className="exam-result">
               <div>
@@ -522,6 +653,34 @@ export default function ExamCenter({
                 <small>自編訓練題正確率，不換算成官方多益分數。</small>
               </div>
             </div>
+          )}
+          {active.finishedAt && active.challenge && activeGameStats && (
+            <section className="arcade-result-card" aria-label="遊戲挑戰成績">
+              <div className="arcade-result-emblem">
+                {active.challenge === "blitz"
+                  ? "⚡"
+                  : active.challenge === "survival"
+                    ? "❤️"
+                    : "🛡️"}
+              </div>
+              <div>
+                <span>本局得分</span>
+                <strong>
+                  {activeGameStats.score.toLocaleString()}
+                  <small> 分</small>
+                </strong>
+                <p>
+                  {activeGameStats.correct} 題答對 · 最長連擊{" "}
+                  {activeGameStats.bestCombo} · 個人最佳{" "}
+                  {activeGameBest.toLocaleString()} 分
+                </p>
+              </div>
+              {activeGameStats.score > previousGameBest && (
+                <div className="arcade-new-record">
+                  <Trophy size={17} /> 新紀錄
+                </div>
+              )}
+            </section>
           )}
           <div className="exam-layout">
             <div className="exam-main">
@@ -928,10 +1087,10 @@ export default function ExamCenter({
                   ) : !active.finishedAt ? (
                     <button
                       className="primary-btn"
-                      disabled={busy || noteDirty}
+                      disabled={busy || noteDirty || !!active.challenge}
                       onClick={() => void finish()}
                     >
-                      完成並交卷
+                      {active.challenge ? "全部答完自動結算" : "完成並交卷"}
                     </button>
                   ) : (
                     <button
@@ -985,7 +1144,7 @@ export default function ExamCenter({
                   </button>
                 ))}
               </div>
-              {!active.finishedAt && (
+              {!active.finishedAt && !active.challenge && (
                 <button
                   className="secondary-btn full"
                   disabled={busy || noteDirty}
@@ -1092,6 +1251,120 @@ export default function ExamCenter({
                   </small>
                 </div>
               </div>
+              <section className="arcade-lobby" aria-labelledby="arcade-title">
+                <div className="arcade-lobby-head">
+                  <div>
+                    <span className="tiny-label">TOICE ARCADE</span>
+                    <h2 id="arcade-title">多益遊戲大廳</h2>
+                    <p>用倒數、連擊和有限生命，挑戰你的專注力。</p>
+                  </div>
+                  <div className="arcade-trophy">
+                    <Trophy size={21} />
+                    <span>
+                      已完成 <strong>{gameRuns}</strong> 場
+                    </span>
+                  </div>
+                </div>
+                <div className="arcade-game-grid">
+                  {(["blitz", "survival", "boss"] as const).map((game) => {
+                    const rule = gameRules[game];
+                    const locked =
+                      game === "survival"
+                        ? gameRuns < 1
+                        : game === "boss"
+                          ? gameRuns < 3
+                          : false;
+                    const record = gameRecords[game];
+                    const Icon =
+                      game === "blitz"
+                        ? Zap
+                        : game === "survival"
+                          ? Heart
+                          : Shield;
+                    const detail =
+                      game === "blitz"
+                        ? "90 秒答 10 題，答越快分數越高。"
+                        : game === "survival"
+                          ? "15 題、三顆愛心，錯三題立即結束。"
+                          : "限時攻克弱點題，優先抽選你常錯的題型。";
+                    return (
+                      <article
+                        className={`arcade-game-card game-${game} ${locked ? "game-locked" : ""}`}
+                        key={game}
+                      >
+                        <div className="arcade-game-icon">
+                          <Icon size={24} />
+                          {locked && <span aria-label="尚未解鎖">🔒</span>}
+                        </div>
+                        <div className="arcade-game-title">
+                          <h3>{rule.title}</h3>
+                          <span>
+                            {rule.questions} 題 · {fmt(rule.duration)}
+                          </span>
+                        </div>
+                        <p>{detail}</p>
+                        <div className="arcade-game-record">
+                          <span>個人最高</span>
+                          <strong>
+                            {record.best.toLocaleString()}
+                            <small> 分</small>
+                          </strong>
+                          <span>{record.clears} 次完成</span>
+                        </div>
+                        {locked ? (
+                          <div className="arcade-unlock">
+                            {game === "survival"
+                              ? "完成一場挑戰解鎖"
+                              : "完成三場挑戰解鎖"}
+                          </div>
+                        ) : (
+                          <button
+                            className="primary-btn"
+                            disabled={busy}
+                            onClick={() => startChallenge(game)}
+                          >
+                            開始挑戰 <ArrowRight size={16} />
+                          </button>
+                        )}
+                      </article>
+                    );
+                  })}
+                </div>
+                <div className="arcade-personal-board">
+                  <Trophy size={17} />
+                  <span>個人排行榜</span>
+                  <strong>
+                    {Math.max(
+                      gameRecords.blitz.best,
+                      gameRecords.survival.best,
+                      gameRecords.boss.best,
+                    ).toLocaleString()}{" "}
+                    分
+                  </strong>
+                  <small>只和自己的最佳紀錄比較</small>
+                </div>
+                <div className="arcade-badges" aria-label="遊戲成就">
+                  <strong>挑戰徽章</strong>
+                  {arcadeBadges.map((badge) => (
+                    <div
+                      className={
+                        badge.unlocked
+                          ? "arcade-badge unlocked"
+                          : "arcade-badge"
+                      }
+                      key={badge.title}
+                      title={
+                        badge.unlocked
+                          ? badge.title
+                          : `尚未解鎖：${badge.title}`
+                      }
+                    >
+                      <span aria-hidden="true">{badge.icon}</span>
+                      <small>{badge.title}</small>
+                    </div>
+                  ))}
+                </div>
+              </section>
               <div className="part-grid">
                 {([1, 2, 3, 4, 5, 6, 7] as Part[]).map((p) => (
                   <button

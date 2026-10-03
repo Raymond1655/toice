@@ -1,7 +1,13 @@
 import bank from "./exam-bank.json" with { type: "json" };
 import summary from "./exam-summary.json" with { type: "json" };
 import { words } from "./vocabulary.ts";
-import type { Attempt, Part, Question, Answer } from "./exam-types.ts";
+import {
+  gameRules,
+  type Attempt,
+  type Part,
+  type Question,
+  type Answer,
+} from "./exam-types.ts";
 export const questions = bank as Question[];
 export const questionMap = new Map(questions.map((q) => [q.id, q]));
 export const wordMap = new Map(words.map((w) => [w.id, w]));
@@ -252,6 +258,14 @@ export function parseAttempt(value: unknown): Attempt {
         mockIds(questionMap.get(a.ids[0])?.mockSet || "01").join(","))
   )
     throw Error("模考題目或時間設定不正確");
+  if (
+    a.challenge &&
+    (!(a.challenge in gameRules) ||
+      a.mode !== "mini" ||
+      a.duration !== gameRules[a.challenge].duration ||
+      a.ids.length !== gameRules[a.challenge].questions)
+  )
+    throw Error("遊戲挑戰設定不正確");
   for (const [id, x] of Object.entries(a.answers))
     if (
       !a.ids.includes(id) ||

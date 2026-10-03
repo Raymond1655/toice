@@ -35,7 +35,18 @@ export type Attempt = {
   duration: number;
   index: number;
   played: string[];
+  challenge?: "blitz" | "survival" | "boss";
 };
+export const gameRules = {
+  blitz: { title: "閃電快攻", questions: 10, duration: 90_000, hearts: 0 },
+  survival: {
+    title: "三命生存戰",
+    questions: 15,
+    duration: 480_000,
+    hearts: 3,
+  },
+  boss: { title: "弱點首領戰", questions: 12, duration: 360_000, hearts: 0 },
+} as const;
 export type AttemptRow = { id: string; revision: number; data: Attempt };
 export type Annotation = { id: string; note: string; favorite: boolean };
 export const partNames: Record<Part, string> = {

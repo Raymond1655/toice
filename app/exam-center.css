@@ -2,6 +2,41 @@
   max-width: 1250px;
   margin: auto;
 }
+.arcade-badges {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.arcade-badges > strong {
+  font-size: 11px;
+  color: #bbc8e1;
+  margin-right: 3px;
+}
+.arcade-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px;
+  border-radius: 20px;
+  background: #ffffff10;
+  filter: grayscale(1);
+  opacity: 0.46;
+}
+.arcade-badge.unlocked {
+  filter: none;
+  opacity: 1;
+  background: #ffffff1b;
+}
+.arcade-badge > span {
+  font-size: 15px;
+}
+.arcade-badge small {
+  font-size: 9px;
+  color: #e1e7f3;
+  white-space: nowrap;
+}
 .exam-graphic {
   margin: 18px 0;
   border: 1px solid #bdced7;
@@ -913,6 +948,63 @@
   }
 }
 @media (max-width: 760px) {
+  .arcade-lobby {
+    padding: 18px 14px;
+    border-radius: 19px;
+  }
+  .arcade-lobby-head {
+    align-items: flex-start;
+  }
+  .arcade-lobby-head h2 {
+    font-size: 20px;
+  }
+  .arcade-trophy {
+    font-size: 10px;
+    padding: 8px;
+  }
+  .arcade-game-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .arcade-game-card {
+    min-height: 0;
+    padding: 16px;
+  }
+  .arcade-game-title {
+    margin-top: 10px;
+  }
+  .arcade-game-card > p {
+    min-height: 0;
+  }
+  .arcade-live {
+    gap: 9px;
+    flex-wrap: wrap;
+    padding: 11px;
+  }
+  .arcade-live-mode {
+    width: 100%;
+    margin-right: 0;
+  }
+  .arcade-hearts {
+    margin-right: auto;
+  }
+  .arcade-live-stat {
+    min-width: 48px;
+  }
+  .arcade-live-progress {
+    margin-left: auto;
+  }
+  .arcade-result-card {
+    padding: 14px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .arcade-new-record {
+    margin-left: auto;
+  }
+  .arcade-result-card p {
+    line-height: 1.6;
+  }
   .academy-heading h1 {
     font-size: 24px;
   }
