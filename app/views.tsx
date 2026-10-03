@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { categories, words } from "@/lib/vocabulary";
 import { dateKey, daysLeft, streak, type Grade } from "@/lib/learning";
+import { gameStats } from "@/lib/gamification";
 import type { Shared } from "./page";
 const findWord = (id: string) => words.find((w) => w.id === id)!;
 export function Dashboard({
@@ -52,6 +53,27 @@ export function Dashboard({
       )
     : 0;
   const remaining = daysLeft(state.settings.examDate, now);
+  const game = gameStats(state, now);
+  const missions = [
+    {
+      icon: "🧠",
+      title: "複習單字",
+      detail: `今天 ${game.reviewToday} / ${Math.min(10, Math.max(3, due))} 張`,
+      done: game.reviewToday >= Math.min(10, Math.max(3, due)),
+    },
+    {
+      icon: "⚡",
+      title: "情境快問快答",
+      detail: `今天 ${game.quizToday} / 10 題`,
+      done: game.quizToday >= 10,
+    },
+    {
+      icon: "🎯",
+      title: "答對 5 題",
+      detail: `今日答對 ${game.quizCorrectToday} / 5 題`,
+      done: game.quizCorrectToday >= 5,
+    },
+  ];
   const dailyTotal = Math.min(
     state.settings.dailyNew,
     words.length - learned + newToday,
@@ -170,6 +192,90 @@ export function Dashboard({
           note={allQuiz.length ? "依實際測驗作答計算" : "完成第一次測驗後顯示"}
         />
       </div>
+      <section className="game-hub" aria-label="等級與每日挑戰">
+        <div className="game-level-card">
+          <div className="game-rank-icon" aria-hidden="true">
+            {game.currentRank.icon}
+          </div>
+          <div className="game-level-copy">
+            <div className="game-eyebrow">
+              你的衝刺等級 <span>LV. {game.level}</span>
+            </div>
+            <h2>{game.currentRank.title}</h2>
+            <p>累積經驗值，靠每天練習解鎖新稱號。</p>
+            <div
+              className="xp-track"
+              role="progressbar"
+              aria-label="升級進度"
+              aria-valuenow={game.levelProgress}
+              aria-valuemin={0}
+              aria-valuemax={250}
+            >
+              <span style={{ width: `${(game.levelProgress / 250) * 100}%` }} />
+            </div>
+            <small>
+              {game.levelProgress} / 250 XP　·　今日 +{game.todayXp} XP
+            </small>
+          </div>
+          <div className="game-xp-orb">
+            <span>✨</span>
+            <strong>{game.xp.toLocaleString()}</strong>
+            <small>總 XP</small>
+          </div>
+        </div>
+        <div className="mission-card">
+          <div className="section-head">
+            <div>
+              <span className="game-eyebrow">DAILY QUEST</span>
+              <h2>今日挑戰</h2>
+            </div>
+            <span className="quest-count">
+              {missions.filter((m) => m.done).length} / {missions.length} 完成
+            </span>
+          </div>
+          <div className="mission-list">
+            {missions.map((mission) => (
+              <div
+                className={
+                  "mission-row " + (mission.done ? "mission-done" : "")
+                }
+                key={mission.title}
+              >
+                <span className="mission-icon" aria-hidden="true">
+                  {mission.done ? "✅" : mission.icon}
+                </span>
+                <span className="mission-copy">
+                  <strong>{mission.title}</strong>
+                  <small>{mission.detail}</small>
+                </span>
+                <span className="mission-reward">
+                  {mission.done ? "完成" : "挑戰中"}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="badge-strip" aria-label="成就徽章">
+        <div className="section-head">
+          <h2>已解鎖成就</h2>
+          <span className="tiny-label">持續練習，收集你的徽章</span>
+        </div>
+        <div className="badge-list">
+          {game.badges.map((badge) => (
+            <div
+              className={
+                "achievement-badge " + (badge.unlocked ? "unlocked" : "locked")
+              }
+              key={badge.title}
+              title={badge.unlocked ? badge.title : "尚未解鎖：" + badge.title}
+            >
+              <span aria-hidden="true">{badge.icon}</span>
+              <small>{badge.title}</small>
+            </div>
+          ))}
+        </div>
+      </section>
       <div className="lower-grid">
         <section className="panel tasks-panel">
           <div className="section-head">
@@ -258,8 +364,45 @@ export function Dashboard({
       </div>
       <section className="roadmap">
         <div className="section-head">
-          <h2>你的 60 天路線圖</h2>
+          <h2>60 天闖關地圖</h2>
           <span className="tiny-label">一步一步，走到目標</span>
+        </div>
+        <div
+          className="journey-scene"
+          role="img"
+          aria-label={`多益衝刺路線圖，目前關卡：${phases[phase]}`}
+        >
+          <svg
+            viewBox="0 0 920 160"
+            aria-hidden="true"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M82 100 C170 100 190 45 285 55 S405 125 500 100 S620 45 710 60 S790 108 838 78"
+              fill="none"
+              stroke="#cbd6f0"
+              strokeWidth="8"
+              strokeDasharray="4 14"
+              strokeLinecap="round"
+            />
+            <path
+              d={`M82 100 C170 100 190 45 285 55 S405 125 500 100 S620 45 710 60 S790 108 ${phase > 2 ? 838 : phase === 2 ? 710 : phase === 1 ? 500 : 285} ${phase > 2 ? 78 : phase === 2 ? 60 : phase === 1 ? 100 : 55}`}
+              fill="none"
+              stroke="#7287e8"
+              strokeWidth="8"
+              strokeLinecap="round"
+            />
+          </svg>
+          {["🌱", "🏢", "🎧", "🏆"].map((icon, i) => (
+            <div
+              className={`journey-stop ${i <= phase ? "journey-active" : ""} ${i === phase ? "journey-current" : ""}`}
+              key={icon}
+              style={{ left: `${9 + i * 27}%`, top: `${[48, 20, 57, 31][i]}%` }}
+            >
+              <span aria-hidden="true">{icon}</span>
+              <small>{["起跑營", "商務街區", "聽讀峽谷", "考場終點"][i]}</small>
+            </div>
+          ))}
         </div>
         <div className="phase-grid">
           {phases.map((name, i) => (
@@ -268,7 +411,9 @@ export function Dashboard({
               key={name}
             >
               <div className="phase-top">
-                <span>0{i + 1}</span>
+                <span>
+                  {["🌱", "🏢", "🎧", "🏆"][i]}　0{i + 1}
+                </span>
                 {i === phase && <b>目前階段</b>}
               </div>
               <h3>{name}</h3>
