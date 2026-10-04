@@ -20,6 +20,7 @@ import {
   Shield,
   Sparkles,
   LockKeyhole,
+  Map as MapIcon,
 } from "lucide-react";
 import {
   questions,
@@ -41,6 +42,7 @@ import {
   shuffled,
 } from "@/lib/exam";
 import { gameRunStats, personalGameRecords } from "@/lib/exam-games";
+import { campaignStages, campaignTitle, campaignStageResult, starsFor } from "@/lib/campaign";
 import {
   collectionCatalog,
   collectionProfileId,
@@ -68,7 +70,8 @@ type Tab =
   | "vocabulary"
   | "report"
   | "notes"
-  | "collection";
+  | "collection"
+  | "campaign";
 const tabs: { id: Tab; label: string; icon: typeof BookOpen }[] = [
   { id: "practice", label: "題型練習", icon: BookOpen },
   { id: "mock", label: "限時模考", icon: Timer },
@@ -77,6 +80,7 @@ const tabs: { id: Tab; label: string; icon: typeof BookOpen }[] = [
   { id: "report", label: "實力分析", icon: BarChart3 },
   { id: "notes", label: "收藏筆記", icon: NotebookPen },
   { id: "collection", label: "角色收藏館", icon: Sparkles },
+  { id: "campaign", label: "劇情戰役", icon: MapIcon },
 ];
 const grammarTips = [
   [
@@ -189,6 +193,7 @@ export default function ExamCenter({
   const gameRecords = useMemo(() => personalGameRecords(attempts), [attempts]);
   const gameRuns = attempts.filter((a) => a.challenge && a.finishedAt).length;
   const finishedGames = attempts.filter((a) => a.challenge && a.finishedAt);
+  const isCampaignAttempt = (attempt: Attempt) => /^【戰役:C\d-S\d】/.test(attempt.title);
   const longestGameCombo = Math.max(
     0,
     ...finishedGames.map((attempt) => gameRunStats(attempt).bestCombo),
@@ -405,7 +410,7 @@ export default function ExamCenter({
       a.challenge === "survival" &&
       gameRunStats(next).misses >= gameRules.survival.hearts;
     const allAnswered = Object.keys(next.answers).length === next.ids.length;
-    const submitRun = !!a.challenge && (outOfLives || allAnswered);
+    const submitRun = (!!a.challenge && (outOfLives || allAnswered)) || (isCampaignAttempt(a) && allAnswered);
     if (await persist(submitRun ? { ...next, finishedAt: Date.now() } : next)) {
       tick.current = Date.now();
       if (outOfLives)
@@ -423,7 +428,7 @@ export default function ExamCenter({
       return;
     }
     if (
-      active.challenge &&
+      (active.challenge || isCampaignAttempt(active)) &&
       index > active.index &&
       (index !== active.index + 1 || !active.answers[active.ids[active.index]])
     ) {
@@ -526,7 +531,7 @@ export default function ExamCenter({
   const reveal =
     !!active &&
     (!!active.finishedAt ||
-      (!!active.challenge && !!currentAnswer) ||
+      ((!!active.challenge || isCampaignAttempt(active)) && !!currentAnswer) ||
       (["practice", "spelling", "dictation"].includes(active.mode) &&
         !!currentAnswer));
   const strict = !!active && !active.finishedAt && active.mode === "mock";
@@ -581,8 +586,7 @@ export default function ExamCenter({
           aria-label="前往角色收藏館"
         >
           <span className={`academy-player-avatar ${equippedFrame.id}`}>
-            {equippedAvatar.icon}
-            <i>{equippedCompanion.icon}</i>
+            {equippedAvatar.image ? <img src={equippedAvatar.image} alt="" /> : equippedAvatar.icon}
           </span>
           <span>
             <small>我的衝刺隊伍</small>
@@ -590,7 +594,7 @@ export default function ExamCenter({
           </span>
           <span
             className="academy-player-pet"
-            aria-label={`夥伴：${equippedCompanion.name}`}
+            aria-label={`裝備：${equippedCompanion.name}`}
           >
             {equippedCompanion.icon}
           </span>
@@ -1150,10 +1154,10 @@ export default function ExamCenter({
                   ) : !active.finishedAt ? (
                     <button
                       className="primary-btn"
-                      disabled={busy || noteDirty || !!active.challenge}
+                      disabled={busy || noteDirty || !!active.challenge || isCampaignAttempt(active)}
                       onClick={() => void finish()}
                     >
-                      {active.challenge ? "全部答完自動結算" : "完成並交卷"}
+                      {active.challenge || isCampaignAttempt(active) ? "全部答完自動結算" : "完成並交卷"}
                     </button>
                   ) : (
                     <button
@@ -1207,7 +1211,7 @@ export default function ExamCenter({
                   </button>
                 ))}
               </div>
-              {!active.finishedAt && !active.challenge && (
+              {!active.finishedAt && !active.challenge && !isCampaignAttempt(active) && (
                 <button
                   className="secondary-btn full"
                   disabled={busy || noteDirty}
@@ -1274,6 +1278,32 @@ export default function ExamCenter({
                 </button>
               ))}
             </div>
+          )}
+          {tab === "campaign" && (
+            <section className="campaign-room" aria-label="TOEIC 劇情戰役">
+              <div className="campaign-hero">
+                <div><span className="tiny-label">GLOBAL RESPONSE UNIT · 01</span><h2>全球商務危機應變行動</h2><p>航班、港口與跨國企業接連失去聯絡。加入專業小隊，運用英文線索逐站找出真相。</p></div>
+                <div className="campaign-level"><strong>{campaignStages.filter((stage) => campaignStageResult(attempts, stage).best > 0).length}</strong><span>/ {campaignStages.length} 關通關</span></div>
+              </div>
+              <div className="campaign-grid">
+                {campaignStages.map((stage, index) => {
+                  const result = campaignStageResult(attempts, stage);
+                  const previous = index === 0 ? null : campaignStages[index - 1];
+                  const unlocked = !previous || campaignStageResult(attempts, previous).best > 0;
+                  return <article className={`campaign-stage ${unlocked ? "" : "campaign-locked"}`} key={stage.id}>
+                    <div className="campaign-stage-top"><span>CHAPTER {String(stage.chapter).padStart(2, "0")} · STAGE {stage.stage}</span><strong>{result.best ? "★".repeat(result.best) + "☆".repeat(3 - result.best) : "☆☆☆"}</strong></div>
+                    <h3>{stage.title}</h3><h4>{stage.operation}</h4><p>{stage.briefing}</p>
+                    <div className="campaign-meta"><span>Part {stage.part} · {partNames[stage.part]}</span><span>{stage.questions} 題</span></div>
+                    <button className={unlocked ? "primary-btn" : "secondary-btn"} disabled={!unlocked || busy} onClick={() => {
+                      const ids = selectPractice(stage.part, stage.questions);
+                      void start("mini", ids, campaignTitle(stage));
+                    }}>{!unlocked ? <><LockKeyhole size={15}/> 完成前一關解鎖</> : result.runs ? <>再次出勤 <ArrowRight size={16}/></> : <>開始任務 <ArrowRight size={16}/></>}</button>
+                    {result.runs > 0 && <small className="campaign-record">已出勤 {result.runs} 次 · 最佳 {result.best ? `${result.best} 星` : "尚未通關"}</small>}
+                  </article>;
+                })}
+              </div>
+              <p className="campaign-tip">通過門檻 70%｜85% 得 2 星｜全對得 3 星。每一關都從現有原創 TOEIC 題庫抽題，可重玩刷新最佳星等。</p>
+            </section>
           )}
           {tab === "practice" && (
             <>
@@ -2173,8 +2203,7 @@ export default function ExamCenter({
                 <div
                   className={`collection-avatar-preview ${equippedFrame.id}`}
                 >
-                  <span>{equippedAvatar.icon}</span>
-                  <i>{equippedCompanion.icon}</i>
+                  {equippedAvatar.image ? <img src={equippedAvatar.image} alt={`${equippedAvatar.name}角色肖像`} /> : <span>{equippedAvatar.icon}</span>}
                 </div>
                 <div className="collection-hero-copy">
                   <span className="tiny-label">YOUR TOEIC CREW</span>
@@ -2200,7 +2229,7 @@ export default function ExamCenter({
                       角色
                     </span>
                     <span>
-                      🐾{" "}
+                      🧰{" "}
                       {
                         collectibles.filter(
                           (item) => item.slot === "companion" && item.unlocked,
@@ -2211,7 +2240,7 @@ export default function ExamCenter({
                         collectibles.filter((item) => item.slot === "companion")
                           .length
                       }{" "}
-                      夥伴
+                      裝備
                     </span>
                     <span>
                       🖼️{" "}
@@ -2248,7 +2277,7 @@ export default function ExamCenter({
                 {(
                   [
                     ["avatar", "角色"],
-                    ["companion", "夥伴"],
+                    ["companion", "裝備"],
                     ["frame", "外框"],
                   ] as const
                 ).map(([slot, label]) => (
@@ -2276,7 +2305,7 @@ export default function ExamCenter({
                         onClick={() => void equipCollectible(item)}
                       >
                         <span className="collectible-art" aria-hidden="true">
-                          {item.icon}
+                          {item.image ? <img src={item.image} alt="" /> : item.icon}
                           {!item.unlocked && (
                             <i>
                               <LockKeyhole size={16} />

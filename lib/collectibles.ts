@@ -2,6 +2,7 @@ import { streak, type State } from "./learning";
 import { gameStats } from "./gamification";
 import { gameRunStats } from "./exam-games";
 import type { Attempt } from "./exam-types";
+import { results } from "./exam";
 
 export const collectionProfileId = "__toice_collection_v1__";
 export type CollectionSlot = "avatar" | "companion" | "frame";
@@ -14,6 +15,7 @@ export type Collectible = {
   description: string;
   unlock: string;
   unlocked: boolean;
+  image?: string;
 };
 
 export const defaultCollection: CollectionSelection = {
@@ -22,7 +24,7 @@ export const defaultCollection: CollectionSelection = {
   frame: "frame-paper",
 };
 const allowedSelection: Record<CollectionSlot, string[]> = {
-  avatar: ["avatar-owl", "avatar-panda", "avatar-fox", "avatar-dragon"],
+  avatar: ["avatar-owl", "avatar-panda", "avatar-fox", "avatar-dragon", "avatar-farah", "avatar-alex"],
   companion: ["pet-sparrow", "pet-slime", "pet-robot", "pet-phoenix"],
   frame: ["frame-paper", "frame-leaf", "frame-gold", "frame-trophy"],
 };
@@ -51,76 +53,92 @@ export function collectionCatalog(
       attempt.ids.length === 200 &&
       Object.keys(attempt.answers).length === 200,
   );
+  const campaignClears = finished.filter((attempt) => /^【戰役:C\d-S\d】/.test(attempt.title));
+  const campaignPassed = (chapter: number) => campaignClears.some((attempt) => attempt.title.startsWith(`【戰役:C${chapter}-`) && results(attempt).percent >= 70);
   return [
     {
       id: "avatar-owl",
       slot: "avatar",
-      name: "起跑貓頭鷹",
-      icon: "🦉",
-      description: "你的第一位衝刺隊友。",
+      name: "陳美雅 · 營運策略師",
+      icon: "MC",
+      image: "/characters/maya-chen.webp",
+      description: "台灣營運策略師，擅長把混亂拆成可執行的計畫。",
       unlock: "一開始就可使用",
       unlocked: true,
     },
     {
       id: "avatar-panda",
       slot: "avatar",
-      name: "單字熊貓",
-      icon: "🐼",
-      description: "最喜歡把生字收進收藏冊。",
+      name: "Marcus Reed · 溝通教練",
+      icon: "MR",
+      image: "/characters/marcus-reed.webp",
+      description: "資深溝通顧問，熟悉會議、簡報與跨部門協作。",
       unlock: "累積 30 次單字練習",
       unlocked: vocabReviews >= 30,
     },
     {
       id: "avatar-fox",
       slot: "avatar",
-      name: "連勝狐狸",
-      icon: "🦊",
-      description: "連續學習，耳朵越來越靈。",
+      name: "Priya Raman · 商務顧問",
+      icon: "PR",
+      image: "/characters/priya-raman.webp",
+      description: "國際商務顧問，善於從合約細節找出關鍵資訊。",
       unlock: "連續學習 3 天",
       unlocked: days >= 3,
     },
     {
       id: "avatar-dragon",
       slot: "avatar",
-      name: "首領小龍",
-      icon: "🐉",
-      description: "擊敗弱點首領後加入隊伍。",
-      unlock: "首領戰答對至少 9 題",
-      unlocked: perfectBoss,
+      name: "Sofia Alvarez · 運輸規劃師",
+      icon: "SA",
+      image: "/characters/sofia-alvarez.webp",
+      description: "物流與交通規劃專家，能在時限內排除路線問題。",
+      unlock: "通過第 2 章戰役",
+      unlocked: campaignPassed(2) || perfectBoss,
+    },
+    {
+      id: "avatar-farah", slot: "avatar", name: "Farah El-Amin · 採購稽核師", icon: "FE",
+      image: "/characters/farah-elamin.webp", description: "採購稽核師，專長核對報價、條款與供應商紀錄。",
+      unlock: "通過第 4 章戰役", unlocked: campaignPassed(4),
+    },
+    {
+      id: "avatar-alex", slot: "avatar", name: "Alex Santos · 資訊設計師", icon: "AS",
+      image: "/characters/alex-santos.webp", description: "非二元資訊設計師，將複雜公告轉成清楚的行動線索。",
+      unlock: "通過第 6 章戰役", unlocked: campaignPassed(6),
     },
     {
       id: "pet-sparrow",
       slot: "companion",
-      name: "晨光麻雀",
-      icon: "🐦",
-      description: "每天開始練習時陪你報到。",
+      name: "現場錄音筆",
+      icon: "🎙️",
+      description: "整理會議重點，強化聽力與關鍵字辨識。",
       unlock: "一開始就可使用",
       unlocked: true,
     },
     {
       id: "pet-slime",
       slot: "companion",
-      name: "咖啡史萊姆",
-      icon: "☕",
-      description: "吸收新單字後會閃閃發亮。",
+      name: "文件掃描器",
+      icon: "▤",
+      description: "快速比對公告、表單與多文件線索。",
       unlock: "學會 50 個單字",
       unlocked: learned >= 50,
     },
     {
       id: "pet-robot",
       slot: "companion",
-      name: "答題機器人",
-      icon: "🤖",
-      description: "喜歡挑戰限時關卡。",
+      name: "資料終端",
+      icon: "▣",
+      description: "彙整限時訓練數據與考點紀錄。",
       unlock: "完成 5 場遊戲挑戰",
       unlocked: gameClears >= 5,
     },
     {
       id: "pet-phoenix",
       slot: "companion",
-      name: "七日鳳凰",
-      icon: "🔥",
-      description: "連續練習後從火光中現身。",
+      name: "即時翻譯器",
+      icon: "⇄",
+      description: "切換語境理解商務用語與改寫表達。",
       unlock: "連續學習 7 天",
       unlocked: days >= 7,
     },

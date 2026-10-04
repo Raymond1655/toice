@@ -37,6 +37,7 @@
   background: #f1f4fb;
   font-size: 25px;
 }
+.academy-player-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 26%; border-radius: 11px; }
 .academy-player-avatar i {
   position: absolute;
   right: -7px;
@@ -199,6 +200,30 @@
   background: linear-gradient(145deg, #eef1ff, #f5f7fc);
   font-size: 36px;
 }
+.collectible-art:has(img) { overflow: hidden; background: linear-gradient(145deg, #1d3154, #657999); }
+.collectible-art img { width: 100%; height: 100%; object-fit: cover; object-position: center 24%; }
+.collection-avatar-preview { overflow: hidden; }
+.collection-avatar-preview img { width: 100%; height: 100%; object-fit: cover; object-position: center 23%; }
+.campaign-room { max-width: 1100px; margin: auto; }
+.campaign-hero { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 30px; border-radius: 22px; color: #fff; background: radial-gradient(circle at 90% 5%, #61789b, transparent 36%), linear-gradient(125deg, #111d32, #263b5a); }
+.campaign-hero h2 { margin: 8px 0; font-size: clamp(23px, 4vw, 32px); }
+.campaign-hero p { max-width: 650px; color: #d1dae8; font-size: 13px; line-height: 1.8; margin: 0; }
+.campaign-level { flex-shrink: 0; display: grid; justify-items: center; color: #d2def1; }
+.campaign-level strong { color: #fff; font-size: 38px; }
+.campaign-level span { font-size: 11px; }
+.campaign-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; margin-top: 18px; }
+.campaign-stage { padding: 18px; border: 1px solid #e1e6ef; border-radius: 18px; background: #fff; box-shadow: 0 8px 26px #26365308; }
+.campaign-stage-top { display: flex; justify-content: space-between; gap: 8px; color: #78869a; font-size: 9px; letter-spacing: .08em; }
+.campaign-stage-top strong { color: #bd8e3d; font-size: 14px; letter-spacing: 2px; white-space: nowrap; }
+.campaign-stage h3 { margin: 16px 0 2px; color: #243552; font-size: 18px; }
+.campaign-stage h4 { margin: 0; color: #607392; font-size: 12px; }
+.campaign-stage p { min-height: 55px; color: #7b8799; font-size: 11px; line-height: 1.7; }
+.campaign-meta { display: flex; justify-content: space-between; padding: 10px 0; border-top: 1px solid #eef0f4; color: #67758b; font-size: 10px; }
+.campaign-stage .primary-btn,.campaign-stage .secondary-btn { width: 100%; justify-content: center; }
+.campaign-stage button svg { width: 15px; }
+.campaign-record { display: block; margin-top: 9px; color: #758198; text-align: center; font-size: 10px; }
+.campaign-locked { opacity: .65; background: #f5f6f8; }
+.campaign-tip { margin: 16px 2px; color: #718097; font-size: 11px; }
 .collectible-art > i {
   position: absolute;
   right: -5px;
@@ -1182,6 +1207,7 @@
   border: 0;
 }
 @media (max-width: 1150px) {
+  .campaign-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .part-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1202,6 +1228,11 @@
   }
 }
 @media (max-width: 760px) {
+  .campaign-grid { grid-template-columns: 1fr; }
+  .campaign-hero { align-items: flex-start; padding: 22px; }
+  .campaign-hero p { font-size: 12px; }
+  .campaign-level { padding-top: 18px; }
+  .campaign-level strong { font-size: 30px; }
   .academy-player-badge {
     gap: 7px;
     padding: 7px;
