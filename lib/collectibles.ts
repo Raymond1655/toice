@@ -24,9 +24,25 @@ export const defaultCollection: CollectionSelection = {
   frame: "frame-paper",
 };
 const allowedSelection: Record<CollectionSlot, string[]> = {
-  avatar: ["avatar-owl", "avatar-panda", "avatar-fox", "avatar-dragon", "avatar-farah", "avatar-alex"],
+  avatar: [
+    "avatar-owl",
+    "avatar-panda",
+    "avatar-fox",
+    "avatar-dragon",
+    "avatar-farah",
+    "avatar-alex",
+  ],
   companion: ["pet-sparrow", "pet-slime", "pet-robot", "pet-phoenix"],
-  frame: ["frame-paper", "frame-leaf", "frame-gold", "frame-trophy"],
+  frame: [
+    "frame-paper",
+    "frame-leaf",
+    "frame-gold",
+    "frame-trophy",
+    "frame-season-5",
+    "frame-season-10",
+    "frame-season-15",
+    "frame-season-20",
+  ],
 };
 
 export function collectionCatalog(
@@ -53,8 +69,15 @@ export function collectionCatalog(
       attempt.ids.length === 200 &&
       Object.keys(attempt.answers).length === 200,
   );
-  const campaignClears = finished.filter((attempt) => /^【戰役:C\d-S\d】/.test(attempt.title));
-  const campaignPassed = (chapter: number) => campaignClears.some((attempt) => attempt.title.startsWith(`【戰役:C${chapter}-`) && results(attempt).percent >= 70);
+  const campaignClears = finished.filter((attempt) =>
+    /^【戰役:C\d-S\d】/.test(attempt.title),
+  );
+  const campaignPassed = (chapter: number) =>
+    campaignClears.some(
+      (attempt) =>
+        attempt.title.startsWith(`【戰役:C${chapter}-`) &&
+        results(attempt).percent >= 70,
+    );
   return [
     {
       id: "avatar-owl",
@@ -97,14 +120,24 @@ export function collectionCatalog(
       unlocked: campaignPassed(2) || perfectBoss,
     },
     {
-      id: "avatar-farah", slot: "avatar", name: "Farah El-Amin · 採購稽核師", icon: "FE",
-      image: "/characters/farah-elamin.webp", description: "採購稽核師，專長核對報價、條款與供應商紀錄。",
-      unlock: "通過第 4 章戰役", unlocked: campaignPassed(4),
+      id: "avatar-farah",
+      slot: "avatar",
+      name: "Farah El-Amin · 採購稽核師",
+      icon: "FE",
+      image: "/characters/farah-elamin.webp",
+      description: "採購稽核師，專長核對報價、條款與供應商紀錄。",
+      unlock: "通過第 4 章戰役",
+      unlocked: campaignPassed(4),
     },
     {
-      id: "avatar-alex", slot: "avatar", name: "Alex Santos · 資訊設計師", icon: "AS",
-      image: "/characters/alex-santos.webp", description: "非二元資訊設計師，將複雜公告轉成清楚的行動線索。",
-      unlock: "通過第 6 章戰役", unlocked: campaignPassed(6),
+      id: "avatar-alex",
+      slot: "avatar",
+      name: "Alex Santos · 資訊設計師",
+      icon: "AS",
+      image: "/characters/alex-santos.webp",
+      description: "非二元資訊設計師，將複雜公告轉成清楚的行動線索。",
+      unlock: "通過第 6 章戰役",
+      unlocked: campaignPassed(6),
     },
     {
       id: "pet-sparrow",
@@ -178,6 +211,69 @@ export function collectionCatalog(
       unlock: "完成一回 200 題模考",
       unlocked: mockClears,
     },
+    ...([5, 10, 15, 20] as const).map((requiredLevel) => ({
+      id: `frame-season-${requiredLevel}`,
+      slot: "frame" as const,
+      name: [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "行動代號框",
+        "",
+        "",
+        "",
+        "",
+        "角色檔案框",
+        "",
+        "",
+        "",
+        "",
+        "典藏材質框",
+        "",
+        "",
+        "",
+        "",
+        "菁英行動框",
+      ][requiredLevel],
+      icon: [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "05",
+        "",
+        "",
+        "",
+        "",
+        "10",
+        "",
+        "",
+        "",
+        "",
+        "15",
+        "",
+        "",
+        "",
+        "",
+        "20",
+      ][requiredLevel],
+      description: `通行證第 ${requiredLevel} 級獎勵，紀錄長期訓練投入。`,
+      unlock: `通行證達到第 ${requiredLevel} 級`,
+      unlocked:
+        Math.floor(
+          (gameStats(state, now).xp +
+            finished.reduce(
+              (sum, attempt) => sum + Object.keys(attempt.answers).length * 3,
+              0,
+            )) /
+            200,
+        ) +
+          1 >=
+        requiredLevel,
+    })),
   ];
 }
 

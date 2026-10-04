@@ -37,7 +37,13 @@
   background: #f1f4fb;
   font-size: 25px;
 }
-.academy-player-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 26%; border-radius: 11px; }
+.academy-player-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 26%;
+  border-radius: 11px;
+}
 .academy-player-avatar i {
   position: absolute;
   right: -7px;
@@ -58,6 +64,26 @@
 .collection-avatar-preview.frame-trophy {
   border-color: #8d7be4;
   box-shadow: 0 0 0 3px #dfdafa;
+}
+.academy-player-avatar.frame-season-5,
+.collection-avatar-preview.frame-season-5 {
+  border-color: #7186a8;
+  box-shadow: 0 0 0 3px #dbe3ef;
+}
+.academy-player-avatar.frame-season-10,
+.collection-avatar-preview.frame-season-10 {
+  border-color: #547c82;
+  box-shadow: 0 0 0 3px #d2e5e4;
+}
+.academy-player-avatar.frame-season-15,
+.collection-avatar-preview.frame-season-15 {
+  border-color: #9f774b;
+  box-shadow: 0 0 0 3px #eee1ce;
+}
+.academy-player-avatar.frame-season-20,
+.collection-avatar-preview.frame-season-20 {
+  border-color: #a44843;
+  box-shadow: 0 0 0 3px #f1d9d7;
 }
 .academy-player-pet {
   font-size: 17px;
@@ -200,30 +226,440 @@
   background: linear-gradient(145deg, #eef1ff, #f5f7fc);
   font-size: 36px;
 }
-.collectible-art:has(img) { overflow: hidden; background: linear-gradient(145deg, #1d3154, #657999); }
-.collectible-art img { width: 100%; height: 100%; object-fit: cover; object-position: center 24%; }
-.collection-avatar-preview { overflow: hidden; }
-.collection-avatar-preview img { width: 100%; height: 100%; object-fit: cover; object-position: center 23%; }
-.campaign-room { max-width: 1100px; margin: auto; }
-.campaign-hero { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 30px; border-radius: 22px; color: #fff; background: radial-gradient(circle at 90% 5%, #61789b, transparent 36%), linear-gradient(125deg, #111d32, #263b5a); }
-.campaign-hero h2 { margin: 8px 0; font-size: clamp(23px, 4vw, 32px); }
-.campaign-hero p { max-width: 650px; color: #d1dae8; font-size: 13px; line-height: 1.8; margin: 0; }
-.campaign-level { flex-shrink: 0; display: grid; justify-items: center; color: #d2def1; }
-.campaign-level strong { color: #fff; font-size: 38px; }
-.campaign-level span { font-size: 11px; }
-.campaign-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; margin-top: 18px; }
-.campaign-stage { padding: 18px; border: 1px solid #e1e6ef; border-radius: 18px; background: #fff; box-shadow: 0 8px 26px #26365308; }
-.campaign-stage-top { display: flex; justify-content: space-between; gap: 8px; color: #78869a; font-size: 9px; letter-spacing: .08em; }
-.campaign-stage-top strong { color: #bd8e3d; font-size: 14px; letter-spacing: 2px; white-space: nowrap; }
-.campaign-stage h3 { margin: 16px 0 2px; color: #243552; font-size: 18px; }
-.campaign-stage h4 { margin: 0; color: #607392; font-size: 12px; }
-.campaign-stage p { min-height: 55px; color: #7b8799; font-size: 11px; line-height: 1.7; }
-.campaign-meta { display: flex; justify-content: space-between; padding: 10px 0; border-top: 1px solid #eef0f4; color: #67758b; font-size: 10px; }
-.campaign-stage .primary-btn,.campaign-stage .secondary-btn { width: 100%; justify-content: center; }
-.campaign-stage button svg { width: 15px; }
-.campaign-record { display: block; margin-top: 9px; color: #758198; text-align: center; font-size: 10px; }
-.campaign-locked { opacity: .65; background: #f5f6f8; }
-.campaign-tip { margin: 16px 2px; color: #718097; font-size: 11px; }
+.collectible-art:has(img) {
+  overflow: hidden;
+  background: linear-gradient(145deg, #1d3154, #657999);
+}
+.collectible-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 24%;
+}
+.collection-avatar-preview {
+  overflow: hidden;
+}
+.collection-avatar-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 23%;
+}
+.campaign-room {
+  max-width: 1100px;
+  margin: auto;
+}
+.campaign-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 30px;
+  border-radius: 22px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 90% 5%, #61789b, transparent 36%),
+    linear-gradient(125deg, #111d32, #263b5a);
+}
+.campaign-hero h2 {
+  margin: 8px 0;
+  font-size: clamp(23px, 4vw, 32px);
+}
+.campaign-hero p {
+  max-width: 650px;
+  color: #d1dae8;
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 0;
+}
+.campaign-level {
+  flex-shrink: 0;
+  display: grid;
+  justify-items: center;
+  color: #d2def1;
+}
+.campaign-level strong {
+  color: #fff;
+  font-size: 38px;
+}
+.campaign-level span {
+  font-size: 11px;
+}
+.campaign-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+.campaign-stage {
+  padding: 18px;
+  border: 1px solid #e1e6ef;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 26px #26365308;
+}
+.campaign-stage-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #78869a;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+.campaign-stage-top strong {
+  color: #bd8e3d;
+  font-size: 14px;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+.campaign-stage h3 {
+  margin: 16px 0 2px;
+  color: #243552;
+  font-size: 18px;
+}
+.campaign-stage h4 {
+  margin: 0;
+  color: #607392;
+  font-size: 12px;
+}
+.campaign-stage p {
+  min-height: 55px;
+  color: #7b8799;
+  font-size: 11px;
+  line-height: 1.7;
+}
+.campaign-meta {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-top: 1px solid #eef0f4;
+  color: #67758b;
+  font-size: 10px;
+}
+.campaign-stage .primary-btn,
+.campaign-stage .secondary-btn {
+  width: 100%;
+  justify-content: center;
+}
+.campaign-stage button svg {
+  width: 15px;
+}
+.campaign-record {
+  display: block;
+  margin-top: 9px;
+  color: #758198;
+  text-align: center;
+  font-size: 10px;
+}
+.campaign-locked {
+  opacity: 0.65;
+  background: #f5f6f8;
+}
+.campaign-tip {
+  margin: 16px 2px;
+  color: #718097;
+  font-size: 11px;
+}
+.daily-season-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 14px;
+  margin: 18px 0;
+}
+.daily-panel,
+.season-panel,
+.study-plan,
+.story-panel {
+  padding: 20px;
+  border: 1px solid #e3e8f0;
+  border-radius: 19px;
+  background: #fff;
+}
+.progression-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.progression-heading h2 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 5px 0 0;
+  color: #283957;
+  font-size: 18px;
+}
+.progression-heading > span {
+  color: #78859a;
+  font-size: 11px;
+}
+.progression-heading > strong {
+  color: #34466b;
+  font-size: 20px;
+}
+.daily-mission {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 7px 12px;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid #eef0f4;
+}
+.daily-mission > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.daily-mission strong {
+  color: #40506b;
+  font-size: 11px;
+}
+.daily-mission small {
+  color: #8a94a4;
+  font-size: 10px;
+}
+.daily-mission .text-btn,
+.mission-complete {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  white-space: nowrap;
+  font-size: 10px;
+}
+.mission-complete {
+  color: #43846a;
+  font-weight: 700;
+}
+.daily-track,
+.season-track,
+.affinity-track {
+  overflow: hidden;
+  height: 6px;
+  border-radius: 20px;
+  background: #edf0f5;
+}
+.daily-track i,
+.season-track i,
+.affinity-track i {
+  display: block;
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #586fa1, #8da3d1);
+  transition: width 0.3s;
+}
+.season-panel {
+  color: #63728a;
+  background: linear-gradient(140deg, #f7f8fb, #eff2f8);
+}
+.season-panel p {
+  margin: 14px 0;
+  color: #718097;
+  font-size: 11px;
+}
+.season-track {
+  height: 9px;
+}
+.season-rewards {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0 10px;
+}
+.season-rewards span {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  color: #9ca5b3;
+}
+.season-rewards b {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #d8deea;
+  border-radius: 50%;
+  background: #fff;
+}
+.season-rewards .earned {
+  color: #4e6caa;
+}
+.season-rewards .earned b {
+  border-color: #7188ba;
+  background: #e8edf7;
+}
+.season-rewards small,
+.season-caption {
+  font-size: 9px;
+}
+.season-caption {
+  color: #8691a2;
+}
+.quick-modes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 20px;
+}
+.quick-modes button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #e3e8f0;
+  border-radius: 15px;
+  background: #fff;
+  color: #53678c;
+  text-align: left;
+}
+.quick-modes button:hover {
+  border-color: #aab9d5;
+  transform: translateY(-1px);
+}
+.quick-modes button > span {
+  display: grid;
+  gap: 4px;
+  flex: 1;
+}
+.quick-modes strong {
+  color: #34435e;
+  font-size: 11px;
+}
+.quick-modes small {
+  color: #8490a1;
+  font-size: 9px;
+}
+.boss-phases {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: center;
+  gap: 8px;
+}
+.boss-phases span {
+  padding: 5px 9px;
+  border-radius: 20px;
+  color: #bac3d2;
+  background: #ffffff12;
+  font-size: 10px;
+}
+.boss-phases span.current {
+  color: #fff;
+  background: #6b80aa;
+}
+.study-plan {
+  margin-bottom: 16px;
+}
+.study-plan .progression-heading .primary-btn {
+  padding: 9px 12px;
+  font-size: 11px;
+}
+.study-plan > p {
+  color: #748197;
+  font-size: 11px;
+  line-height: 1.8;
+}
+.study-plan-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 12px;
+}
+.study-plan-days button {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  padding: 11px 6px;
+  border: 1px solid #e5e9ef;
+  border-radius: 12px;
+  background: #fafbfc;
+}
+.study-plan-days button:hover {
+  border-color: #aab9d5;
+  background: #f1f4fa;
+}
+.study-plan-days span {
+  color: #929daf;
+  font-size: 8px;
+}
+.study-plan-days strong {
+  color: #3f5278;
+  font-size: 12px;
+}
+.study-plan-days small {
+  color: #7e899a;
+  font-size: 8px;
+}
+.story-panel {
+  margin-top: 20px;
+}
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.story-card {
+  display: flex;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #e6e9ef;
+  border-radius: 15px;
+  background: #fafbfc;
+}
+.story-card > img {
+  flex: 0 0 70px;
+  width: 70px;
+  height: 94px;
+  border-radius: 11px;
+  object-fit: cover;
+  object-position: center 20%;
+  background: #253854;
+}
+.story-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+.story-copy > span {
+  color: #8490a0;
+  font-size: 8px;
+  letter-spacing: 0.04em;
+}
+.story-copy h3 {
+  margin: 0;
+  color: #394b68;
+  font-size: 13px;
+}
+.story-copy p {
+  margin: 0;
+  color: #788498;
+  font-size: 10px;
+  line-height: 1.6;
+}
+.story-copy > small {
+  color: #788498;
+  font-size: 9px;
+}
+.story-copy blockquote {
+  margin: 2px 0;
+  padding: 7px 9px;
+  border-left: 2px solid #8195bb;
+  background: #f0f3f8;
+  color: #596b8b;
+  font-size: 9px;
+  line-height: 1.6;
+}
+.story-copy .secondary-btn {
+  padding: 7px 10px;
+  font-size: 9px;
+}
+.story-locked {
+  opacity: 0.55;
+}
+.study-plan-days button:disabled,
+.story-card button:disabled {
+  cursor: not-allowed;
+}
 .collectible-art > i {
   position: absolute;
   right: -5px;
@@ -1207,7 +1643,12 @@
   border: 0;
 }
 @media (max-width: 1150px) {
-  .campaign-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .campaign-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .study-plan-days {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
   .part-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1228,11 +1669,44 @@
   }
 }
 @media (max-width: 760px) {
-  .campaign-grid { grid-template-columns: 1fr; }
-  .campaign-hero { align-items: flex-start; padding: 22px; }
-  .campaign-hero p { font-size: 12px; }
-  .campaign-level { padding-top: 18px; }
-  .campaign-level strong { font-size: 30px; }
+  .campaign-grid {
+    grid-template-columns: 1fr;
+  }
+  .campaign-hero {
+    align-items: flex-start;
+    padding: 22px;
+  }
+  .campaign-hero p {
+    font-size: 12px;
+  }
+  .campaign-level {
+    padding-top: 18px;
+  }
+  .campaign-level strong {
+    font-size: 30px;
+  }
+  .daily-season-grid,
+  .quick-modes,
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+  .quick-modes {
+    gap: 7px;
+  }
+  .study-plan {
+    padding: 16px;
+  }
+  .study-plan-days {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .story-card > img {
+    flex-basis: 62px;
+    width: 62px;
+    height: 84px;
+  }
+  .boss-phases {
+    flex-wrap: wrap;
+  }
   .academy-player-badge {
     gap: 7px;
     padding: 7px;

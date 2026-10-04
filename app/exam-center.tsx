@@ -21,6 +21,9 @@ import {
   Sparkles,
   LockKeyhole,
   Map as MapIcon,
+  CalendarCheck,
+  Mic,
+  Swords,
 } from "lucide-react";
 import {
   questions,
@@ -42,7 +45,12 @@ import {
   shuffled,
 } from "@/lib/exam";
 import { gameRunStats, personalGameRecords } from "@/lib/exam-games";
-import { campaignStages, campaignTitle, campaignStageResult, starsFor } from "@/lib/campaign";
+import {
+  campaignStages,
+  campaignTitle,
+  campaignStageResult,
+} from "@/lib/campaign";
+import { seasonInfo, todayProgress, storyAffinity } from "@/lib/season";
 import {
   collectionCatalog,
   collectionProfileId,
@@ -113,6 +121,58 @@ const grammarTips = [
     "re- 常表示再次；un- 常表示否定；-tion / -ment 常形成名詞；-ly 常形成副詞。搭配例句確認詞義。",
     "revise → revision; develop → development; careful → carefully",
   ],
+];
+const sideStories = [
+  {
+    character: "maya-chen",
+    name: "Maya 陳美雅",
+    chapter: 1,
+    part: 5 as Part,
+    title: "失聯航班的行動紀錄",
+    story:
+      "美雅在出發名單中發現兩份互相矛盾的通知。協助她核對時態、時程與航班異動。",
+  },
+  {
+    character: "marcus-reed",
+    name: "Marcus Reed",
+    chapter: 2,
+    part: 3 as Part,
+    title: "最後一通港口電話",
+    story: "Marcus 從船務對話裡找到延誤原因；聽清楚時間、轉折和真正的請求。",
+  },
+  {
+    character: "priya-raman",
+    name: "Priya Raman",
+    chapter: 3,
+    part: 7 as Part,
+    title: "被刪改的收購條款",
+    story: "Priya 拿到合約版本和內部郵件，請你比對細節，找出交易中的關鍵限制。",
+  },
+  {
+    character: "sofia-alvarez",
+    name: "Sofia Alvarez",
+    chapter: 4,
+    part: 4 as Part,
+    title: "凌晨四點的改道公告",
+    story: "Sofia 必須在貨運窗口前發布新路線，從廣播與行程公告中確認交付順序。",
+  },
+  {
+    character: "farah-elamin",
+    name: "Farah El-Amin",
+    chapter: 5,
+    part: 6 as Part,
+    title: "缺頁的供應商提案",
+    story: "Farah 對照採購提案和價格表，找出缺漏資訊與不一致的條件。",
+  },
+  {
+    character: "alex-santos",
+    name: "Alex Santos",
+    chapter: 6,
+    part: 2 as Part,
+    title: "董事會前的最後簡報",
+    story:
+      "Alex 收到一連串臨時要求。從間接應答中判斷誰能到場、誰需要替代方案。",
+  },
 ];
 const fmt = (ms: number) => {
   const s = Math.max(0, Math.ceil(ms / 1000));
@@ -193,11 +253,20 @@ export default function ExamCenter({
   const gameRecords = useMemo(() => personalGameRecords(attempts), [attempts]);
   const gameRuns = attempts.filter((a) => a.challenge && a.finishedAt).length;
   const finishedGames = attempts.filter((a) => a.challenge && a.finishedAt);
-  const isCampaignAttempt = (attempt: Attempt) => /^【戰役:C\d-S\d】/.test(attempt.title);
+  const isCampaignAttempt = (attempt: Attempt) =>
+    /^【戰役:C\d-S\d】/.test(attempt.title);
+  const isRevengeAttempt = (attempt: Attempt) =>
+    attempt.title.startsWith("【錯題復仇】");
   const longestGameCombo = Math.max(
     0,
     ...finishedGames.map((attempt) => gameRunStats(attempt).bestCombo),
   );
+  const season = seasonInfo(now, state, attempts);
+  const dailyMissions = todayProgress(now, state, attempts);
+  const listeningPool = questions
+    .filter((q) => q.pool === "practice" && q.part <= 4 && q.audio)
+    .map((q) => q.id);
+  const wrongIds = [...new Set(weak.map((item) => item.id))];
   const arcadeBadges = [
     { title: "第一場挑戰", icon: "🚩", unlocked: gameRuns >= 1 },
     { title: "五場磨練", icon: "🎖️", unlocked: gameRuns >= 5 },
@@ -216,6 +285,36 @@ export default function ExamCenter({
       icon: "🏆",
       unlocked: Object.values(gameRecords).every((record) => record.clears > 0),
     },
+    {
+      title: "錯題復仇者",
+      icon: "⚔️",
+      unlocked: attempts.some(
+        (a) =>
+          a.title.startsWith("【錯題復仇】") &&
+          a.finishedAt &&
+          results(a).percent >= 80,
+      ),
+    },
+    {
+      title: "聽力情報員",
+      icon: "🎧",
+      unlocked: dailyMissions.find((m) => m.id === "listen")!.current > 0,
+    },
+    {
+      title: "全球行動完成",
+      icon: "🌐",
+      unlocked: campaignStages.every(
+        (stage) => campaignStageResult(attempts, stage).best > 0,
+      ),
+    },
+    {
+      title: "信賴夥伴",
+      icon: "🤝",
+      unlocked: sideStories.some(
+        (side) => storyAffinity(attempts, side.character) >= 24,
+      ),
+    },
+    { title: "賽季菁英", icon: "🏅", unlocked: season.level >= 20 },
   ];
   const collectibles = useMemo(
     () => collectionCatalog(state, attempts, now),
@@ -326,7 +425,9 @@ export default function ExamCenter({
     const base = newAttempt(mode, ids, title);
     const a = challenge
       ? { ...base, challenge, duration: gameRules[challenge].duration }
-      : base;
+      : title.startsWith("【錯題復仇】")
+        ? { ...base, duration: Math.max(45_000, ids.length * 45_000) }
+        : base;
     if (await persist(a)) {
       setReviewIndex(0);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -336,20 +437,57 @@ export default function ExamCenter({
     const rules = gameRules[challenge];
     let ids: string[];
     if (challenge === "boss") {
-      const weakestPart = recommendations[0]?.part ?? 0;
-      const weakFirst = shuffled([...new Set(weak.map((item) => item.id))]);
-      ids = shuffled(
-        [
-          ...new Set([
-            ...weakFirst.slice(0, rules.questions),
-            ...selectPractice(weakestPart, rules.questions),
-          ]),
-        ].slice(0, rules.questions),
-      );
+      const phases = [[1, 2] as Part[], [3, 4] as Part[], [5, 6, 7] as Part[]];
+      const phaseQuestions = phases.map((parts) => {
+        const weakIds = weak
+          .filter((item) => {
+            const questionPart = questionMap.get(item.id)?.part;
+            return questionPart !== undefined && parts.includes(questionPart);
+          })
+          .map((item) => item.id);
+        const part =
+          recommendations.find((item) => parts.includes(item.part))?.part ??
+          parts[0];
+        return shuffled([
+          ...new Set([...weakIds, ...selectPractice(part, 8)]),
+        ]).slice(0, 4);
+      });
+      ids = phaseQuestions.flat();
     } else {
       ids = selectPractice(0, rules.questions);
     }
     void start("mini", ids, rules.title, challenge);
+  }
+  function startAdaptive() {
+    const priority = weak.slice(0, 12).map((item) => item.id);
+    const fresh = selectPractice(
+      recommendations[0]?.part ?? 0,
+      16,
+      "",
+      Math.random,
+      { unseen: true, seenIds },
+    );
+    const ids = [...new Set([...priority, ...fresh])].slice(0, 20);
+    void start(
+      "practice",
+      ids.length ? ids : selectPractice(recommendations[0]?.part ?? 0, 20),
+      "【自適應訓練】依弱點安排",
+    );
+  }
+  function startListening() {
+    const pool = listeningPool.length ? listeningPool : selectPractice(1, 12);
+    void start(
+      "practice",
+      shuffled(pool).slice(0, 12),
+      "【聽力專項】精聽跟讀任務",
+    );
+  }
+  function startRevenge() {
+    void start(
+      "practice",
+      shuffled(wrongIds).slice(0, 12),
+      "【錯題復仇】限時重戰",
+    );
   }
   async function equipCollectible(item: Collectible) {
     if (!item.unlocked || busy) return;
@@ -410,7 +548,9 @@ export default function ExamCenter({
       a.challenge === "survival" &&
       gameRunStats(next).misses >= gameRules.survival.hearts;
     const allAnswered = Object.keys(next.answers).length === next.ids.length;
-    const submitRun = (!!a.challenge && (outOfLives || allAnswered)) || (isCampaignAttempt(a) && allAnswered);
+    const submitRun =
+      (!!a.challenge && (outOfLives || allAnswered)) ||
+      ((isCampaignAttempt(a) || isRevengeAttempt(a)) && allAnswered);
     if (await persist(submitRun ? { ...next, finishedAt: Date.now() } : next)) {
       tick.current = Date.now();
       if (outOfLives)
@@ -428,7 +568,9 @@ export default function ExamCenter({
       return;
     }
     if (
-      (active.challenge || isCampaignAttempt(active)) &&
+      (active.challenge ||
+        isCampaignAttempt(active) ||
+        isRevengeAttempt(active)) &&
       index > active.index &&
       (index !== active.index + 1 || !active.answers[active.ids[active.index]])
     ) {
@@ -475,6 +617,13 @@ export default function ExamCenter({
     } catch {
       setMessage("音檔尚未就緒，請檢查網路後再播放。");
     }
+  }
+  async function markListening(q: Question) {
+    const a = activeRef.current;
+    const audioId = q.group || q.id;
+    if (!a?.title.startsWith("【聽力專項】") || a.played.includes(audioId))
+      return;
+    await persist({ ...a, played: [...a.played, audioId] });
   }
   async function saveNote() {
     if (!notesId) return;
@@ -531,12 +680,19 @@ export default function ExamCenter({
   const reveal =
     !!active &&
     (!!active.finishedAt ||
-      ((!!active.challenge || isCampaignAttempt(active)) && !!currentAnswer) ||
+      ((!!active.challenge ||
+        isCampaignAttempt(active) ||
+        isRevengeAttempt(active)) &&
+        !!currentAnswer) ||
       (["practice", "spelling", "dictation"].includes(active.mode) &&
         !!currentAnswer));
   const strict = !!active && !active.finishedAt && active.mode === "mock";
   const summary = active ? results(active) : null;
   const activeGameStats = active?.challenge ? gameRunStats(active) : null;
+  const bossPhaseIndex =
+    active?.challenge === "boss"
+      ? Math.min(2, Math.floor(Object.keys(active.answers).length / 4))
+      : 0;
   const previousGameBest = active?.challenge
     ? personalGameRecords(
         attempts.filter((attempt) => attempt.id !== active.id),
@@ -571,6 +727,12 @@ export default function ExamCenter({
     ],
     [part],
   );
+  const campaignChapterCleared = (chapter: number) => {
+    const finalStage = campaignStages.find(
+      (stage) => stage.chapter === chapter && stage.stage === 3,
+    );
+    return !!finalStage && campaignStageResult(attempts, finalStage).best > 0;
+  };
 
   return (
     <section className="academy" aria-label="多益練習中心">
@@ -586,7 +748,11 @@ export default function ExamCenter({
           aria-label="前往角色收藏館"
         >
           <span className={`academy-player-avatar ${equippedFrame.id}`}>
-            {equippedAvatar.image ? <img src={equippedAvatar.image} alt="" /> : equippedAvatar.icon}
+            {equippedAvatar.image ? (
+              <img src={equippedAvatar.image} alt="" />
+            ) : (
+              equippedAvatar.icon
+            )}
           </span>
           <span>
             <small>我的衝刺隊伍</small>
@@ -698,6 +864,19 @@ export default function ExamCenter({
               <div className="arcade-live-progress">
                 {Object.keys(active.answers).length} / {active.ids.length}
               </div>
+              {active.challenge === "boss" && (
+                <div className="boss-phases" aria-label="首領戰三階段">
+                  <span className={bossPhaseIndex === 0 ? "current" : ""}>
+                    Ⅰ 聽力偵查
+                  </span>
+                  <span className={bossPhaseIndex === 1 ? "current" : ""}>
+                    Ⅱ 對話追查
+                  </span>
+                  <span className={bossPhaseIndex === 2 ? "current" : ""}>
+                    Ⅲ 閱讀決戰
+                  </span>
+                </div>
+              )}
             </div>
           )}
           {active.finishedAt && summary && (
@@ -795,6 +974,7 @@ export default function ExamCenter({
                           preload="metadata"
                           controls={!strict}
                           loop={!strict && repeatAudio}
+                          onPlay={() => void markListening(q)}
                           onLoadedMetadata={() => {
                             if (audio.current)
                               audio.current.playbackRate = strict ? 1 : rate;
@@ -1154,10 +1334,20 @@ export default function ExamCenter({
                   ) : !active.finishedAt ? (
                     <button
                       className="primary-btn"
-                      disabled={busy || noteDirty || !!active.challenge || isCampaignAttempt(active)}
+                      disabled={
+                        busy ||
+                        noteDirty ||
+                        !!active.challenge ||
+                        isCampaignAttempt(active) ||
+                        isRevengeAttempt(active)
+                      }
                       onClick={() => void finish()}
                     >
-                      {active.challenge || isCampaignAttempt(active) ? "全部答完自動結算" : "完成並交卷"}
+                      {active.challenge ||
+                      isCampaignAttempt(active) ||
+                      isRevengeAttempt(active)
+                        ? "全部答完自動結算"
+                        : "完成並交卷"}
                     </button>
                   ) : (
                     <button
@@ -1211,15 +1401,18 @@ export default function ExamCenter({
                   </button>
                 ))}
               </div>
-              {!active.finishedAt && !active.challenge && !isCampaignAttempt(active) && (
-                <button
-                  className="secondary-btn full"
-                  disabled={busy || noteDirty}
-                  onClick={() => void finish()}
-                >
-                  提早交卷
-                </button>
-              )}
+              {!active.finishedAt &&
+                !active.challenge &&
+                !isCampaignAttempt(active) &&
+                !isRevengeAttempt(active) && (
+                  <button
+                    className="secondary-btn full"
+                    disabled={busy || noteDirty}
+                    onClick={() => void finish()}
+                  >
+                    提早交卷
+                  </button>
+                )}
               <small>
                 每次作答同步至帳號。返回中心可續做；限時測驗不會暫停。
               </small>
@@ -1282,27 +1475,175 @@ export default function ExamCenter({
           {tab === "campaign" && (
             <section className="campaign-room" aria-label="TOEIC 劇情戰役">
               <div className="campaign-hero">
-                <div><span className="tiny-label">GLOBAL RESPONSE UNIT · 01</span><h2>全球商務危機應變行動</h2><p>航班、港口與跨國企業接連失去聯絡。加入專業小隊，運用英文線索逐站找出真相。</p></div>
-                <div className="campaign-level"><strong>{campaignStages.filter((stage) => campaignStageResult(attempts, stage).best > 0).length}</strong><span>/ {campaignStages.length} 關通關</span></div>
+                <div>
+                  <span className="tiny-label">GLOBAL RESPONSE UNIT · 01</span>
+                  <h2>全球商務危機應變行動</h2>
+                  <p>
+                    航班、港口與跨國企業接連失去聯絡。加入專業小隊，運用英文線索逐站找出真相。
+                  </p>
+                </div>
+                <div className="campaign-level">
+                  <strong>
+                    {
+                      campaignStages.filter(
+                        (stage) =>
+                          campaignStageResult(attempts, stage).best > 0,
+                      ).length
+                    }
+                  </strong>
+                  <span>/ {campaignStages.length} 關通關</span>
+                </div>
               </div>
               <div className="campaign-grid">
                 {campaignStages.map((stage, index) => {
                   const result = campaignStageResult(attempts, stage);
-                  const previous = index === 0 ? null : campaignStages[index - 1];
-                  const unlocked = !previous || campaignStageResult(attempts, previous).best > 0;
-                  return <article className={`campaign-stage ${unlocked ? "" : "campaign-locked"}`} key={stage.id}>
-                    <div className="campaign-stage-top"><span>CHAPTER {String(stage.chapter).padStart(2, "0")} · STAGE {stage.stage}</span><strong>{result.best ? "★".repeat(result.best) + "☆".repeat(3 - result.best) : "☆☆☆"}</strong></div>
-                    <h3>{stage.title}</h3><h4>{stage.operation}</h4><p>{stage.briefing}</p>
-                    <div className="campaign-meta"><span>Part {stage.part} · {partNames[stage.part]}</span><span>{stage.questions} 題</span></div>
-                    <button className={unlocked ? "primary-btn" : "secondary-btn"} disabled={!unlocked || busy} onClick={() => {
-                      const ids = selectPractice(stage.part, stage.questions);
-                      void start("mini", ids, campaignTitle(stage));
-                    }}>{!unlocked ? <><LockKeyhole size={15}/> 完成前一關解鎖</> : result.runs ? <>再次出勤 <ArrowRight size={16}/></> : <>開始任務 <ArrowRight size={16}/></>}</button>
-                    {result.runs > 0 && <small className="campaign-record">已出勤 {result.runs} 次 · 最佳 {result.best ? `${result.best} 星` : "尚未通關"}</small>}
-                  </article>;
+                  const previous =
+                    index === 0 ? null : campaignStages[index - 1];
+                  const unlocked =
+                    !previous ||
+                    campaignStageResult(attempts, previous).best > 0;
+                  return (
+                    <article
+                      className={`campaign-stage ${unlocked ? "" : "campaign-locked"}`}
+                      key={stage.id}
+                    >
+                      <div className="campaign-stage-top">
+                        <span>
+                          CHAPTER {String(stage.chapter).padStart(2, "0")} ·
+                          STAGE {stage.stage}
+                        </span>
+                        <strong>
+                          {result.best
+                            ? "★".repeat(result.best) +
+                              "☆".repeat(3 - result.best)
+                            : "☆☆☆"}
+                        </strong>
+                      </div>
+                      <h3>{stage.title}</h3>
+                      <h4>{stage.operation}</h4>
+                      <p>{stage.briefing}</p>
+                      <div className="campaign-meta">
+                        <span>
+                          Part {stage.part} · {partNames[stage.part]}
+                        </span>
+                        <span>{stage.questions} 題</span>
+                      </div>
+                      <button
+                        className={unlocked ? "primary-btn" : "secondary-btn"}
+                        disabled={!unlocked || busy}
+                        onClick={() => {
+                          const ids = selectPractice(
+                            stage.part,
+                            stage.questions,
+                          );
+                          void start("mini", ids, campaignTitle(stage));
+                        }}
+                      >
+                        {!unlocked ? (
+                          <>
+                            <LockKeyhole size={15} /> 完成前一關解鎖
+                          </>
+                        ) : result.runs ? (
+                          <>
+                            再次出勤 <ArrowRight size={16} />
+                          </>
+                        ) : (
+                          <>
+                            開始任務 <ArrowRight size={16} />
+                          </>
+                        )}
+                      </button>
+                      {result.runs > 0 && (
+                        <small className="campaign-record">
+                          已出勤 {result.runs} 次 · 最佳{" "}
+                          {result.best ? `${result.best} 星` : "尚未通關"}
+                        </small>
+                      )}
+                    </article>
+                  );
                 })}
               </div>
-              <p className="campaign-tip">通過門檻 70%｜85% 得 2 星｜全對得 3 星。每一關都從現有原創 TOEIC 題庫抽題，可重玩刷新最佳星等。</p>
+              <div className="story-panel">
+                <div className="progression-heading">
+                  <div>
+                    <span className="tiny-label">PERSONAL FILES</span>
+                    <h2>角色支線與羈絆</h2>
+                  </div>
+                  <span>答對支線題累積信賴度</span>
+                </div>
+                <div className="story-grid">
+                  {sideStories.map((side) => {
+                    const affinity = storyAffinity(attempts, side.character);
+                    const unlocked =
+                      side.chapter === 1 ||
+                      campaignChapterCleared(side.chapter - 1);
+                    const tier =
+                      affinity >= 24
+                        ? "深度信賴"
+                        : affinity >= 12
+                          ? "可靠夥伴"
+                          : affinity >= 4
+                            ? "初步合作"
+                            : "尚待建立";
+                    return (
+                      <article
+                        className={`story-card ${unlocked ? "" : "story-locked"}`}
+                        key={side.character}
+                      >
+                        <img
+                          src={`/characters/${side.character}.webp`}
+                          alt=""
+                        />
+                        <div className="story-copy">
+                          <span>
+                            CHAPTER {String(side.chapter).padStart(2, "0")} ·{" "}
+                            {side.name}
+                          </span>
+                          <h3>{side.title}</h3>
+                          <p>{side.story}</p>
+                          <div className="affinity-track">
+                            <i
+                              style={{
+                                width: `${Math.min(100, (affinity / 24) * 100)}%`,
+                              }}
+                            />
+                          </div>
+                          <small>
+                            信賴度 {affinity}/24 · {tier}
+                          </small>
+                          {affinity >= 12 && (
+                            <blockquote>
+                              「有你在，這份文件總算有人看懂了。」角色開始把重要任務交給你。
+                            </blockquote>
+                          )}
+                          <button
+                            className={
+                              unlocked ? "secondary-btn" : "secondary-btn"
+                            }
+                            disabled={!unlocked || busy}
+                            onClick={() =>
+                              void start(
+                                "practice",
+                                selectPractice(side.part, 8),
+                                `【支線:${side.character}】${side.title}`,
+                              )
+                            }
+                          >
+                            {unlocked
+                              ? "進行支線任務"
+                              : `通過第 ${side.chapter - 1} 章解鎖`}{" "}
+                            <ArrowRight size={14} />
+                          </button>
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
+              </div>
+              <p className="campaign-tip">
+                通過門檻 70%｜85% 得 2 星｜全對得 3 星。每一關都從現有原創 TOEIC
+                題庫抽題，可重玩刷新最佳星等。
+              </p>
             </section>
           )}
           {tab === "practice" && (
@@ -1343,6 +1684,144 @@ export default function ExamCenter({
                     {mockSets.length} × 200 模考
                   </small>
                 </div>
+              </div>
+              <section
+                className="daily-season-grid"
+                aria-label="每日任務與賽季通行證"
+              >
+                <div className="daily-panel">
+                  <div className="progression-heading">
+                    <div>
+                      <span className="tiny-label">DAILY OPERATIONS</span>
+                      <h2>
+                        <CalendarCheck size={19} /> 今日任務
+                      </h2>
+                    </div>
+                    <span>
+                      {
+                        dailyMissions.filter(
+                          (mission) => mission.current >= mission.target,
+                        ).length
+                      }
+                      /{dailyMissions.length} 完成
+                    </span>
+                  </div>
+                  {dailyMissions.map((mission) => (
+                    <div className="daily-mission" key={mission.id}>
+                      <div>
+                        <strong>{mission.label}</strong>
+                        <small>
+                          {Math.min(mission.current, mission.target)}/
+                          {mission.target}
+                        </small>
+                      </div>
+                      <div className="daily-track">
+                        <i
+                          style={{
+                            width: `${Math.min(100, (mission.current / mission.target) * 100)}%`,
+                          }}
+                        />
+                      </div>
+                      {mission.current < mission.target && (
+                        <button
+                          className="text-btn"
+                          disabled={
+                            busy ||
+                            (mission.action === "revenge" && !wrongIds.length)
+                          }
+                          onClick={() => {
+                            if (mission.action === "go-vocabulary")
+                              setTab("vocabulary");
+                            if (mission.action === "adaptive") startAdaptive();
+                            if (mission.action === "listening")
+                              startListening();
+                            if (mission.action === "revenge") startRevenge();
+                          }}
+                        >
+                          前往任務
+                        </button>
+                      )}
+                      {mission.current >= mission.target && (
+                        <span className="mission-complete">已完成</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <div className="season-panel">
+                  <div className="progression-heading">
+                    <div>
+                      <span className="tiny-label">
+                        SEASON {String(season.index).padStart(2, "0")}
+                      </span>
+                      <h2>衝刺賽季通行證</h2>
+                    </div>
+                    <strong>Lv.{season.level}</strong>
+                  </div>
+                  <p>
+                    賽季 {season.index} · 累積通行證 XP{" "}
+                    {season.lifetimeXp.toLocaleString()} · 本期 XP{" "}
+                    {season.xp.toLocaleString()} · 本期至{" "}
+                    {new Date(season.end).toLocaleDateString("zh-TW")}
+                  </p>
+                  <div className="season-track">
+                    <i style={{ width: `${season.progress}%` }} />
+                  </div>
+                  <div className="season-rewards">
+                    {[5, 10, 15, 20].map((level, i) => (
+                      <span
+                        className={season.level >= level ? "earned" : ""}
+                        key={level}
+                        title={
+                          [
+                            "行動代號框",
+                            "角色檔案框",
+                            "典藏材質框",
+                            "菁英行動框",
+                          ][i]
+                        }
+                      >
+                        <b>{season.level >= level ? "✓" : "◇"}</b>
+                        <small>Lv.{level}</small>
+                      </span>
+                    ))}
+                  </div>
+                  <small className="season-caption">
+                    每個里程碑會解鎖一款角色收藏外框，完成後可在收藏館裝備。
+                  </small>
+                </div>
+              </section>
+              <div className="quick-modes" aria-label="快速訓練模式">
+                <button onClick={startAdaptive} disabled={busy}>
+                  <Target size={18} />
+                  <span>
+                    <strong>自適應訓練</strong>
+                    <small>優先補弱項與未見題</small>
+                  </span>
+                  <ArrowRight size={16} />
+                </button>
+                <button onClick={startListening} disabled={busy}>
+                  <Headphones size={18} />
+                  <span>
+                    <strong>聽力專項</strong>
+                    <small>精聽音檔、逐句跟讀與錄音</small>
+                  </span>
+                  <ArrowRight size={16} />
+                </button>
+                <button
+                  onClick={startRevenge}
+                  disabled={busy || !wrongIds.length}
+                >
+                  <Swords size={18} />
+                  <span>
+                    <strong>錯題復仇</strong>
+                    <small>
+                      {wrongIds.length
+                        ? `${wrongIds.length} 題待復仇`
+                        : "目前沒有待復仇錯題"}
+                    </small>
+                  </span>
+                  <ArrowRight size={16} />
+                </button>
               </div>
               <section className="arcade-lobby" aria-labelledby="arcade-title">
                 <div className="arcade-lobby-head">
@@ -2102,6 +2581,51 @@ export default function ExamCenter({
                   <small>錯題與猜答去除重複</small>
                 </article>
               </div>
+              <section className="study-plan">
+                <div className="progression-heading">
+                  <div>
+                    <span className="tiny-label">NEXT 7 DAYS</span>
+                    <h2>模考診斷與個人讀書計畫</h2>
+                  </div>
+                  <button
+                    className="primary-btn"
+                    disabled={busy}
+                    onClick={startAdaptive}
+                  >
+                    開始自適應訓練 <ArrowRight size={15} />
+                  </button>
+                </div>
+                <p>
+                  {recommendations.length
+                    ? `目前最需要補強的是 Part ${recommendations[0].part}（${recommendations[0].percent}%）。以下安排先補弱項，再穿插聽力與多文件閱讀。`
+                    : "完成幾回練習後，系統會依各 Part 正確率調整這份計畫；目前先以聽力、文法與閱讀輪替。"}{" "}
+                  正確率是本站練習表現，不推算 ETS 官方分數。
+                </p>
+                <div className="study-plan-days">
+                  {Array.from({ length: 7 }, (_, day) => {
+                    const planPart: Part =
+                      recommendations[day % 3]?.part ??
+                      ([2, 5, 3, 7, 1, 6, 4] as Part[])[day];
+                    return (
+                      <button
+                        key={day}
+                        disabled={busy}
+                        onClick={() =>
+                          void start(
+                            "practice",
+                            selectPractice(planPart, 15),
+                            `【七日計畫】Day ${day + 1} · Part ${planPart}`,
+                          )
+                        }
+                      >
+                        <span>DAY {day + 1}</span>
+                        <strong>Part {planPart}</strong>
+                        <small>{partNames[planPart]}</small>
+                      </button>
+                    );
+                  })}
+                </div>
+              </section>
               <div className="academy-panel">
                 <h2>各題型表現</h2>
                 <p>未作答計入錯誤；平均秒數計算已作答題目的頁面停留時間。</p>
@@ -2203,7 +2727,14 @@ export default function ExamCenter({
                 <div
                   className={`collection-avatar-preview ${equippedFrame.id}`}
                 >
-                  {equippedAvatar.image ? <img src={equippedAvatar.image} alt={`${equippedAvatar.name}角色肖像`} /> : <span>{equippedAvatar.icon}</span>}
+                  {equippedAvatar.image ? (
+                    <img
+                      src={equippedAvatar.image}
+                      alt={`${equippedAvatar.name}角色肖像`}
+                    />
+                  ) : (
+                    <span>{equippedAvatar.icon}</span>
+                  )}
                 </div>
                 <div className="collection-hero-copy">
                   <span className="tiny-label">YOUR TOEIC CREW</span>
@@ -2305,7 +2836,11 @@ export default function ExamCenter({
                         onClick={() => void equipCollectible(item)}
                       >
                         <span className="collectible-art" aria-hidden="true">
-                          {item.image ? <img src={item.image} alt="" /> : item.icon}
+                          {item.image ? (
+                            <img src={item.image} alt="" />
+                          ) : (
+                            item.icon
+                          )}
                           {!item.unlocked && (
                             <i>
                               <LockKeyhole size={16} />
