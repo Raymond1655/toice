@@ -654,7 +654,9 @@ export default function ExamCenter({
             attempts,
             annotations: cloud.notes.filter(
               (note) =>
-                note.id !== collectionProfileId && !note.id.startsWith("yt"),
+                note.id !== collectionProfileId &&
+                !note.id.startsWith("yt") &&
+                !note.id.startsWith("story:"),
             ),
             collection: selection,
           },

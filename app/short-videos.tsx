@@ -16,7 +16,7 @@ import {
   Sparkles,
   Volume2,
 } from "lucide-react";
-import { useVideoNotes } from "./use-video-notes";
+import { useLearningNotes } from "./use-learning-notes";
 import "./short-videos.css";
 
 type ShortVideo = {
@@ -43,7 +43,7 @@ const localDay = (date: Date) =>
   `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 
 export default function ShortVideos({ userId }: { userId: string }) {
-  const cloud = useVideoNotes(userId);
+  const cloud = useLearningNotes(userId);
   const [videos, setVideos] = useState<ShortVideo[]>([]);
   const [updatedAt, setUpdatedAt] = useState("");
   const [loading, setLoading] = useState(true);

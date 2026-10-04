@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { getSupabase } from "@/lib/supabase";
 import type { Annotation } from "@/lib/exam-types";
 
-export function useVideoNotes(userId: string) {
+export function useLearningNotes(userId: string) {
   const [notes, setNotes] = useState<Annotation[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -15,13 +15,13 @@ export function useVideoNotes(userId: string) {
         .from("toice_annotations")
         .select("id,note,favorite")
         .eq("user_id", userId)
-        .like("id", "yt:%")
+        .or("id.like.yt:%,id.like.story:%")
         .abortSignal(AbortSignal.timeout(15000));
       if (result.error) throw result.error;
       setNotes(result.data ?? []);
       setError("");
     } catch {
-      setError("影片收藏同步失敗，請檢查網路後重試。");
+      setError("影片與故事紀錄同步失敗，請檢查網路後重試。");
     } finally {
       setLoading(false);
     }
@@ -49,7 +49,7 @@ export function useVideoNotes(userId: string) {
         setError("");
         return true;
       } catch {
-        setError("影片紀錄同步失敗，請稍後再試。");
+        setError("學習紀錄同步失敗，請稍後再試。");
         return false;
       } finally {
         setSaving(false);

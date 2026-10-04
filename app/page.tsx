@@ -29,6 +29,7 @@ import {
   Volume2,
   X,
   Clapperboard,
+  BookHeart,
 } from "lucide-react";
 import { words, type Word } from "@/lib/vocabulary";
 import examSummary from "@/lib/exam-summary.json";
@@ -49,14 +50,25 @@ const ExamCenter = dynamic(() => import("./exam-center"), {
 const ShortVideos = dynamic(() => import("./short-videos"), {
   loading: () => <p>正在載入每日短影音…</p>,
 });
+const InspirationalStories = dynamic(() => import("./inspirational-stories"), {
+  loading: () => <p>正在載入勵志故事…</p>,
+});
 export type View =
-  "today" | "study" | "quiz" | "library" | "progress" | "academy" | "videos";
+  | "today"
+  | "study"
+  | "quiz"
+  | "library"
+  | "progress"
+  | "academy"
+  | "videos"
+  | "stories";
 const nav = [
   { id: "today", label: "今日衝刺", icon: LayoutDashboard },
   { id: "study", label: "單字卡", icon: BookOpen },
   { id: "quiz", label: "每日測驗", icon: ListChecks },
   { id: "academy", label: "多益練習", icon: Target },
   { id: "videos", label: "每日短影音", icon: Clapperboard },
+  { id: "stories", label: "勵志故事", icon: BookHeart },
   { id: "library", label: "單字庫", icon: Search },
   { id: "progress", label: "學習進度", icon: ChartNoAxesColumnIncreasing },
 ] as const;
@@ -546,6 +558,9 @@ function LearningWorkspace({
                 />
               )}
               {view === "videos" && <ShortVideos userId={session.user.id} />}
+              {view === "stories" && (
+                <InspirationalStories userId={session.user.id} />
+              )}
               {view === "study" && (
                 <Study
                   {...shared}
