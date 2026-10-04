@@ -2,6 +2,260 @@
   max-width: 1250px;
   margin: auto;
 }
+.academy-player-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e4e9f2;
+  background: #fff;
+  border-radius: 16px;
+  padding: 8px 12px;
+  text-align: left;
+  flex-shrink: 0;
+}
+.academy-player-badge > span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.academy-player-badge small {
+  font-size: 9px;
+  color: #8791a3;
+}
+.academy-player-badge strong {
+  font-size: 12px;
+  color: #334363;
+}
+.academy-player-avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 3px solid #d5dfed;
+  border-radius: 15px;
+  background: #f1f4fb;
+  font-size: 25px;
+}
+.academy-player-avatar i {
+  position: absolute;
+  right: -7px;
+  bottom: -6px;
+  font-style: normal;
+  font-size: 14px;
+}
+.academy-player-avatar.frame-leaf,
+.collection-avatar-preview.frame-leaf {
+  border-color: #67a579;
+}
+.academy-player-avatar.frame-gold,
+.collection-avatar-preview.frame-gold {
+  border-color: #e4b34d;
+  box-shadow: 0 0 0 3px #f7e7be;
+}
+.academy-player-avatar.frame-trophy,
+.collection-avatar-preview.frame-trophy {
+  border-color: #8d7be4;
+  box-shadow: 0 0 0 3px #dfdafa;
+}
+.academy-player-pet {
+  font-size: 17px;
+  margin-left: 4px;
+}
+.collection-room {
+  max-width: 1040px;
+  margin: auto;
+}
+.collection-hero {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+  border-radius: 22px;
+  background: linear-gradient(120deg, #182d56, #344d83);
+  color: white;
+  overflow: hidden;
+}
+.collection-avatar-preview {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 0 0 116px;
+  height: 116px;
+  border: 5px solid #d4deec;
+  border-radius: 36px;
+  background: linear-gradient(150deg, #fff, #e5ecfa);
+  box-shadow: 0 10px 28px #06152e55;
+  font-size: 61px;
+}
+.collection-avatar-preview i {
+  position: absolute;
+  right: -12px;
+  bottom: -8px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 3px solid white;
+  border-radius: 15px;
+  background: #fbfbff;
+  font-size: 23px;
+  font-style: normal;
+}
+.collection-hero-copy h2 {
+  font-size: 24px;
+  margin: 8px 0;
+}
+.collection-hero-copy p {
+  font-size: 12px;
+  color: #ccd6e9;
+  margin: 0 0 16px;
+}
+.collection-summary-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.collection-summary-pills span {
+  padding: 6px 10px;
+  border: 1px solid #ffffff26;
+  border-radius: 30px;
+  background: #ffffff12;
+  font-size: 10px;
+  color: #e6ecf6;
+}
+.collection-section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin: 28px 0 12px;
+}
+.collection-section-head h2 {
+  margin: 5px 0;
+  font-size: 20px;
+}
+.collection-section-head > span {
+  font-size: 11px;
+  color: #748197;
+}
+.collection-filters {
+  display: flex;
+  gap: 8px;
+  margin: 14px 0;
+}
+.collection-filters button {
+  padding: 9px 16px;
+  border: 1px solid #dfe5ef;
+  border-radius: 30px;
+  background: #fff;
+  color: #66748b;
+  font-size: 12px;
+}
+.collection-filters button.active {
+  background: #2c416b;
+  color: white;
+  border-color: #2c416b;
+}
+.collectible-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.collectible-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 112px;
+  padding: 15px;
+  border: 1px solid #e5e9f0;
+  border-radius: 17px;
+  background: #fff;
+  text-align: left;
+  transition:
+    transform 0.16s,
+    border-color 0.16s,
+    box-shadow 0.16s;
+}
+.collectible-card.collectible-ready:not(:disabled):hover {
+  transform: translateY(-2px);
+  border-color: #b8c7eb;
+  box-shadow: 0 7px 18px #2b426514;
+}
+.collectible-card.collectible-selected {
+  border-color: #7588df;
+  box-shadow: 0 0 0 2px #7588df22;
+}
+.collectible-card.collectible-locked {
+  background: #f7f8fa;
+}
+.collectible-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 0 0 66px;
+  height: 66px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #eef1ff, #f5f7fc);
+  font-size: 36px;
+}
+.collectible-art > i {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid white;
+  border-radius: 9px;
+  background: #68768d;
+  color: white;
+  font-style: normal;
+}
+.collectible-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+.collectible-copy strong {
+  font-size: 14px;
+  color: #34425d;
+}
+.collectible-copy small {
+  font-size: 10px;
+  line-height: 1.6;
+  color: #778399;
+}
+.collectible-copy em {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  color: #7382b9;
+}
+.collectible-locked .collectible-copy em {
+  color: #8992a0;
+}
+.collectible-check {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  color: #5d72d0;
+  font-weight: 900;
+}
+.collection-tip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 18px 0;
+  color: #6e7b90;
+  font-size: 12px;
+}
+.collection-tip svg {
+  flex-shrink: 0;
+  color: #8695db;
+}
 .arcade-badges {
   display: flex;
   align-items: center;
@@ -948,6 +1202,69 @@
   }
 }
 @media (max-width: 760px) {
+  .academy-player-badge {
+    gap: 7px;
+    padding: 7px;
+  }
+  .academy-player-avatar {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+    border-radius: 13px;
+  }
+  .academy-player-pet {
+    font-size: 15px;
+  }
+  .collection-hero {
+    padding: 19px;
+    gap: 17px;
+    border-radius: 18px;
+  }
+  .collection-avatar-preview {
+    flex-basis: 82px;
+    height: 82px;
+    border-radius: 26px;
+    font-size: 43px;
+  }
+  .collection-avatar-preview i {
+    width: 34px;
+    height: 34px;
+    font-size: 19px;
+  }
+  .collection-hero-copy h2 {
+    font-size: 19px;
+  }
+  .collection-hero-copy p {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .collection-summary-pills {
+    gap: 5px;
+  }
+  .collection-summary-pills span {
+    padding: 5px 7px;
+    font-size: 9px;
+  }
+  .collection-section-head h2 {
+    font-size: 18px;
+  }
+  .collectible-grid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+  .collectible-card {
+    min-height: 98px;
+    padding: 13px;
+  }
+  .collectible-art {
+    flex-basis: 58px;
+    height: 58px;
+    border-radius: 17px;
+    font-size: 32px;
+  }
+  .collectible-copy strong {
+    font-size: 13px;
+  }
   .arcade-lobby {
     padding: 18px 14px;
     border-radius: 19px;

@@ -18,6 +18,8 @@ import {
   Heart,
   Trophy,
   Shield,
+  Sparkles,
+  LockKeyhole,
 } from "lucide-react";
 import {
   questions,
@@ -40,6 +42,13 @@ import {
 } from "@/lib/exam";
 import { gameRunStats, personalGameRecords } from "@/lib/exam-games";
 import {
+  collectionCatalog,
+  collectionProfileId,
+  readCollection,
+  type CollectionSlot,
+  type Collectible,
+} from "@/lib/collectibles";
+import {
   gameRules,
   partNames,
   type Part,
@@ -52,7 +61,14 @@ import { useExamCloud } from "./use-exam-cloud";
 import { Phonetic } from "./phonetic";
 import "./exam-center.css";
 
-type Tab = "practice" | "mock" | "mistakes" | "vocabulary" | "report" | "notes";
+type Tab =
+  | "practice"
+  | "mock"
+  | "mistakes"
+  | "vocabulary"
+  | "report"
+  | "notes"
+  | "collection";
 const tabs: { id: Tab; label: string; icon: typeof BookOpen }[] = [
   { id: "practice", label: "題型練習", icon: BookOpen },
   { id: "mock", label: "限時模考", icon: Timer },
@@ -60,6 +76,7 @@ const tabs: { id: Tab; label: string; icon: typeof BookOpen }[] = [
   { id: "vocabulary", label: "單字特訓", icon: Keyboard },
   { id: "report", label: "實力分析", icon: BarChart3 },
   { id: "notes", label: "收藏筆記", icon: NotebookPen },
+  { id: "collection", label: "角色收藏館", icon: Sparkles },
 ];
 const grammarTips = [
   [
@@ -119,6 +136,8 @@ export default function ExamCenter({
     [preview, setPreview] = useState<Question | null>(null),
     [query, setQuery] = useState(""),
     [favoriteOnly, setFavoriteOnly] = useState(false);
+  const [collectionSlot, setCollectionSlot] =
+    useState<CollectionSlot>("avatar");
   const [rate, setRate] = useState(1),
     [repeatAudio, setRepeatAudio] = useState(false),
     [accent, setAccent] = useState("en-US"),
@@ -193,6 +212,21 @@ export default function ExamCenter({
       unlocked: Object.values(gameRecords).every((record) => record.clears > 0),
     },
   ];
+  const collectibles = useMemo(
+    () => collectionCatalog(state, attempts, now),
+    [state, attempts, Math.floor(now / 60000)],
+  );
+  const selection = readCollection(
+    cloud.notes.find((note) => note.id === collectionProfileId)?.note,
+  );
+  const equipped = (slot: CollectionSlot) =>
+    collectibles.find(
+      (item) =>
+        item.slot === slot && item.id === selection[slot] && item.unlocked,
+    ) ?? collectibles.find((item) => item.slot === slot && item.unlocked)!;
+  const equippedAvatar = equipped("avatar");
+  const equippedCompanion = equipped("companion");
+  const equippedFrame = equipped("frame");
   const busy = cloud.loading || cloud.saving || cloud.needsRetry;
   useEffect(() => {
     setSkill("");
@@ -311,6 +345,13 @@ export default function ExamCenter({
       ids = selectPractice(0, rules.questions);
     }
     void start("mini", ids, rules.title, challenge);
+  }
+  async function equipCollectible(item: Collectible) {
+    if (!item.unlocked || busy) return;
+    const next = { ...selection, [item.slot]: item.id };
+    if (await cloud.annotate(collectionProfileId, JSON.stringify(next), true)) {
+      setMessage(`${item.name} 已裝備，收藏設定已同步到帳號。`);
+    }
   }
   function speak(text: string) {
     if (!("speechSynthesis" in window)) {
@@ -457,7 +498,10 @@ export default function ExamCenter({
           {
             exportedAt: new Date().toISOString(),
             attempts,
-            annotations: cloud.notes,
+            annotations: cloud.notes.filter(
+              (note) => note.id !== collectionProfileId,
+            ),
+            collection: selection,
           },
           null,
           2,
@@ -531,7 +575,26 @@ export default function ExamCenter({
           <h1>練習，直到變成實力。</h1>
           <p>單字 × 聽力 × 閱讀。讓每一次練習，都知道下一步。</p>
         </div>
-        <span className="academy-version">全題型練習</span>
+        <button
+          className="academy-player-badge"
+          onClick={() => setTab("collection")}
+          aria-label="前往角色收藏館"
+        >
+          <span className={`academy-player-avatar ${equippedFrame.id}`}>
+            {equippedAvatar.icon}
+            <i>{equippedCompanion.icon}</i>
+          </span>
+          <span>
+            <small>我的衝刺隊伍</small>
+            <strong>{equippedAvatar.name}</strong>
+          </span>
+          <span
+            className="academy-player-pet"
+            aria-label={`夥伴：${equippedCompanion.name}`}
+          >
+            {equippedCompanion.icon}
+          </span>
+        </button>
       </div>
       <div className="academy-cloud" role={cloud.error ? "alert" : "status"}>
         <span>
@@ -2104,6 +2167,151 @@ export default function ExamCenter({
               </div>
             </>
           )}
+          {tab === "collection" && (
+            <section className="collection-room" aria-label="角色收藏館">
+              <div className="collection-hero">
+                <div
+                  className={`collection-avatar-preview ${equippedFrame.id}`}
+                >
+                  <span>{equippedAvatar.icon}</span>
+                  <i>{equippedCompanion.icon}</i>
+                </div>
+                <div className="collection-hero-copy">
+                  <span className="tiny-label">YOUR TOEIC CREW</span>
+                  <h2>
+                    {equippedAvatar.name} 與 {equippedCompanion.name}
+                  </h2>
+                  <p>
+                    {equippedAvatar.description}收藏和裝備都會跟著你的帳號同步。
+                  </p>
+                  <div className="collection-summary-pills">
+                    <span>
+                      🎭{" "}
+                      {
+                        collectibles.filter(
+                          (item) => item.slot === "avatar" && item.unlocked,
+                        ).length
+                      }{" "}
+                      /{" "}
+                      {
+                        collectibles.filter((item) => item.slot === "avatar")
+                          .length
+                      }{" "}
+                      角色
+                    </span>
+                    <span>
+                      🐾{" "}
+                      {
+                        collectibles.filter(
+                          (item) => item.slot === "companion" && item.unlocked,
+                        ).length
+                      }{" "}
+                      /{" "}
+                      {
+                        collectibles.filter((item) => item.slot === "companion")
+                          .length
+                      }{" "}
+                      夥伴
+                    </span>
+                    <span>
+                      🖼️{" "}
+                      {
+                        collectibles.filter(
+                          (item) => item.slot === "frame" && item.unlocked,
+                        ).length
+                      }{" "}
+                      /{" "}
+                      {
+                        collectibles.filter((item) => item.slot === "frame")
+                          .length
+                      }{" "}
+                      外框
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="collection-section-head">
+                <div>
+                  <span className="tiny-label">COLLECTION</span>
+                  <h2>裝備與收藏</h2>
+                </div>
+                <span>
+                  {collectibles.filter((item) => item.unlocked).length} /{" "}
+                  {collectibles.length} 已解鎖
+                </span>
+              </div>
+              <div
+                className="collection-filters"
+                role="tablist"
+                aria-label="收藏種類"
+              >
+                {(
+                  [
+                    ["avatar", "角色"],
+                    ["companion", "夥伴"],
+                    ["frame", "外框"],
+                  ] as const
+                ).map(([slot, label]) => (
+                  <button
+                    role="tab"
+                    aria-selected={collectionSlot === slot}
+                    className={collectionSlot === slot ? "active" : ""}
+                    key={slot}
+                    onClick={() => setCollectionSlot(slot)}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+              <div className="collectible-grid">
+                {collectibles
+                  .filter((item) => item.slot === collectionSlot)
+                  .map((item) => {
+                    const selected = selection[item.slot] === item.id;
+                    return (
+                      <button
+                        className={`collectible-card ${item.unlocked ? "collectible-ready" : "collectible-locked"} ${selected ? "collectible-selected" : ""}`}
+                        key={item.id}
+                        disabled={busy || !item.unlocked}
+                        onClick={() => void equipCollectible(item)}
+                      >
+                        <span className="collectible-art" aria-hidden="true">
+                          {item.icon}
+                          {!item.unlocked && (
+                            <i>
+                              <LockKeyhole size={16} />
+                            </i>
+                          )}
+                        </span>
+                        <span className="collectible-copy">
+                          <strong>{item.name}</strong>
+                          <small>{item.description}</small>
+                          <em>
+                            {item.unlocked
+                              ? selected
+                                ? "已裝備"
+                                : "已解鎖 · 點選裝備"
+                              : item.unlock}
+                          </em>
+                        </span>
+                        {selected && (
+                          <span
+                            className="collectible-check"
+                            aria-label="目前裝備"
+                          >
+                            ✓
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+              </div>
+              <p className="collection-tip">
+                <Sparkles size={16} />{" "}
+                完成單字練習、連續學習和遊戲挑戰，可逐步解鎖完整收藏。
+              </p>
+            </section>
+          )}
           {tab === "notes" && (
             <>
               <div className="academy-section-head">
@@ -2131,6 +2339,7 @@ export default function ExamCenter({
               {cloud.notes
                 .filter(
                   (n) =>
+                    n.id !== collectionProfileId &&
                     (n.note || n.favorite) &&
                     `${n.note} ${questionMap.get(n.id)?.prompt ?? wordMap.get(n.id)?.word ?? ""}`
                       .toLowerCase()
@@ -2190,7 +2399,9 @@ export default function ExamCenter({
                     )}
                   </article>
                 ))}
-              {!cloud.notes.some((n) => n.note || n.favorite) && (
+              {!cloud.notes.some(
+                (n) => n.id !== collectionProfileId && (n.note || n.favorite),
+              ) && (
                 <div className="academy-empty">
                   <NotebookPen size={35} />
                   <h3>把自己的理解留下來</h3>
