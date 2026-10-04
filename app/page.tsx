@@ -1,5 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
+import "./navigation.css";
 import { Phonetic } from "./phonetic";
 import { AuthGate } from "./auth-gate";
 import { useCloudProgress } from "./use-cloud-progress";
@@ -27,6 +28,7 @@ import {
   Target,
   Volume2,
   X,
+  Clapperboard,
 } from "lucide-react";
 import { words, type Word } from "@/lib/vocabulary";
 import examSummary from "@/lib/exam-summary.json";
@@ -44,13 +46,17 @@ import { Dashboard, Library, Progress, Study, Quiz } from "./views";
 const ExamCenter = dynamic(() => import("./exam-center"), {
   loading: () => <p>正在載入練習中心…</p>,
 });
+const ShortVideos = dynamic(() => import("./short-videos"), {
+  loading: () => <p>正在載入每日短影音…</p>,
+});
 export type View =
-  "today" | "study" | "quiz" | "library" | "progress" | "academy";
+  "today" | "study" | "quiz" | "library" | "progress" | "academy" | "videos";
 const nav = [
   { id: "today", label: "今日衝刺", icon: LayoutDashboard },
   { id: "study", label: "單字卡", icon: BookOpen },
   { id: "quiz", label: "每日測驗", icon: ListChecks },
   { id: "academy", label: "多益練習", icon: Target },
+  { id: "videos", label: "每日短影音", icon: Clapperboard },
   { id: "library", label: "單字庫", icon: Search },
   { id: "progress", label: "學習進度", icon: ChartNoAxesColumnIncreasing },
 ] as const;
@@ -539,6 +545,7 @@ function LearningWorkspace({
                   onBusy={setExamBusy}
                 />
               )}
+              {view === "videos" && <ShortVideos userId={session.user.id} />}
               {view === "study" && (
                 <Study
                   {...shared}

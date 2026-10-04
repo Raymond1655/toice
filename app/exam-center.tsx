@@ -653,7 +653,8 @@ export default function ExamCenter({
             exportedAt: new Date().toISOString(),
             attempts,
             annotations: cloud.notes.filter(
-              (note) => note.id !== collectionProfileId,
+              (note) =>
+                note.id !== collectionProfileId && !note.id.startsWith("yt"),
             ),
             collection: selection,
           },
@@ -2904,6 +2905,7 @@ export default function ExamCenter({
                 .filter(
                   (n) =>
                     n.id !== collectionProfileId &&
+                    !n.id.startsWith("yt") &&
                     (n.note || n.favorite) &&
                     `${n.note} ${questionMap.get(n.id)?.prompt ?? wordMap.get(n.id)?.word ?? ""}`
                       .toLowerCase()
@@ -2964,7 +2966,10 @@ export default function ExamCenter({
                   </article>
                 ))}
               {!cloud.notes.some(
-                (n) => n.id !== collectionProfileId && (n.note || n.favorite),
+                (n) =>
+                  n.id !== collectionProfileId &&
+                  !n.id.startsWith("yt") &&
+                  (n.note || n.favorite),
               ) && (
                 <div className="academy-empty">
                   <NotebookPen size={35} />
